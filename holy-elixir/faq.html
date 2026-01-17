@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -35,7 +37,7 @@
     </header>
 
     <!-- FAQ Section -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up">
       <div class="container mx-auto max-w-6xl space-y-6">
         <!-- FAQ Item 1 -->
         <div class="faq-item">
@@ -129,7 +131,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-gray-100">
+    <footer class="py-8 bg-gray-100" data-aos="fade-up">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-3 gap-8 text-gray-600 text-sm">
         <div>
           <h5 class="font-semibold text-navy mb-2">Holy Elixir</h5>
@@ -159,6 +161,11 @@
     <script src="script.js"></script>
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
     </script>
   </body>
 </html>

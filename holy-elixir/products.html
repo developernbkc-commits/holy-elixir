@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -31,7 +33,7 @@
     </header>
 
     <!-- Product: Zubrex Alkaline Water -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up">
       <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_Water_White_Model_Drinking.png?raw=true" alt="Zubrex Alkaline Water" class="rounded-xl shadow-lg" />
@@ -52,7 +54,7 @@
     </section>
 
     <!-- Product: Black Water -->
-    <section class="py-16 px-4 bg-light">
+    <section class="py-16 px-4 bg-light" data-aos="fade-up" data-aos-delay="100">
       <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
           <div class="section-badge">Premium</div>
@@ -73,7 +75,7 @@
     </section>
 
     <!-- Product: Zubrex Ionizer -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up" data-aos-delay="200">
       <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_Water_Ioniser_G1_4by3.png?raw=true" alt="Zubrex Ionizer" class="rounded-xl shadow-lg" />
@@ -94,7 +96,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-gray-100">
+    <footer class="py-8 bg-gray-100" data-aos="fade-up">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-3 gap-8 text-gray-600 text-sm">
         <div>
           <h5 class="font-semibold text-navy mb-2">Holy Elixir</h5>
@@ -123,5 +125,10 @@
     </footer>
     <script src="script.js"></script>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
+    </script>
   </body>
 </html>

@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -35,7 +37,7 @@
     </header>
 
     <!-- Understanding pH -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up">
       <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Understanding pH</h2>
@@ -53,7 +55,7 @@
     </section>
 
     <!-- Oxidation Reduction Potential -->
-    <section class="py-16 px-4 bg-light">
+    <section class="py-16 px-4 bg-light" data-aos="fade-up" data-aos-delay="100">
       <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1">
           <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/ORP_redox_diagram.png?raw=true" alt="ORP diagram" class="rounded-xl shadow-lg" />
@@ -71,7 +73,7 @@
     </section>
 
     <!-- Ionization Technology -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up" data-aos-delay="200">
       <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Ionization &amp; Filtration</h2>
@@ -89,7 +91,7 @@
     </section>
 
     <!-- Research & Evidence -->
-    <section class="py-16 px-4 bg-light">
+    <section class="py-16 px-4 bg-light" data-aos="fade-up" data-aos-delay="300">
       <div class="container mx-auto max-w-6xl">
         <h2 class="font-display text-2xl md:text-3xl text-center text-navy mb-8">Research &amp; Evidence</h2>
         <div class="space-y-12">
@@ -142,7 +144,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-gray-100">
+    <footer class="py-8 bg-gray-100" data-aos="fade-up">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-3 gap-8 text-gray-600 text-sm">
         <div>
           <h5 class="font-semibold text-navy mb-2">Holy Elixir</h5>
@@ -172,6 +174,11 @@
     <script src="script.js"></script>
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
     </script>
   </body>
 </html>

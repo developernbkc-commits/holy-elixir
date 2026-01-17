@@ -162,6 +162,21 @@ nav a:hover::after, nav a.active::after {
   opacity: 1;
   z-index: 2;
 }
+
+/* Add a semi‑transparent overlay to each slide to improve text contrast */
+.hero-slider .slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 43, 74, 0.6), rgba(13, 189, 173, 0.6));
+  z-index: 1;
+}
+
+/* Ensure hero content sits above the overlay */
+.hero-slider .slide .hero-content {
+  position: relative;
+  z-index: 2;
+}
 .hero-content {
   position: absolute;
   top: 50%;
@@ -208,6 +223,29 @@ nav a:hover::after, nav a.active::after {
 }
 .slider-controls button:hover {
   background: rgba(255, 255, 255, 0.8);
+}
+
+/* Slider dot navigation */
+.slider-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.slider-dot.active {
+  background: var(--teal);
+  transform: scale(1.4);
 }
 
 /* Cards */

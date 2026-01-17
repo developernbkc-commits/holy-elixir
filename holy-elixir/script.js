@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var slider = document.querySelector('.hero-slider');
   if (slider) {
     var slides = slider.querySelectorAll('.slide');
+    var dots = slider.querySelectorAll('.slider-dot');
     var current = 0;
     var nextBtn = document.querySelector('.slider-controls .next');
     var prevBtn = document.querySelector('.slider-controls .prev');
@@ -20,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
       slides.forEach(function (slide, i) {
         slide.classList.toggle('active', i === index);
       });
+      if (dots && dots.length) {
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('active', i === index);
+        });
+      }
       current = index;
     }
 
@@ -45,6 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(autoInterval);
         prevSlide();
         autoInterval = setInterval(nextSlide, 6000);
+      });
+    }
+
+    // Dot navigation
+    if (dots && dots.length) {
+      dots.forEach(function (dot, idx) {
+        dot.addEventListener('click', function () {
+          clearInterval(autoInterval);
+          showSlide(idx);
+          autoInterval = setInterval(nextSlide, 6000);
+        });
       });
     }
   }

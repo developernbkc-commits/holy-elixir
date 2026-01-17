@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -28,29 +30,38 @@
     <!-- Hero Section -->
     <section class="relative">
       <div class="hero-slider">
+        <!-- Slide 1: Premium alkaline water -->
         <div class="slide active" style="background-image:url('assets/hero1.png')">
           <div class="hero-content">
             <div class="section-badge mx-auto">Pure Hydration</div>
             <h1 class="text-3xl md:text-5xl font-display mb-4">Premium Alkaline Water<br /><span class="text-teal">8.5+ pH</span></h1>
             <p class="mb-6 text-lg">Experience crisp, naturally alkaline water enriched with essential trace minerals and antioxidant properties.</p>
-            <a href="products.html" class="btn-primary">Explore Products</a>
+            <a href="products.html" class="btn-primary">Shop Now</a>
           </div>
         </div>
+        <!-- Slide 2: Black water -->
         <div class="slide" style="background-image:url('assets/hero2.png')">
           <div class="hero-content">
-            <div class="section-badge mx-auto">Revolutionary Black Water</div>
-            <h1 class="text-3xl md:text-5xl font-display mb-4">Black Water<br /><span class="text-teal">77+ Trace Minerals</span></h1>
-            <p class="mb-6 text-lg">Our unique black alkaline water uses fulvic acid to deliver a full spectrum of minerals for enhanced immunity and detoxification.</p>
+            <div class="section-badge mx-auto">Mineral Rich</div>
+            <h1 class="text-3xl md:text-5xl font-display mb-4">Black Water<br /><span class="text-teal">84 Minerals</span></h1>
+            <p class="mb-6 text-lg">Infused with fulvic acid and trace minerals for superior hydration, detoxification and immunity.</p>
             <a href="products.html" class="btn-primary">Learn More</a>
           </div>
         </div>
+        <!-- Slide 3: Ionizer technology -->
         <div class="slide" style="background-image:url('assets/hero3.png')">
           <div class="hero-content">
             <div class="section-badge mx-auto">Advanced Technology</div>
-            <h1 class="text-3xl md:text-5xl font-display mb-4">Zubrex Ionizer<br /><span class="text-teal">Pure Innovation</span></h1>
-            <p class="mb-6 text-lg">Transform your home into a wellness retreat with the Zubrex Ionizer – adjustable pH levels, sleek design and industry-leading ORP.</p>
+            <h1 class="text-3xl md:text-5xl font-display mb-4">Home Ionizer<br /><span class="text-teal">9.5 pH</span></h1>
+            <p class="mb-6 text-lg">Bring the power of ionization to your kitchen with adjustable pH levels and cutting‑edge filtration.</p>
             <a href="products.html" class="btn-primary">Discover Now</a>
           </div>
+        </div>
+        <!-- Slider dots for navigation -->
+        <div class="slider-dots">
+          <div class="slider-dot active" data-index="0"></div>
+          <div class="slider-dot" data-index="1"></div>
+          <div class="slider-dot" data-index="2"></div>
         </div>
       </div>
       <div class="slider-controls">
@@ -60,7 +71,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-12 bg-white border-t border-b border-gray-200">
+    <section class="py-12 bg-white border-t border-b border-gray-200" data-aos="fade-up">
       <div class="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div class="stat-item">
           <div class="stat-number">8.5+</div>
@@ -71,7 +82,7 @@
           <div class="text-sm text-gray-600">ORP Value (mV)</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">77+</div>
+          <div class="stat-number">84</div>
           <div class="text-sm text-gray-600">Trace Minerals</div>
         </div>
         <div class="stat-item">
@@ -82,7 +93,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-16 bg-light px-4">
+    <section class="py-16 bg-light px-4" data-aos="fade-up" data-aos-delay="100">
       <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="section-badge">About Us</div>
@@ -128,7 +139,7 @@
     </section>
 
     <!-- Products Preview -->
-    <section class="py-16 px-4">
+    <section class="py-16 px-4" data-aos="fade-up" data-aos-delay="200">
       <div class="container mx-auto max-w-7xl text-center mb-12">
         <div class="section-badge mx-auto">Our Products</div>
         <h2 class="section-title text-3xl md:text-4xl">Premium Collection</h2>
@@ -148,7 +159,7 @@
           <div class="mb-4"><img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_Black_Water_Model_Drinking_Water.png?raw=true" alt="Black Water" class="w-full object-cover rounded-md" /></div>
           <div class="product-badge">Premium</div>
           <h3 class="font-display text-xl text-navy mb-1">Black Water</h3>
-          <p class="text-sm text-gray-600 mb-4">77+ bio-available minerals for enhanced vitality</p>
+          <p class="text-sm text-gray-600 mb-4">84 bio-available minerals for enhanced vitality</p>
           <a href="products.html" class="btn-ghost text-teal flex items-center gap-2">Learn More<span>&#x279C;</span></a>
         </div>
         <!-- Product 3 -->
@@ -166,7 +177,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-navy text-white text-center px-4">
+    <section class="py-16 bg-navy text-white text-center px-4" data-aos="fade-up" data-aos-delay="300">
       <div class="container mx-auto max-w-3xl">
         <h2 class="font-display text-3xl md:text-4xl mb-4">Ready to Feel the Difference?</h2>
         <p class="mb-6 text-white/80">Join thousands of individuals who have transformed their health with Holy&nbsp;Elixir. Try it for yourself — your body will thank you.</p>
@@ -211,6 +222,11 @@
     <script>
       // update year in footer
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
     </script>
   </body>
 </html>
