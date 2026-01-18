@@ -74,13 +74,22 @@ html, body {
   border-radius: 9999px;
   color: var(--white);
   background: var(--teal);
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  /* Introduce a subtle 3D perspective so the button appears to float above the page */
+  transform: perspective(600px) translateZ(0);
+  transition: background 0.3s, transform 0.3s cubic-bezier(.21,.68,.08,1.5), box-shadow 0.3s;
   box-shadow: 0 4px 14px rgba(13, 189, 173, 0.4);
 }
 .btn-primary:hover {
   background: var(--teal-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(13, 189, 173, 0.5);
+  /* Lift the button and add depth on hover */
+  transform: perspective(600px) translateY(-6px) translateZ(10px);
+  box-shadow: 0 12px 32px rgba(13, 189, 173, 0.6);
+}
+
+/* Add an active state to provide tactile feedback */
+.btn-primary:active {
+  transform: perspective(600px) translateY(-2px) translateZ(2px);
+  box-shadow: 0 6px 18px rgba(13, 189, 173, 0.5);
 }
 .btn-secondary {
   display: inline-flex;
@@ -92,11 +101,22 @@ html, body {
   color: var(--teal);
   border: 2px solid var(--teal);
   background: transparent;
-  transition: background 0.3s, color 0.3s;
+  /* Add 3D perspective to the outline button */
+  transform: perspective(600px) translateZ(0);
+  transition: background 0.3s, color 0.3s, transform 0.3s cubic-bezier(.21,.68,.08,1.5), box-shadow 0.3s;
 }
 .btn-secondary:hover {
   background: var(--teal);
   color: var(--white);
+  /* Lift the button and cast a shadow on hover */
+  transform: perspective(600px) translateY(-6px) translateZ(10px);
+  box-shadow: 0 12px 32px rgba(13, 189, 173, 0.3);
+}
+
+/* Active state for outline buttons */
+.btn-secondary:active {
+  transform: perspective(600px) translateY(-2px) translateZ(2px);
+  box-shadow: 0 6px 18px rgba(13, 189, 173, 0.2);
 }
 
 /* Navigation bar */
@@ -122,6 +142,8 @@ nav a {
   position: relative;
   text-decoration: none;
   padding: 0.25rem;
+  /* Smooth animation for menu items: include transform and shadow transitions */
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 nav a::after {
   content: '';
@@ -140,6 +162,12 @@ nav a:hover::after, nav a.active::after {
   width: 100%;
 }
 
+/* Enhance menu animations: gently lift and cast a soft shadow on hover */
+nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(13, 189, 173, 0.3);
+}
+
 /* Hero slider */
 .hero-slider {
   position: relative;
@@ -153,7 +181,9 @@ nav a:hover::after, nav a.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
+  /* Display background images without excessive zoom so the products remain visible */
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
@@ -168,38 +198,69 @@ nav a:hover::after, nav a.active::after {
   content: "";
   position: absolute;
   inset: 0;
-  /* Apply a subtle dark gradient that is heavier at the bottom to aid legibility */
-  background: linear-gradient(to bottom, rgba(26, 43, 74, 0.15), rgba(26, 43, 74, 0.65));
+  /* Apply a light, refreshing gradient that ties into the new brand palette. */
+  /*
+   * The hero section previously used a dark overlay to improve contrast for text on top of
+   * photographic backgrounds. To better align with the updated Zubrex colour palette and
+   * evoke a sense of freshness, we replace the dark gradient with a soft teal wash.
+   * The starting colour is a very light teal (#E3F7F4) with low opacity and it gradually
+   * increases in opacity toward the bottom of the slide. This preserves legibility
+   * while feeling much more airy than the former dark overlay.
+   */
+  background: linear-gradient(to bottom, rgba(227, 247, 244, 0.1), rgba(227, 247, 244, 0.9));
   z-index: 1;
 }
 
-/* Ensure hero content sits above the overlay */
+/* Ensure hero content sits above the overlay and allow positioning at the bottom */
 .hero-slider .slide .hero-content {
-  position: relative;
+  /* Position the hero text absolutely within each slide so it can be aligned to the bottom */
+  position: absolute;
   z-index: 2;
 }
 .hero-content {
+  /* Align the hero text near the bottom of the slide and centre it horizontally */
   position: absolute;
-  /* Move the hero text toward the bottom of the slide and centre it horizontally */
-  bottom: 12%;
+  bottom: 6%;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--white);
+  /* Use dark navy text for improved contrast against the new light hero backdrop */
+  color: var(--navy);
   text-align: center;
-  max-width: 600px;
-  padding: 1rem;
+  max-width: 640px;
+  padding: 1.25rem 1.5rem;
+  /* Add a semi‑transparent backdrop for improved readability.  The previous backdrop
+     used a dark navy tone; here we adopt the light teal hue (#E3F7F4) used in the
+     hero gradient so the overlay blends seamlessly. */
+  background: rgba(227, 247, 244, 0.85);
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Hero slide images fill the slide while maintaining the original aspect ratio */
+.hero-slider .slide img.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Position the content towards the bottom so the product is fully visible */
+  object-position: center bottom;
+  z-index: 0;
 }
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   line-height: 1.2;
-  color: var(--white);
+  /* Use dark navy for headings in the hero to maintain legibility on light backgrounds */
+  color: var(--navy);
 }
 .hero-content p {
   font-size: 1.125rem;
   margin-bottom: 1.5rem;
-  color: var(--white);
+  /* Use dark navy for paragraphs in the hero to maintain legibility on light backgrounds */
+  color: var(--navy);
 }
 
 /* Slider navigation arrows */
@@ -282,6 +343,19 @@ nav a:hover::after, nav a.active::after {
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   margin-bottom: 0.5rem;
+}
+
+/* Ensure consistent image sizing in the Premium Collection grid */
+.product-card img {
+  /* Fix the height to create uniform cards regardless of source image dimensions */
+  height: 220px;
+  width: 100%;
+  /* Show the full image within the card while maintaining aspect ratio */
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  /* Fill empty space around the image with a light teal background that ties into the site palette */
+  background: var(--teal-light);
 }
 
 /* FAQ styles */
@@ -372,4 +446,73 @@ nav a:hover::after, nav a.active::after {
 
 .text-navy {
   color: var(--navy);
+}
+
+/* ======================================= */
+/*  Wow Factor Section Styles              */
+/*
+ * The wow section introduces a wow‑factor area on the landing page where
+ * visitors can learn about the extraordinary properties of Zubrex water. It
+ * employs floating water droplets in the background to evoke a sense of
+ * movement and liveliness. Icons and copy are centred and evenly spaced
+ * across the grid.
+ */
+.wow-section {
+  position: relative;
+  background: var(--gray-bg);
+  overflow: hidden;
+}
+.wow-section .wow-item {
+  background: var(--white);
+  border: 1px solid var(--gray-lighter);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.wow-section .wow-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.wow-section .wow-icon {
+  margin-bottom: 0.75rem;
+}
+
+/* Floating water droplets */
+.wow-section .drop {
+  position: absolute;
+  width: 120px;
+  height: 160px;
+  background: var(--teal-light);
+  opacity: 0.35;
+  border-radius: 50% 50% 60% 60% / 70% 70% 40% 40%;
+  animation: float 12s ease-in-out infinite;
+}
+.wow-section .drop-1 {
+  top: -40px;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 14s;
+}
+.wow-section .drop-2 {
+  bottom: -60px;
+  right: 15%;
+  animation-delay: 2s;
+  animation-duration: 16s;
+}
+.wow-section .drop-3 {
+  top: 30%;
+  right: -80px;
+  width: 80px;
+  height: 110px;
+  opacity: 0.25;
+  animation-delay: 5s;
+  animation-duration: 18s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+  50% { transform: translateY(10px) translateX(-15px) rotate(-5deg); }
+  75% { transform: translateY(-10px) translateX(5px) rotate(3deg); }
 }
