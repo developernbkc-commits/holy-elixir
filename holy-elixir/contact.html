@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Holy Elixir</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <ul class="container mx-auto max-w-7xl flex justify-between items-center">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="benefits.html">Benefits</a></li>
+        <li><a href="science.html">Science</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="py-16 bg-light text-center px-4">
+      <div class="container mx-auto max-w-4xl">
+        <div class="section-badge mx-auto">Get in Touch</div>
+        <h1 class="section-title text-4xl md:text-5xl mb-4">Let's Connect</h1>
+        <p class="section-subtitle">Whether you have questions, want to try Holy&nbsp;Elixir or are ready to join our dealer network, our team is here to help.</p>
+      </div>
+    </header>
+
+    <!-- Contact Form -->
+    <section class="py-16 px-4" data-aos="fade-up">
+      <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl text-navy mb-4">Send Us a Message</h2>
+          <p class="text-gray-700 mb-6">Fill out the form below and we will get back to you within one business day. We look forward to assisting you on your hydration journey or discussing partnership opportunities.</p>
+          <form class="contact-form" action="#" method="post" onsubmit="return false;">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" />
+            <label for="interest">Interested In</label>
+            <select id="interest" name="interest" class="w-full p-3 border border-gray-lighter rounded-md mb-4">
+              <option value="">-- Select --</option>
+              <option value="consumer">Consumer Purchase</option>
+              <option value="dealer">Dealer / Distribution</option>
+              <option value="corporate">Corporate Partnership</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us how we can help you..."></textarea>
+            <button type="submit" class="btn-primary mt-4">Submit Inquiry</button>
+          </form>
+        </div>
+        <div class="space-y-6">
+          <h2 class="font-display text-2xl md:text-3xl text-navy mb-4">Contact Information</h2>
+          <p class="text-gray-700">For immediate assistance, feel free to reach out via phone or email. Our knowledgeable support team will be delighted to assist you.</p>
+          <p><strong>Email:</strong> <a href="mailto:info@holy-elixir.com" class="text-teal">info@holy-elixir.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+1234567890" class="text-teal">+1&nbsp;234&nbsp;567&nbsp;890</a></p>
+          <p><strong>Address:</strong> 123 Elixir Avenue, Wellness City</p>
+          <h3 class="font-display text-xl text-navy mt-8 mb-2">Business Hours</h3>
+          <p class="text-gray-700">Monday – Friday: 9:00 AM – 6:00 PM<br />Saturday: 10:00 AM – 2:00 PM<br />Sunday: Closed</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-100" data-aos="fade-up">
+      <div class="container mx-auto max-w-7xl grid md:grid-cols-3 gap-8 text-gray-600 text-sm">
+        <div>
+          <h5 class="font-semibold text-navy mb-2">Holy Elixir</h5>
+          <p>Experience the pinnacle of alkaline hydration.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold text-navy mb-2">Quick Links</h5>
+          <ul class="space-y-1">
+            <li><a href="index.html" class="hover:text-teal">Home</a></li>
+            <li><a href="products.html" class="hover:text-teal">Products</a></li>
+            <li><a href="benefits.html" class="hover:text-teal">Benefits</a></li>
+            <li><a href="science.html" class="hover:text-teal">Science</a></li>
+            <li><a href="faq.html" class="hover:text-teal">FAQ</a></li>
+            <li><a href="partners.html" class="hover:text-teal">Partners</a></li>
+            <li><a href="contact.html" class="hover:text-teal">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-navy mb-2">Get in Touch</h5>
+          <p>Email: <a href="mailto:info@holy-elixir.com" class="hover:text-teal">info@holy-elixir.com</a></p>
+          <p>Phone: <a href="tel:+1234567890" class="hover:text-teal">+1&nbsp;234&nbsp;567&nbsp;890</a></p>
+          <p>Address: 123 Elixir Avenue, Wellness City</p>
+        </div>
+      </div>
+      <div class="text-center text-gray-500 text-xs mt-8">&copy; <span id="year"></span> Holy Elixir. All rights reserved.</div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
+    </script>
+  </body>
+</html>
