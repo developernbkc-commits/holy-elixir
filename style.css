@@ -516,3 +516,25 @@ nav a:hover {
   50% { transform: translateY(10px) translateX(-15px) rotate(-5deg); }
   75% { transform: translateY(-10px) translateX(5px) rotate(3deg); }
 }
+
+/* -----------------------------------------------------------------
+   Benefits Page Enhancements
+   These styles add interactive touches to the benefits cards without
+   altering the existing layout or theme. Hovering over a benefit
+   section will gently lift the card and subtly brighten the image,
+   inviting exploration while preserving performance on mobile devices.
+-------------------------------------------------------------------- */
+#benefits .benefit-section .grid {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+#benefits .benefit-section .grid:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+#benefits .benefit-section img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+#benefits .benefit-section img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
