@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
           slides[previous] && slides[previous].classList.remove('leaving');
         }, 950);
       }
+
       if (dots && dots.length) {
         dots.forEach(function (dot, i) {
           dot.classList.toggle('active', i === index);
