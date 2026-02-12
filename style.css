@@ -265,11 +265,28 @@ nav a:hover {
 }
 
 /* Hero slider */
+.hero-wrap {
+  /*
+   * Premium “framed” hero: a subtle 1% viewport gap on each side
+   * reduces the perceived zoom/crop while keeping a high-end look.
+   */
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 80vh;
+  /* Premium full-bleed feel while staying friendly to small screens */
+  height: clamp(420px, 78vh, 820px);
   overflow: hidden;
+  background: #F3F4F6; /* fallback behind images on very wide screens */
+  isolation: isolate;
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 22px 70px rgba(15, 23, 42, 0.16);
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 .hero-slider .slide {
   position: absolute;
@@ -282,99 +299,186 @@ nav a:hover {
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  /* Keep motion premium (subtle) so subject framing isn't lost */
+  transform: translate3d(0, 0, 0) scale(1.04);
+  filter: saturate(1.03) contrast(1.03);
+  transition:
+    opacity 0.9s ease,
+    transform 1.15s cubic-bezier(.2,.7,.1,1),
+    filter 1.15s cubic-bezier(.2,.7,.1,1);
+  will-change: opacity, transform, filter;
 }
+
+/* Direction-aware 3D entrance (set by script.js) */
+.hero-slider[data-dir="next"] .slide { transform: translate3d(1.6%, 0, 0) scale(1.06) rotateY(-3.5deg); }
+.hero-slider[data-dir="prev"] .slide { transform: translate3d(-1.6%, 0, 0) scale(1.06) rotateY(3.5deg); }
+
 .hero-slider .slide.active {
   opacity: 1;
   z-index: 2;
+  transform: translate3d(0, 0, 0) scale(1.01) rotateY(0deg);
+  filter: saturate(1.06) contrast(1.05);
 }
 
-/* Add a semi‑transparent overlay to each slide to improve text contrast */
+/* Outgoing slide (briefly applied by script.js to make transitions feel more alive) */
+.hero-slider .slide.leaving {
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-slider[data-dir="next"] .slide.leaving { transform: translate3d(-1.6%, 0, 0) scale(1.03) rotateY(3deg); }
+.hero-slider[data-dir="prev"] .slide.leaving { transform: translate3d(1.6%, 0, 0) scale(1.03) rotateY(-3deg); }
+
+/*
+ * Bottom-only contrast layer (keeps the image crisp; avoids a “white haze” over the whole slide)
+ */
 .hero-slider .slide::before {
   content: "";
   position: absolute;
-  inset: 0;
-  /* Apply a light, refreshing gradient that ties into the new brand palette. */
-  /*
-   * The hero section previously used a dark overlay to improve contrast for text on top of
-   * photographic backgrounds. To better align with the updated Zubrex colour palette and
-   * evoke a sense of freshness, we replace the dark gradient with a soft teal wash.
-   * The starting colour is a very light teal (#E3F7F4) with low opacity and it gradually
-   * increases in opacity toward the bottom of the slide. This preserves legibility
-   * while feeling much more airy than the former dark overlay.
-   */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.18));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 52%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.00));
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Ensure hero content sits above the overlay and allow positioning at the bottom */
+/*
+ * Ensure hero content sits above the overlay.
+ * IMPORTANT: keep the horizontal centering (translateX(-50%)) inside the
+ * same transform that drives the entrance animation; otherwise transforms
+ * override each other and the copy drifts to the side.
+ */
 .hero-slider .slide .hero-content {
-  /* Position the hero text absolutely within each slide so it can be aligned to the bottom */
   position: absolute;
   z-index: 2;
+  /* Keep copy safely inside the frame (prevents clipping on the right) */
+  left: clamp(1rem, 4vw, 3rem);
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1.1rem, 5vh, 2.25rem);
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.75s ease 0.12s,
+    transform 0.95s cubic-bezier(.2,.7,.1,1) 0.12s;
 }
+
+.hero-slider .slide.active .hero-content {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/*
+ * Make the hero copy span wide (reduces wrapping/height) while staying readable.
+ * We keep it centered with a generous max width so it still feels premium.
+ */
 .hero-content {
-  /*
-   * Make the text block span (almost) the full screen width so long headings wrap less,
-   * reducing the overall hero text height and revealing more of the hero imagery.
-   */
-  position: absolute;
-  bottom: 4%;
-  left: 0;
-  transform: none;
+  /* Use max-width (widely supported) vs min() to avoid shrink-to-fit overflow */
   width: 100%;
-  max-width: none;
-
-  /* Readability without washing out the image */
-  text-align: center;
-  color: var(--navy);
-  padding: 0.75rem 1.25rem;
-  /* Keep the background *very* light so the imagery stays crisp */
-  background: rgba(255, 255, 255, 0.26);
-  backdrop-filter: blur(2px);
+  max-width: 56rem; /* ~896px: wide enough to reduce wrapping without overflowing */
+  margin-left: auto; /* anchor copy to the right side of the hero */
+  text-align: left;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  color: #FFFFFF;
 }
 
-/* Hero slide images fill the slide while maintaining the original aspect ratio */
+/* On smaller screens, center the hero copy for balance and readability */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 42rem;
+  }
+}
+
+/* Badge in hero: subtle glass pill */
+.hero-content .section-badge {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+}
+
+/* Full-bleed images: fill width (crop instead of leaving side gutters) */
 .hero-slider .slide img.hero-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  /* Position the content towards the bottom so the product is fully visible */
-  object-position: center bottom;
+  object-fit: cover; /* critical: removes side gutters on wide screens */
+  object-position: center;
   z-index: 0;
+  will-change: transform;
 }
+
+/* Premium “Ken Burns” motion on the active slide image (lively, but still elegant) */
+.hero-slider .slide.active img.hero-img {
+  animation: heroKenBurns 6.8s ease-out both;
+}
+
+@keyframes heroKenBurns {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.01); }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider .slide,
+  .hero-slider .slide .hero-content {
+    transition: opacity 0.2s linear !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .hero-slider .slide.active img.hero-img {
+    animation: none !important;
+  }
+}
+
+/* Per-slide focal points (tune cropping without touching images) */
+/* Slide 1 (model drinking): bias further upward so the head stays fully in-frame */
+.hero-slider > .slide:nth-child(1) img.hero-img { object-position: 58% 6%; }
+/* Slide 2 (bottles range): lift framing to keep bottle caps visible */
+.hero-slider > .slide:nth-child(2) img.hero-img { object-position: 55% 30%; }
+/* Slide 3 (ionizer): lift framing to keep the top branding visible */
+.hero-slider > .slide:nth-child(3) img.hero-img { object-position: 55% 25%; }
+
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.05;
-  /* Use dark navy for headings in the hero to maintain legibility on light backgrounds */
-  color: var(--navy);
+  font-size: clamp(2.0rem, 3.2vw, 3.25rem);
+  margin-bottom: 0.45rem;
+  line-height: 1.02;
+  color: #FFFFFF;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
+
 .hero-content p {
-  font-size: 1.125rem;
-  margin-bottom: 0.9rem;
-  /* Use dark navy for paragraphs in the hero to maintain legibility on light backgrounds */
-  color: var(--navy);
+  font-size: clamp(1.0rem, 1.35vw, 1.15rem);
+  margin-bottom: 0.95rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
 /* Slider navigation arrows */
 .slider-controls {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
+  z-index: 6;
 }
 .slider-controls button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.72);
   border: none;
   display: flex;
   align-items: center;
@@ -383,7 +487,7 @@ nav a:hover {
   transition: background 0.3s;
 }
 .slider-controls button:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.88);
 }
 
 /* Slider dot navigation */
@@ -394,13 +498,13 @@ nav a:hover {
   transform: translateX(-50%);
   display: flex;
   gap: 0.5rem;
-  z-index: 5;
+  z-index: 6;
 }
 .slider-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.45);
   transition: background 0.3s, transform 0.3s;
   cursor: pointer;
 }
@@ -408,6 +512,43 @@ nav a:hover {
   background: var(--teal);
   transform: scale(1.4);
 }
+
+/* Mobile tuning */
+@media (max-width: 640px) {
+  .hero-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hero-slider {
+    height: clamp(340px, 62vh, 520px);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+  .hero-content {
+    width: calc(100% - 1.75rem);
+  }
+  .hero-content h1 {
+    font-size: 1.85rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 0.85rem;
+  }
+  .slider-controls {
+    bottom: 2.4rem; /* keep arrows above dots on tight screens */
+  }
+}
+
+/* Extra mobile focal tuning: keep faces/products framed nicely */
+@media (max-width: 640px) {
+  /* On small screens, keep the model's face/hand well-framed */
+  .hero-slider > .slide:nth-child(1) img.hero-img { object-position: 58% 10%; }
+  /* Keep product tops visible on smaller viewports */
+  .hero-slider > .slide:nth-child(2) img.hero-img { object-position: 55% 28%; }
+  .hero-slider > .slide:nth-child(3) img.hero-img { object-position: 55% 22%; }
+}
+
 
 /* Cards */
 .stat-item {
@@ -637,22 +778,3 @@ nav a:hover {
   filter: brightness(1.1);
 }
 
-/* Give hero text more horizontal breathing room on larger screens */
-@media (min-width: 768px) {
-  .hero-content {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-}
-
-/* Hero content sizing tweaks */
-@media (max-width: 640px) {
-  .hero-content {
-    max-width: 100%;
-    width: calc(100% - 1.25rem);
-    padding: 0.85rem 1rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
-}
