@@ -322,8 +322,9 @@ nav a:hover {
   /* Use dark navy text for improved contrast against the new light hero backdrop */
   color: var(--navy);
   text-align: center;
-  max-width: 640px;
-  padding: 1.25rem 1.5rem;
+  max-width: 960px;
+  width: calc(100% - 2rem);
+  padding: 1rem 1.25rem;
   /* Add a semi‑transparent backdrop for improved readability.  The previous backdrop
      used a dark navy tone; here we adopt the light teal hue (#E3F7F4) used in the
      hero gradient so the overlay blends seamlessly. */
@@ -633,4 +634,16 @@ nav a:hover {
 #benefits .benefit-section img:hover {
   transform: scale(1.05);
   filter: brightness(1.1);
+}
+
+/* Hero content sizing tweaks */
+@media (max-width: 640px) {
+  .hero-content {
+    max-width: 100%;
+    width: calc(100% - 1.25rem);
+    padding: 0.85rem 1rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
 }
