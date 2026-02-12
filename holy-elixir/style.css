@@ -26,12 +26,108 @@
   --gold-light: #F5E6C8;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   font-family: 'Lato', sans-serif;
   color: var(--charcoal);
   background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ======================================= */
+/*  Reading Experience – Prose & Lead      */
+/*
+ * Optimised for comfortable reading: 1.7 line-height, ~65ch line length,
+ * clear paragraph spacing, and a distinct lead (intro) style.
+ */
+.content-prose {
+  max-width: 65ch;
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+
+.content-prose p {
+  margin-bottom: 1.25em;
+}
+
+.content-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.content-prose ul {
+  margin-bottom: 1.25em;
+}
+
+.content-prose li {
+  margin-bottom: 0.5em;
+}
+
+.content-prose li::marker {
+  color: var(--teal);
+}
+
+/* Lead / intro paragraph – slightly larger, easier to scan */
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--navy);
+  font-weight: 400;
+}
+
+/* Key takeaway / callout – for “In short” or highlight boxes */
+.key-takeaway {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.key-takeaway strong {
+  color: var(--navy);
+}
+
+/* At-a-glance / summary list – scannable bullets before long content */
+.at-a-glance {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  list-style: none;
+  padding: 0;
+}
+
+.at-a-glance li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.at-a-glance li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.6em;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+/* Focus styles for accessibility and keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 /* Section heading styles */
