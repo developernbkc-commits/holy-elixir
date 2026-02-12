@@ -14,13 +14,27 @@ document.addEventListener('DOMContentLoaded', function () {
     var slides = slider.querySelectorAll('.slide');
     var dots = slider.querySelectorAll('.slider-dot');
     var current = 0;
+    // Default direction for the first render (used by CSS 3D transitions)
+    slider.dataset.dir = slider.dataset.dir || 'next';
     var nextBtn = document.querySelector('.slider-controls .next');
     var prevBtn = document.querySelector('.slider-controls .prev');
 
     function showSlide(index) {
+      var previous = current;
+      // Clean up any stale transition classes
+      slides.forEach(function (s) { s.classList.remove('leaving'); });
+
       slides.forEach(function (slide, i) {
         slide.classList.toggle('active', i === index);
       });
+
+      // Briefly keep the previous slide above to animate it out smoothly
+      if (typeof previous === 'number' && previous !== index && slides[previous]) {
+        slides[previous].classList.add('leaving');
+        setTimeout(function () {
+          slides[previous] && slides[previous].classList.remove('leaving');
+        }, 950);
+      }
       if (dots && dots.length) {
         dots.forEach(function (dot, i) {
           dot.classList.toggle('active', i === index);
@@ -31,11 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function nextSlide() {
       var nextIndex = (current + 1) % slides.length;
+      slider.dataset.dir = 'next';
       showSlide(nextIndex);
     }
 
     function prevSlide() {
       var prevIndex = (current - 1 + slides.length) % slides.length;
+      slider.dataset.dir = 'prev';
       showSlide(prevIndex);
     }
 
@@ -59,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
       dots.forEach(function (dot, idx) {
         dot.addEventListener('click', function () {
           clearInterval(autoInterval);
+          slider.dataset.dir = (idx >= current) ? 'next' : 'prev';
           showSlide(idx);
           autoInterval = setInterval(nextSlide, 6000);
         });
