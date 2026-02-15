@@ -26,12 +26,108 @@
   --gold-light: #F5E6C8;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   font-family: 'Lato', sans-serif;
   color: var(--charcoal);
   background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ======================================= */
+/*  Reading Experience – Prose & Lead      */
+/*
+ * Optimised for comfortable reading: 1.7 line-height, ~65ch line length,
+ * clear paragraph spacing, and a distinct lead (intro) style.
+ */
+.content-prose {
+  max-width: 65ch;
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+
+.content-prose p {
+  margin-bottom: 1.25em;
+}
+
+.content-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.content-prose ul {
+  margin-bottom: 1.25em;
+}
+
+.content-prose li {
+  margin-bottom: 0.5em;
+}
+
+.content-prose li::marker {
+  color: var(--teal);
+}
+
+/* Lead / intro paragraph – slightly larger, easier to scan */
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--navy);
+  font-weight: 400;
+}
+
+/* Key takeaway / callout – for “In short” or highlight boxes */
+.key-takeaway {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.key-takeaway strong {
+  color: var(--navy);
+}
+
+/* At-a-glance / summary list – scannable bullets before long content */
+.at-a-glance {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  list-style: none;
+  padding: 0;
+}
+
+.at-a-glance li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.at-a-glance li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.6em;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+/* Focus styles for accessibility and keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 /* Section heading styles */
@@ -203,7 +299,8 @@ nav a:hover {
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
-  transform: translate3d(0, 0, 0) scale(1.08);
+  /* Keep motion premium (subtle) so subject framing isn't lost */
+  transform: translate3d(0, 0, 0) scale(1.04);
   filter: saturate(1.03) contrast(1.03);
   transition:
     opacity 0.9s ease,
@@ -213,13 +310,13 @@ nav a:hover {
 }
 
 /* Direction-aware 3D entrance (set by script.js) */
-.hero-slider[data-dir="next"] .slide { transform: translate3d(1.6%, 0, 0) scale(1.10) rotateY(-3.5deg); }
-.hero-slider[data-dir="prev"] .slide { transform: translate3d(-1.6%, 0, 0) scale(1.10) rotateY(3.5deg); }
+.hero-slider[data-dir="next"] .slide { transform: translate3d(1.6%, 0, 0) scale(1.06) rotateY(-3.5deg); }
+.hero-slider[data-dir="prev"] .slide { transform: translate3d(-1.6%, 0, 0) scale(1.06) rotateY(3.5deg); }
 
 .hero-slider .slide.active {
   opacity: 1;
   z-index: 2;
-  transform: translate3d(0, 0, 0) scale(1.03) rotateY(0deg);
+  transform: translate3d(0, 0, 0) scale(1.01) rotateY(0deg);
   filter: saturate(1.06) contrast(1.05);
 }
 
@@ -228,8 +325,8 @@ nav a:hover {
   z-index: 3;
   pointer-events: none;
 }
-.hero-slider[data-dir="next"] .slide.leaving { transform: translate3d(-1.6%, 0, 0) scale(1.06) rotateY(3deg); }
-.hero-slider[data-dir="prev"] .slide.leaving { transform: translate3d(1.6%, 0, 0) scale(1.06) rotateY(-3deg); }
+.hero-slider[data-dir="next"] .slide.leaving { transform: translate3d(-1.6%, 0, 0) scale(1.03) rotateY(3deg); }
+.hero-slider[data-dir="prev"] .slide.leaving { transform: translate3d(1.6%, 0, 0) scale(1.03) rotateY(-3deg); }
 
 /*
  * Bottom-only contrast layer (keeps the image crisp; avoids a “white haze” over the whole slide)
@@ -246,12 +343,21 @@ nav a:hover {
   pointer-events: none;
 }
 
-/* Ensure hero content sits above the overlay and allow positioning at the bottom */
+/*
+ * Ensure hero content sits above the overlay.
+ * IMPORTANT: keep the horizontal centering (translateX(-50%)) inside the
+ * same transform that drives the entrance animation; otherwise transforms
+ * override each other and the copy drifts to the side.
+ */
 .hero-slider .slide .hero-content {
   position: absolute;
   z-index: 2;
+  /* Keep copy safely inside the frame (prevents clipping on the right) */
+  left: clamp(1rem, 4vw, 3rem);
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1.1rem, 5vh, 2.25rem);
   opacity: 0;
-  transform: translateY(18px);
+  transform: translate3d(0, 18px, 0);
   transition:
     opacity 0.75s ease 0.12s,
     transform 0.95s cubic-bezier(.2,.7,.1,1) 0.12s;
@@ -259,7 +365,7 @@ nav a:hover {
 
 .hero-slider .slide.active .hero-content {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /*
@@ -267,16 +373,25 @@ nav a:hover {
  * We keep it centered with a generous max width so it still feels premium.
  */
 .hero-content {
-  position: absolute;
-  bottom: clamp(1.1rem, 5vh, 2.25rem);
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1200px, calc(100vw - 2.5rem));
-  text-align: center;
+  /* Use max-width (widely supported) vs min() to avoid shrink-to-fit overflow */
+  width: 100%;
+  max-width: 56rem; /* ~896px: wide enough to reduce wrapping without overflowing */
+  margin-left: auto; /* anchor copy to the right side of the hero */
+  text-align: left;
   padding: 0;
   background: transparent;
   backdrop-filter: none;
   color: #FFFFFF;
+}
+
+/* On smaller screens, center the hero copy for balance and readability */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 42rem;
+  }
 }
 
 /* Badge in hero: subtle glass pill */
@@ -306,8 +421,8 @@ nav a:hover {
 }
 
 @keyframes heroKenBurns {
-  from { transform: scale(1.12); }
-  to   { transform: scale(1.02); }
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.01); }
 }
 
 /* Respect accessibility preferences */
@@ -324,9 +439,12 @@ nav a:hover {
 }
 
 /* Per-slide focal points (tune cropping without touching images) */
-.hero-slider > .slide:nth-child(1) img.hero-img { object-position: 55% 40%; }
-.hero-slider > .slide:nth-child(2) img.hero-img { object-position: 55% 45%; }
-.hero-slider > .slide:nth-child(3) img.hero-img { object-position: 60% 40%; }
+/* Slide 1 (model drinking): bias further upward so the head stays fully in-frame */
+.hero-slider > .slide:nth-child(1) img.hero-img { object-position: 58% 6%; }
+/* Slide 2 (bottles range): lift framing to keep bottle caps visible */
+.hero-slider > .slide:nth-child(2) img.hero-img { object-position: 55% 30%; }
+/* Slide 3 (ionizer): lift framing to keep the top branding visible */
+.hero-slider > .slide:nth-child(3) img.hero-img { object-position: 55% 25%; }
 
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
@@ -335,6 +453,8 @@ nav a:hover {
   line-height: 1.02;
   color: #FFFFFF;
   text-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .hero-content p {
@@ -406,7 +526,7 @@ nav a:hover {
     box-shadow: none;
   }
   .hero-content {
-    width: calc(100vw - 1.75rem);
+    width: calc(100% - 1.75rem);
   }
   .hero-content h1 {
     font-size: 1.85rem;
@@ -418,6 +538,15 @@ nav a:hover {
   .slider-controls {
     bottom: 2.4rem; /* keep arrows above dots on tight screens */
   }
+}
+
+/* Extra mobile focal tuning: keep faces/products framed nicely */
+@media (max-width: 640px) {
+  /* On small screens, keep the model's face/hand well-framed */
+  .hero-slider > .slide:nth-child(1) img.hero-img { object-position: 58% 10%; }
+  /* Keep product tops visible on smaller viewports */
+  .hero-slider > .slide:nth-child(2) img.hero-img { object-position: 55% 28%; }
+  .hero-slider > .slide:nth-child(3) img.hero-img { object-position: 55% 22%; }
 }
 
 
