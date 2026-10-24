@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var showcase = document.getElementById('collection-showcase');
   if (showcase) {
     var showcaseOptions = {
-      collection: { image: 'assets/images/lifestyle/hero-terrace-1440.webp', alt: 'Friends enjoying a Black Drink moment on a garden terrace', caption: 'Good company. A fresh moment.', link: 'products.html', label: 'Explore the collection' },
-      water: { image: 'assets/images/lifestyle/water-morning-1440.webp', alt: 'A man enjoying Zubrex alkaline water on a daylight balcony', caption: 'Alkaline water. Your everyday refreshment.', link: 'products.html#alkaline-water', label: 'Explore alkaline water' },
-      ionizer: { image: 'assets/images/lifestyle/ionizer-home-1440.webp', alt: 'A woman filling a glass at a Zubrex home ionizer', caption: 'A considered setup for the place you call home.', link: 'products.html#ionizers', label: 'Explore home ionizers' }
+      collection: { image: 'assets/images/lifestyle-v2/hero-terrace-1440.webp', alt: 'Actual Zubrex Black Drink packaging on a white background', caption: 'Black Drink. Distinctively yours.', link: 'products.html', label: 'Explore the collection' },
+      water: { image: 'assets/images/lifestyle-v2/water-morning-1440.webp', alt: 'A man enjoying Zubrex alkaline water on a city rooftop', caption: 'Alkaline water. Your everyday refreshment.', link: 'products.html#alkaline-water', label: 'Explore alkaline water' },
+      ionizer: { image: 'assets/images/lifestyle-v2/ionizer-home-1440.webp', alt: 'A woman filling a glass at a Zubrex home ionizer', caption: 'A considered setup for the place you call home.', link: 'products.html#ionizers', label: 'Explore home ionizers' }
     };
     showcase.querySelectorAll('[data-showcase]').forEach(function (button) {
       button.addEventListener('click', function () {
@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!option) return;
         var image = showcase.querySelector('img');
         image.src = option.image;
-        image.srcset = option.image.replace('-1440.webp', '-640.webp') + ' 640w, ' + option.image + ' 1440w';
+        image.classList.toggle('is-packshot', button.getAttribute('data-showcase') === 'collection');
+        image.srcset = option.image.replace('-1440.webp', '-640.webp') + ' 640w, ' + option.image + (button.getAttribute('data-showcase') === 'collection' ? ' 722w' : ' 1440w');
         showcase.querySelector('img').alt = option.alt;
         showcase.querySelector('.showcase-caption').textContent = option.caption;
         var explore = showcase.querySelector('.showcase-explore');
