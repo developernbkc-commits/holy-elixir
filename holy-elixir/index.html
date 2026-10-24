@@ -51,12 +51,17 @@
         <h1 id="hero-title">Refreshment,<br /><em>beautifully</em><br />considered.</h1>
         <p class="hero-intro">A fresh perspective on your everyday. Discover Zubrex alkaline water, the distinctive Black Drink, and ionizers for the place you call home.</p>
         <div class="hero-actions"><a class="btn-primary" href="products.html">Explore the collection <span aria-hidden="true">↗</span></a><a class="editorial-link" href="benefits.html">Find your everyday choice <span aria-hidden="true">→</span></a></div>
-        <div class="hero-footnote"><span class="fine-rule" aria-hidden="true"></span><span>Everyday rituals. Distinctive choices.</span></div>
+        <div class="hero-footnote"><span class="ritual-dot" aria-hidden="true"></span><span>Everyday rituals. Distinctive choices.</span></div>
       </div>
-      <figure class="editorial-hero-art">
-        <span class="art-caption">ZUBREX / THE COLLECTION</span>
+      <figure class="editorial-hero-art" id="collection-showcase">
+        <div class="showcase-heading"><span class="art-caption">ZUBREX / THE COLLECTION</span><span class="showcase-badge"><span aria-hidden="true">✦</span> Discover the range</span></div>
         <img src="assets/images/collection-updated.webp" alt="Zubrex alkaline water and Black Drink cans with a splash of water" width="1536" height="1024" fetchpriority="high" />
-        <figcaption><span>Two distinct expressions.<br />One considered collection.</span><span class="art-index" aria-hidden="true">01—03</span></figcaption>
+        <figcaption><span class="showcase-caption">Two distinct expressions.<br />One considered collection.</span><a href="products.html" class="showcase-explore" aria-label="Explore the collection">↗</a></figcaption>
+        <div class="showcase-switcher" role="group" aria-label="Preview the collection">
+          <button type="button" data-showcase="collection" aria-pressed="true">The collection</button>
+          <button type="button" data-showcase="water" aria-pressed="false">Alkaline water</button>
+          <button type="button" data-showcase="ionizer" aria-pressed="false">Home ionizer</button>
+        </div>
       </figure>
     </section>
 

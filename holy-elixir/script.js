@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var showcase = document.getElementById('collection-showcase');
+  if (showcase) {
+    var showcaseOptions = {
+      collection: { image: 'assets/images/collection-updated.webp', alt: 'Zubrex alkaline water and Black Drink cans with a splash of water', caption: 'Two distinct expressions. One considered collection.', link: 'products.html', label: 'Explore the collection' },
+      water: { image: 'assets/images/water-lifestyle.webp', alt: 'A moment of refreshment with Zubrex alkaline water', caption: 'Alkaline water. Your everyday refreshment.', link: 'products.html#alkaline-water', label: 'Explore alkaline water' },
+      ionizer: { image: 'assets/images/ionizer.webp', alt: 'Zubrex countertop home ionizer', caption: 'A considered setup for the place you call home.', link: 'products.html#ionizers', label: 'Explore home ionizers' }
+    };
+    showcase.querySelectorAll('[data-showcase]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var option = showcaseOptions[button.getAttribute('data-showcase')];
+        if (!option) return;
+        showcase.querySelector('img').src = option.image;
+        showcase.querySelector('img').alt = option.alt;
+        showcase.querySelector('.showcase-caption').textContent = option.caption;
+        var explore = showcase.querySelector('.showcase-explore');
+        explore.href = option.link;
+        explore.setAttribute('aria-label', option.label);
+        showcase.querySelectorAll('[data-showcase]').forEach(function (item) {
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+      });
+    });
+  }
+
   var notice = document.querySelector('.site-notice');
   if (notice) {
     var noticePause = notice.querySelector('.site-notice-pause');
