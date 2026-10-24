@@ -119,3 +119,6 @@ footer img{width:180px!important;height:110px!important;object-fit:contain}
 section.bg-navy .btn-secondary{color:#c5e9df;border-color:#c5e9df}
 section.bg-navy .btn-secondary:hover{color:var(--navy);background:#c5e9df}
 @media(max-width:1023px){nav img{width:156px!important;height:56px!important}}
+/* Fill the logo box while trimming only the source artwork's empty margins. */
+nav img{object-fit:cover}
+footer img{height:80px!important;object-fit:cover}
