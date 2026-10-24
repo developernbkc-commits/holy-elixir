@@ -1,135 +1,70 @@
-/*
- * Simple JavaScript utilities for the Holy Elixir site
- *
- * This script handles two tasks:
- *   1. Cycling the hero slider on the homepage and responding to
- *      previous/next button clicks.
- *   2. Toggling FAQ answers open and closed on the FAQ page.
- */
-
 document.addEventListener('DOMContentLoaded', function () {
-  // Hero slider logic
+  var menuButton = document.querySelector('.menu-toggle');
+  var menu = document.getElementById('site-menu');
+  if (menuButton && menu) {
+    menuButton.hidden = false;
+    function closeMenu() { menuButton.setAttribute('aria-expanded', 'false'); }
+    menuButton.addEventListener('click', function () {
+      menuButton.setAttribute('aria-expanded', menuButton.getAttribute('aria-expanded') !== 'true' ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function (event) { if (event.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); }
+    });
+    document.addEventListener('click', function (event) { if (!event.target.closest('nav')) closeMenu(); });
+  }
   var slider = document.querySelector('.hero-slider');
   if (slider) {
-    var slides = slider.querySelectorAll('.slide');
-    var dots = slider.querySelectorAll('.slider-dot');
+    var slides = Array.from(slider.querySelectorAll('.slide'));
+    var controls = document.querySelector('.slider-controls');
     var current = 0;
-    // Default direction for the first render (used by CSS 3D transitions)
-    slider.dataset.dir = slider.dataset.dir || 'next';
-    var nextBtn = document.querySelector('.slider-controls .next');
-    var prevBtn = document.querySelector('.slider-controls .prev');
-
-    function showSlide(index) {
-      var previous = current;
-      // Clean up any stale transition classes
-      slides.forEach(function (s) { s.classList.remove('leaving'); });
-
+    var interval;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var paused = reducedMotion.matches;
+    var pause = document.createElement('button');
+    pause.type = 'button'; pause.className = 'pause';
+    controls.appendChild(pause);
+    slider.setAttribute('aria-roledescription', 'carousel');
+    slider.setAttribute('aria-label', 'Holy Elixir collection');
+    function show(index) {
+      current = (index + slides.length) % slides.length;
       slides.forEach(function (slide, i) {
-        slide.classList.toggle('active', i === index);
+        slide.classList.toggle('active', i === current);
+        slide.setAttribute('aria-hidden', String(i !== current));
+        slide.inert = i !== current;
       });
-
-      // Briefly keep the previous slide above to animate it out smoothly
-      if (typeof previous === 'number' && previous !== index && slides[previous]) {
-        slides[previous].classList.add('leaving');
-        setTimeout(function () {
-          slides[previous] && slides[previous].classList.remove('leaving');
-        }, 950);
+    }
+    function stop() { clearInterval(interval); }
+    function start() {
+      stop();
+      pause.textContent = paused ? 'Play' : 'Pause';
+      pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+      if (!paused && !document.hidden && !slider.parentElement.contains(document.activeElement)) {
+        interval = setInterval(function () { show(current + 1); }, 8000);
       }
-      if (dots && dots.length) {
-        dots.forEach(function (dot, i) {
-          dot.classList.toggle('active', i === index);
-        });
-      }
-      current = index;
     }
-
-    function nextSlide() {
-      var nextIndex = (current + 1) % slides.length;
-      slider.dataset.dir = 'next';
-      showSlide(nextIndex);
-    }
-
-    function prevSlide() {
-      var prevIndex = (current - 1 + slides.length) % slides.length;
-      slider.dataset.dir = 'prev';
-      showSlide(prevIndex);
-    }
-
-    var autoInterval = setInterval(nextSlide, 6000);
-
-    if (nextBtn && prevBtn) {
-      nextBtn.addEventListener('click', function () {
-        clearInterval(autoInterval);
-        nextSlide();
-        autoInterval = setInterval(nextSlide, 6000);
-      });
-      prevBtn.addEventListener('click', function () {
-        clearInterval(autoInterval);
-        prevSlide();
-        autoInterval = setInterval(nextSlide, 6000);
-      });
-    }
-
-    // Dot navigation
-    if (dots && dots.length) {
-      dots.forEach(function (dot, idx) {
-        dot.addEventListener('click', function () {
-          clearInterval(autoInterval);
-          slider.dataset.dir = (idx >= current) ? 'next' : 'prev';
-          showSlide(idx);
-          autoInterval = setInterval(nextSlide, 6000);
-        });
-      });
-    }
+    controls.querySelector('.next').addEventListener('click', function () { show(current + 1); start(); });
+    controls.querySelector('.prev').addEventListener('click', function () { show(current - 1); start(); });
+    pause.addEventListener('click', function () { paused = !paused; start(); });
+    slider.parentElement.addEventListener('focusin', stop);
+    slider.parentElement.addEventListener('focusout', function () { setTimeout(start, 0); });
+    slider.parentElement.addEventListener('mouseenter', stop);
+    slider.parentElement.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', start);
+    reducedMotion.addEventListener('change', function (event) { paused = event.matches; start(); });
+    show(0); start();
   }
-
-  // FAQ toggle
-  var faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(function (item) {
-    var question = item.querySelector('.faq-question');
-    question && question.addEventListener('click', function () {
-      item.classList.toggle('open');
-    });
-  });
-
-  // Animated counters in stats section
-  var counters = document.querySelectorAll('.stat-number');
-  if (counters && counters.length) {
-    var counterObserver = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var target = parseFloat(el.getAttribute('data-target'));
-          if (isNaN(target)) {
-            // fallback: extract numeric part from current content
-            var match = el.textContent.replace(/[^0-9.-]/g, '');
-            target = parseFloat(match) || 0;
-          }
-          var hasPlus = /\+/.test(el.textContent);
-          var start = 0;
-          var duration = 1500;
-          var startTime = null;
-          function animateCounter(timestamp) {
-            if (!startTime) startTime = timestamp;
-            var progress = timestamp - startTime;
-            var value = Math.min((progress / duration) * target, target);
-            // format value: keep decimals if original contained decimal
-            var decimals = (target % 1 !== 0) ? 1 : 0;
-            var formatted = decimals ? value.toFixed(1) : Math.round(value);
-            el.textContent = formatted + (hasPlus ? '+' : '');
-            if (progress < duration) {
-              requestAnimationFrame(animateCounter);
-            } else {
-              el.textContent = (target % 1 !== 0 ? target.toFixed(1) : target) + (hasPlus ? '+' : '');
-              observer.unobserve(el);
-            }
-          }
-          requestAnimationFrame(animateCounter);
-        }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (cnt) {
-      counterObserver.observe(cnt);
+  var form = document.querySelector('.contact-form');
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      var fields = new FormData(form);
+      var interest = form.querySelector('select');
+      var subject = 'Holy Elixir enquiry: ' + (interest.options[interest.selectedIndex].text || 'Product information');
+      var body = 'Name: ' + fields.get('name') + '\nEmail: ' + fields.get('email') + '\nPhone: ' + (fields.get('phone') || 'Not provided') + '\n\n' + fields.get('message');
+      window.location.href = 'mailto:Info@holy-elixir.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      document.getElementById('form-status').textContent = 'Your email draft is ready to open. Send it from your email app, or contact Info@holy-elixir.com directly if no app opens.';
     });
   }
 });

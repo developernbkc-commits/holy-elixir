@@ -1,2 +1,5 @@
 holy-elixir/.DS_Store
 .DS_Store
+node_modules/
+qa/
+deployment-proof.png

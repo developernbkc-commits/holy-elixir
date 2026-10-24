@@ -4,196 +4,65 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Science of Alkaline Water | Holy Elixir</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="description" content="Understand pH, minerals and water ionization with clear explanations from Holy Elixir." />
+    <meta name="theme-color" content="#087f75" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/fonts.css" />
+    <link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
-    <!-- Animate On Scroll library -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- Navigation -->
-    <nav>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav aria-label="Main navigation">
       <div class="container mx-auto max-w-7xl flex justify-between items-center">
         <a href="index.html" class="flex items-center py-2">
           <!-- Updated logo: using the new teal Zubrex logo for a fresh, modern look -->
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrez-YelloZ-Teal-text.png?raw=true" alt="Zubrex logo" class="h-16 sm:h-20 lg:h-24 w-auto mr-3" />
+          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-16 sm:h-20 lg:h-24 w-auto mr-3" decoding="async" />
         </a>
-        <ul class="flex flex-wrap gap-4 items-center">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button>
+        <ul id="site-menu" class="flex flex-wrap gap-4 items-center">
           <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Products</a></li>
-          <li><a href="benefits.html">Benefits</a></li>
-          <li><a href="science.html" class="active">Science</a></li>
+          <li><a href="benefits.html">Product Guide</a></li>
+          <li><a href="science.html" class="active" aria-current="page">Science</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="partners.html">Partners</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
+    <main id="main-content" tabindex="-1">
 
-    <!-- Header -->
     <header class="py-16 bg-light text-center px-4">
       <div class="container mx-auto max-w-4xl">
-        <div class="section-badge mx-auto">Behind the Elixir</div>
-        <h1 class="section-title text-4xl md:text-5xl mb-4">The Science of Alkaline Water</h1>
-        <p class="section-subtitle">Learn how pH, ORP and modern ionization technology create the Holy&nbsp;Elixir difference.</p>
-        <p class="lead mt-6 max-w-3xl mx-auto">Alkaline water isn't just a trend—it's backed by decades of research into hydration, cellular health, and mineral balance. Here, we break down the science behind pH levels, oxidation-reduction potential (ORP), and the ionization process that makes Holy&nbsp;Elixir unique.</p>
+        <div class="section-badge">A Little Clarity</div>
+        <h1 class="section-title text-4xl md:text-5xl mb-4">Understand What’s in Your Glass</h1>
+        <p class="lead max-w-3xl mx-auto">Straightforward explanations of pH, minerals and ionization. No complicated promises.</p>
       </div>
     </header>
 
-    <!-- Understanding pH -->
-    <section class="py-16 px-4" data-aos="fade-up">
-      <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-        <div class="content-prose">
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Understanding pH</h2>
-          <p class="text-gray-700 mb-4">The pH scale measures how acidic or basic a substance is. It ranges from 0 (very acidic) to 14 (very alkaline), with 7 considered neutral. Pure water has a neutral pH of 7, while tap water typically ranges between 6.5 and 8.5. Alkaline water is water with a pH above 7, typically in the 8.5–9.5 range.</p>
-          <div class="key-takeaway">
-            <strong>In short:</strong> pH measures acidity. Our products are formulated for a crisp, refreshing alkaline profile in the pH 8.5–9.5 range.
-          </div>
-          <ul class="list-disc pl-5 text-gray-700 space-y-2">
-            <li>A higher pH indicates lower acidity, while a lower pH indicates greater acidity.</li>
-            <li>Our products maintain a safe and refreshing pH of 8.5–9.5.</li>
-            <li>Balanced body fluids: blood pH remains slightly alkaline (7.35–7.45), regulated by your kidneys and lungs.</li>
-          </ul>
-        </div>
-        <div>
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_Science_Understanding_ph.png?raw=true" alt="Understanding pH diagram" class="rounded-xl shadow-lg" loading="lazy" decoding="async" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Oxidation Reduction Potential -->
-    <section class="py-16 px-4 bg-light" data-aos="fade-up" data-aos-delay="100">
-      <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1">
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_science_ORP.png?raw=true" alt="ORP (Oxidation-Reduction Potential) diagram" class="rounded-xl shadow-lg" loading="lazy" decoding="async" />
-        </div>
-        <div class="order-1 md:order-2">
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Oxidation–Reduction Potential (ORP)</h2>
-          <p class="text-gray-700 mb-4">ORP quantifies the tendency of a solution to either release or accept electrons. Positive ORP values (e.g., +200 to +400 mV) indicate oxidising liquids like tap water, which can promote oxidative stress. Negative ORP values, typically below −350 mV, reflect antioxidant‑rich solutions that can donate electrons to neutralise free radicals.</p>
-          <ul class="list-disc pl-5 text-gray-700 space-y-2">
-            <li>Healthy physiological fluids exhibit negative ORP, supporting a reductive internal environment.</li>
-            <li>Holy&nbsp;Elixir products deliver negative ORP water to counteract everyday oxidative stress and support cellular health.</li>
-            <li>The actual antioxidant activity depends on dissolved hydrogen and mineral composition; our research‑driven process ensures optimal efficacy.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ionization Technology -->
-    <section class="py-16 px-4" data-aos="fade-up" data-aos-delay="200">
-      <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-        <div class="content-prose">
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Ionization &amp; Filtration</h2>
-          <p class="text-gray-700 mb-4">Our cutting‑edge water ionizers use electrolysis to separate water into acidic and alkaline streams. Through multiple titanium‑platinum plates and a precision flow control system, the device produces water with adjustable pH and negative ORP, while multi‑stage filters remove contaminants and preserve beneficial minerals.</p>
-          <ul class="list-disc pl-5 text-gray-700 space-y-2">
-            <li>Electrolysis splits water molecules into acidic and alkaline fractions.</li>
-            <li>Multiple plates generate higher negative ORP and stable pH levels.</li>
-            <li>Self‑cleaning mechanisms prevent scale buildup and extend product life.</li>
-          </ul>
-        </div>
-        <div>
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrex_science_Ionization&Filteration_with_machine.png?raw=true" alt="Ionization and filtration diagram" class="rounded-xl shadow-lg" loading="lazy" decoding="async" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Research & Evidence -->
-    <section class="py-16 px-4 bg-light" data-aos="fade-up" data-aos-delay="300">
-      <div class="container mx-auto max-w-6xl">
-        <h2 class="font-display text-2xl md:text-3xl text-center text-navy mb-8">Research &amp; Evidence</h2>
-        <div class="space-y-12">
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-full bg-teal-light flex items-center justify-center">
-                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
-            </div>
-            <div class="content-prose">
-              <h3 class="font-semibold text-navy mb-2">Hydration &amp; Blood Flow</h3>
-              <p class="text-gray-700">A randomised controlled trial demonstrated that high‑pH alkaline water reduced blood viscosity by 6.30% after exercise, compared to 3.36% with standard purified water. Lower viscosity improves blood flow, aiding nutrient and oxygen delivery during recovery.</p>
-            </div>
-          </div>
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-full bg-teal-light flex items-center justify-center">
-                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
-            </div>
-            <div class="content-prose">
-              <h3 class="font-semibold text-navy mb-2">Metabolic &amp; Cellular Health</h3>
-              <p class="text-gray-700">Laboratory studies reveal that alkaline ionized water may reduce blood glucose, cholesterol and triglyceride levels and protect pancreatic beta cells. Although these findings are promising, they largely come from animal models and require more research before drawing firm conclusions.</p>
-            </div>
-          </div>
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-full bg-teal-light flex items-center justify-center">
-                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
-            </div>
-            <div class="content-prose">
-              <h3 class="font-semibold text-navy mb-2">Digestive &amp; Reflux Relief</h3>
-              <p class="text-gray-700">In a clinical trial, alkaline water combined with a Mediterranean diet performed as well as proton pump inhibitors in relieving acid reflux, suggesting that dietary changes and alkaline hydration may offer a safer alternative to long‑term medication.</p>
-            </div>
-          </div>
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-full bg-teal-light flex items-center justify-center">
-                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
-            </div>
-            <div class="content-prose">
-              <h3 class="font-semibold text-navy mb-2">Bone &amp; Mineral Support</h3>
-              <p class="text-gray-700">Studies involving postmenopausal individuals have found that alkaline water, when paired with standard osteoporosis therapies, may improve bone mineral density. Mineral-rich alkaline water provides calcium and magnesium carbonate, key building blocks for bone formation.</p>
-            </div>
-          </div>
-          <p class="text-sm text-gray-500 pt-4">Note: While these studies highlight potential benefits, larger and longer‑term trials are needed to fully understand the impact of alkaline water on human health. Holy&nbsp;Elixir follows a science‑driven approach grounded in evidence and safety.</p>
-        </div>
-        <div class="text-center mt-12">
-          <a href="products.html" class="btn-primary">Explore Our Technology</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Water & Your Body -->
-    <section class="py-16 px-4" data-aos="fade-up" data-aos-delay="400">
-      <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-3">Water &amp; Your Body</h2>
-          <p class="text-gray-700 mb-4">Water makes up roughly 60&nbsp;percent of an adult’s body mass; it plays vital roles in almost every physiological system. Key organs such as the brain and heart are about 73&nbsp;percent water, the lungs about 83&nbsp;percent, muscles and kidneys about 79&nbsp;percent, and even bones are 31&nbsp;percent water. Staying hydrated helps regulate temperature, transport nutrients, remove waste and maintain overall health.</p>
-          <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-4">
-            <li>Regulates body temperature through sweating and respiration.</li>
-            <li>Transports nutrients and oxygen to cells and removes waste.</li>
-            <li>Supports digestion and detoxification.</li>
-            <li>Lubricates joints and protects sensitive tissues.</li>
-            <li>Enhances brain function and mood.</li>
-            <li>Boosts physical performance and recovery.</li>
-            <li>Promotes healthy skin and reduces risk of illness.</li>
-          </ul>
-          <p class="text-gray-700 mb-4">General guidelines suggest that women drink about 2.7&nbsp;litres (around 9 cups) and men about 3.7&nbsp;litres (around 13 cups) of fluid per day. Actual needs vary based on activity, climate and health, so listen to your body and look for signs of thirst or dark urine.</p>
-        </div>
-        <div>
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Holi_Elixir_Body_Hydration.png?raw=true" alt="Water and your body" class="rounded-xl shadow-lg" />
-        </div>
-      </div>
-    </section>
-
+    <section class="py-16 px-4"><div class="container mx-auto max-w-5xl science-grid">
+      <article class="info-card"><span class="section-badge">01 / pH</span><h2 class="section-title text-2xl">What Does Alkaline Mean?</h2><p>pH describes how acidic or alkaline a liquid is. A pH of 7 is neutral; values above 7 are alkaline. Check the product label for the stated pH of your water.</p><p>A higher pH is a product characteristic. It does not establish a health benefit.</p></article>
+      <article class="info-card"><span class="section-badge">02 / Ingredients</span><h2 class="section-title text-2xl">Black Drink &amp; Trace Minerals</h2><p>Holy Elixir Black Drink is a beverage with fulvic acid and trace minerals. The full ingredient list and nutrition information on the pack are the best reference for what is in each serving.</p><p>Ingredient presence alone does not establish a detox, immunity or treatment benefit.</p></article>
+      <article class="info-card"><span class="section-badge">03 / Technology</span><h2 class="section-title text-2xl">How Ionization Works</h2><p>Water ionizers use electrolysis to produce streams with different pH levels. Filtration is a separate part of the system; performance depends on the model, source water and maintenance.</p><p>Use only the settings designated for drinking in your model’s instructions.</p></article>
+      <article class="info-card"><span class="section-badge">04 / Measurements</span><h2 class="section-title text-2xl">Understanding ORP</h2><p>Oxidation–reduction potential (ORP) is a measurement expressed in millivolts. It describes a liquid’s tendency to accept or donate electrons under the measurement conditions.</p><p>An ORP reading by itself does not demonstrate a health effect after drinking a beverage.</p></article>
+    </div></section>
+    <section class="py-12 px-4 bg-light"><div class="container mx-auto max-w-3xl content-prose">
+      <h2 class="section-title text-3xl">Keep the Evidence in Perspective</h2><p>Research into alkaline water continues, but findings about one formulation or study cannot automatically be applied to another product. We focus on product characteristics and clear label information.</p>
+      <p>Read <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/alkaline-water/faq-20058029" class="text-teal underline">Mayo Clinic’s overview of alkaline water</a> for an independent explanation of the evidence.</p>
+      <a href="products.html" class="btn-primary">Explore the Collection</a>
+    </div></section>
+    </main>
     <!-- Footer -->
-    <footer class="py-12 bg-gray-100 border-t border-gray-200" data-aos="fade-up">
+    <footer class="py-12 bg-gray-100 border-t border-gray-200">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-4 gap-8 text-gray-600 text-sm">
         <!-- Brand and social icons -->
         <div>
-          <img src="https://github.com/developernbkc-commits/Zubrex/blob/main/Zubrez-YelloZ-Teal-text.png?raw=true" alt="Zubrex logo" class="h-12 sm:h-14 w-auto" />
-          <p class="mb-4">Experience the pinnacle of alkaline hydration. Elevate your wellness with curated products that combine science and luxury.</p>
-          <div class="flex gap-4">
-            <a href="#" aria-label="Facebook" class="text-teal hover:text-navy">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C0.6 0 0 0.6 0 1.337v21.326C0 23.4 0.6 24 1.325 24H12.82v-9.294H9.692V11.01h3.127V8.413c0-3.1 1.892-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.696h-3.12V24h6.116C23.4 24 24 23.4 24 22.663V1.337C24 0.6 23.4 0 22.675 0z"/></svg>
-            </a>
-            <a href="#" aria-label="Instagram" class="text-teal hover:text-navy">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.974.975 1.262 2.242 1.324 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.324 3.608-.975.974-2.242 1.262-3.608 1.324-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.324-.974-.975-1.262-2.242-1.324-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.324-3.608.975-.974 2.242-1.262 3.608-1.324C8.416 2.175 8.796 2.163 12 2.163M12 0C8.741 0 8.332.015 7.052.072 5.775.129 4.658.46 3.757 1.362 2.855 2.264 2.524 3.38 2.468 4.658 2.411 5.938 2.396 6.346 2.396 12c0 5.654.015 6.062.072 7.342.056 1.278.387 2.395 1.289 3.297.9.9 2.016 1.231 3.295 1.287 1.28.057 1.688.072 7.341.072s6.062-.015 7.342-.072c1.278-.056 2.395-.387 3.297-1.289.9-.9 1.231-2.016 1.287-3.295.057-1.28.072-1.688.072-7.341s-.015-6.062-.072-7.342C21.836 3.38 21.505 2.263 20.604 1.362 19.702.46 18.585.129 17.307.072 16.027.015 15.618 0 12 0zm0 5.838A6.163 6.163 0 1 0 18.163 12 6.17 6.17 0 0 0 12 5.838zm0 10.163A3.996 3.996 0 1 1 16 12a3.995 3.995 0 0 1-3.999 3.999zm7.2-10.846a1.44 1.44 0 1 1-1.439-1.44 1.44 1.44 0 0 1 1.439 1.44z"/></svg>
-            </a>
-            <a href="#" aria-label="Twitter" class="text-teal hover:text-navy">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825 .775 1.014-.611 1.794-1.574 2.163-2.723-.95 .555-2.005 .959-3.127 1.184-.897-.959-2.178-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39 .045 .765 .126 1.124-4.087-.205-7.72-2.165-10.148-5.144-.422 .722-.666 1.561-.666 2.475 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.23-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413 .111-.849 .171-1.296 .171-.314 0-.615-.029-.916-.085 .631 1.953 2.445 3.376 4.604 3.415-1.68 1.319-3.809 2.105-6.102 2.105-.395 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14.002-7.496 14.002-13.986 0-.21 0-.42-.015-.63 .961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
-            </a>
-          </div>
+          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-12 sm:h-14 w-auto" decoding="async" />
+          <p class="mb-4">A considered collection of alkaline water, Black Drink and home ionizers. Refreshment, with a little more character.</p>
         </div>
         <!-- Primary navigation links -->
         <div>
@@ -201,7 +70,7 @@
           <ul class="space-y-1">
             <li><a href="index.html" class="hover:text-teal">Home</a></li>
             <li><a href="products.html" class="hover:text-teal">Products</a></li>
-            <li><a href="benefits.html" class="hover:text-teal">Benefits</a></li>
+            <li><a href="benefits.html" class="hover:text-teal">Product Guide</a></li>
             <li><a href="science.html" class="hover:text-teal">Science</a></li>
             <li><a href="faq.html" class="hover:text-teal">FAQ</a></li>
             <li><a href="partners.html" class="hover:text-teal">Partners</a></li>
@@ -212,13 +81,10 @@
         <div>
           <h5 class="font-semibold text-navy mb-3">Resources</h5>
           <ul class="space-y-1">
-            <li><a href="benefits.html" class="hover:text-teal">Health Benefits</a></li>
+            <li><a href="benefits.html" class="hover:text-teal">Product Guide</a></li>
             <li><a href="science.html" class="hover:text-teal">Science &amp; Research</a></li>
             <li><a href="faq.html" class="hover:text-teal">FAQs</a></li>
             <li><a href="partners.html" class="hover:text-teal">Become a Partner</a></li>
-            <li><a href="#" class="hover:text-teal">Blog</a></li>
-            <li><a href="#" class="hover:text-teal">Terms &amp; Conditions</a></li>
-            <li><a href="#" class="hover:text-teal">Privacy Policy</a></li>
           </ul>
         </div>
         <!-- Contact details -->
@@ -235,22 +101,5 @@
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-    <!-- AOS script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({ once: true });
-    </script>
   </body>
 </html>
-
-<!--
-  Citations used in this page:
-  pH scale and definitions: EPA and Harvard sources.
-  ORP description: MHI article.
-  Blood viscosity study: NCBI trial.
-  Metabolic and cellular health: News-Medical article.
-  Acid reflux trial: Arthritis Foundation article.
-  Bone health and minerals: Arthritis Foundation article.
-  Water & Your Body: Organ water composition and roles from Healthline article.
-  Hydration guidelines: Mayo Clinic (National Academies) recommendations.
--->
