@@ -2,15 +2,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var showcase = document.getElementById('collection-showcase');
   if (showcase) {
     var showcaseOptions = {
-      collection: { image: 'assets/images/collection-updated.webp', alt: 'Zubrex alkaline water and Black Drink cans with a splash of water', caption: 'Two distinct expressions. One considered collection.', link: 'products.html', label: 'Explore the collection' },
-      water: { image: 'assets/images/water-lifestyle.webp', alt: 'A moment of refreshment with Zubrex alkaline water', caption: 'Alkaline water. Your everyday refreshment.', link: 'products.html#alkaline-water', label: 'Explore alkaline water' },
-      ionizer: { image: 'assets/images/ionizer.webp', alt: 'Zubrex countertop home ionizer', caption: 'A considered setup for the place you call home.', link: 'products.html#ionizers', label: 'Explore home ionizers' }
+      collection: { image: 'assets/images/lifestyle/hero-terrace-1440.webp', alt: 'Friends enjoying a Black Drink moment on a garden terrace', caption: 'Good company. A fresh moment.', link: 'products.html', label: 'Explore the collection' },
+      water: { image: 'assets/images/lifestyle/water-morning-1440.webp', alt: 'A man enjoying Zubrex alkaline water on a daylight balcony', caption: 'Alkaline water. Your everyday refreshment.', link: 'products.html#alkaline-water', label: 'Explore alkaline water' },
+      ionizer: { image: 'assets/images/lifestyle/ionizer-home-1440.webp', alt: 'A woman filling a glass at a Zubrex home ionizer', caption: 'A considered setup for the place you call home.', link: 'products.html#ionizers', label: 'Explore home ionizers' }
     };
     showcase.querySelectorAll('[data-showcase]').forEach(function (button) {
       button.addEventListener('click', function () {
         var option = showcaseOptions[button.getAttribute('data-showcase')];
         if (!option) return;
-        showcase.querySelector('img').src = option.image;
+        var image = showcase.querySelector('img');
+        image.src = option.image;
+        image.srcset = option.image.replace('-1440.webp', '-640.webp') + ' 640w, ' + option.image + ' 1440w';
         showcase.querySelector('img').alt = option.alt;
         showcase.querySelector('.showcase-caption').textContent = option.caption;
         var explore = showcase.querySelector('.showcase-explore');

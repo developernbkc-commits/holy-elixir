@@ -299,3 +299,39 @@ footer p, footer li { color: #63796e; }
 .art-caption, .range-number, .range-option dt,
 .collection-strip span, footer h5, .brand-caption { color: #657f70; }
 .showcase-switcher button { color: #5e7868; }
+
+/* Lifestyle photography: full-color, unfiltered imagery with responsive framing. */
+.editorial-hero-art img { object-fit: cover; mix-blend-mode: normal; filter: none; border-radius: 16px; aspect-ratio: 3 / 2; max-height: none; }
+.editorial-hero-art { justify-content: flex-start; min-height: 0; }
+.editorial-hero-art figcaption { margin-top: auto; }
+.lifestyle-section { background: #fff; }
+.lifestyle-heading { display: flex; justify-content: space-between; align-items: end; gap: 36px; margin-bottom: 34px; }
+.lifestyle-heading .section-title { font-size: clamp(34px,3.8vw,54px); }
+.lifestyle-heading .section-title em { color: #55977e; }
+.lifestyle-heading > p { max-width: 38ch; color: #63796e; font-size: 14px; line-height: 1.9; }
+.lifestyle-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
+.lifestyle-card { overflow: hidden; border: 1px solid #e4eee7; border-radius: 22px; background: #fff; transition: box-shadow .2s,transform .2s; }
+.lifestyle-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px #1d675c0e; }
+.lifestyle-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.lifestyle-card-copy { position: relative; padding: 24px 26px 26px; }
+.lifestyle-card-copy > span:first-child { display: block; margin-bottom: 10px; color: #6f8b7a; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; }
+.lifestyle-card h3 { font-family: 'Playfair Display',Georgia,serif; color: #214e3d; font-size: 25px; font-weight: 400; padding-right: 38px; }
+.lifestyle-arrow { position: absolute; top: 50%; right: 26px; color: #5d9378; font-size: 22px; }
+.pour-story { background: #f8fbfa; }
+.pour-story > .container { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; }
+.pour-image { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 22px; }
+.pour-copy .section-title { font-size: clamp(34px,4vw,54px); margin-bottom: 24px; }
+.pour-copy .section-title em { color: #55977e; }
+.pour-copy p { color: #63796e; font-size: 14px; line-height: 1.9; max-width: 40ch; margin-bottom: 26px; }
+.packaging-details { border: 1px solid #dce9e1; border-radius: 12px; background: #fff; margin: 0 0 24px; }
+.packaging-details summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; color: #3e7058; font-size: 12px; min-height: 48px; }
+.packaging-details summary::-webkit-details-marker { display: none; }
+.product-section .packaging-details img { display: block; width: auto; max-width: 100%; height: auto; max-height: 500px; aspect-ratio: auto; object-fit: contain; margin: 0 auto 20px; border-radius: 0; }
+@media(max-width:767px) {
+  .lifestyle-heading { flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 26px; }
+  .lifestyle-heading > p { font-size: 13px; }
+  .lifestyle-grid { grid-template-columns: 1fr; gap: 22px; }
+  .lifestyle-card-copy { padding: 22px; }
+  .lifestyle-card h3 { font-size: 24px; }
+  .pour-story > .container { grid-template-columns: 1fr; gap: 30px; }
+}

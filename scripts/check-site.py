@@ -20,6 +20,8 @@ class Page(HTMLParser):
             self.ids.add(attrs['id'])
         if tag == 'a' and attrs.get('href'): self.refs.append(attrs['href'])
         if tag in ('script','img','iframe','source') and attrs.get('src'): self.resources.append(attrs['src'])
+        if tag in ('img','source') and attrs.get('srcset'):
+            self.resources.extend(item.strip().split()[0] for item in attrs['srcset'].split(',') if item.strip())
         if tag == 'link' and attrs.get('rel') in ('stylesheet','preload','icon'): self.resources.append(attrs.get('href',''))
         if tag == 'img' and not attrs.get('alt'): errors.append(f'{self.path.name}: missing image description')
 
