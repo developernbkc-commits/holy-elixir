@@ -12,17 +12,25 @@
     <link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="elegance.css" />
   </head>
   <body>
+    <aside class="site-notice" aria-label="Website update notice">
+      <span class="site-notice-label">Site update</span>
+      <div class="site-notice-window">
+        <p class="notice-readable">We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</p>
+        <div class="site-notice-track" aria-hidden="true">
+          <span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span><span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span>
+        </div>
+      </div>
+      <button class="site-notice-pause" type="button" aria-label="Pause update notice" aria-pressed="false" hidden>Pause</button>
+    </aside>
     <!-- Navigation -->
     <!-- Navigation with brand logo -->
     <a class="skip-link" href="#main-content">Skip to content</a>
     <nav aria-label="Main navigation">
       <div class="container mx-auto max-w-7xl flex justify-between items-center">
-        <a href="index.html" class="flex items-center py-2">
-          <!-- Use a remote hosted logo for consistency and double its size for greater impact -->
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-16 sm:h-20 lg:h-24 w-auto mr-3" decoding="async" />
-        </a>
+        <a href="index.html" class="brand-lockup" aria-label="Holy Elixir home"><span class="brand-name">Holy Elixir<span class="brand-mark" aria-hidden="true">·</span></span><span class="brand-caption">Refresh your everyday</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button>
         <ul id="site-menu" class="flex flex-wrap gap-4 items-center">
           <li><a href="index.html" class="active" aria-current="page">Home</a></li>
@@ -31,51 +39,25 @@
           <li><a href="science.html">Science</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="partners.html">Partners</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="nav-enquire">Enquire</a></li>
         </ul>
       </div>
     </nav>
     <main id="main-content" tabindex="-1">
 
-    <!-- Hero Section -->
-    <section class="relative hero-wrap">
-      <div class="hero-slider">
-        <!-- Slide 1: Premium alkaline water -->
-        <div class="slide active">
-          <!-- Use an image instead of a background to avoid zooming/offset issues -->
-          <img class="hero-img" src="assets/images/water-lifestyle.webp" alt="Zubrex Alkaline Water bottles" decoding="async" />
-          <div class="hero-content">
-            <div class="section-badge mx-auto">Everyday Refreshment</div>
-            <h1 class="text-3xl md:text-5xl font-display mb-3">Zubrex Alkaline Water <span class="text-teal">8.5–9.5&nbsp;pH</span></h1>
-            <p class="mb-4 text-lg">A crisp, refreshing alkaline water for the moments that make up your day.</p>
-            <a href="products.html" class="btn-primary">Explore the Collection</a>
-          </div>
-        </div>
-        <!-- Slide 2: Black Drink -->
-        <div class="slide">
-          <img class="hero-img" src="assets/images/collection-updated.webp" alt="Zubrex alkaline water and Black Drink collection" decoding="async" />
-          <div class="hero-content">
-            <div class="section-badge mx-auto">Meet Black Drink</div>
-	          <h2 class="text-3xl md:text-5xl font-display mb-3">Black Drink <span class="text-teal">A Distinctive Blend</span></h2>
-            <p class="mb-4 text-lg">Meet Black Drink: a distinctive beverage with fulvic acid and trace minerals, made for a different kind of refreshment.</p>
-            <a href="products.html" class="btn-primary">Learn More</a>
-          </div>
-        </div>
-        <!-- Slide 3: Ionizer technology -->
-        <div class="slide">
-          <img class="hero-img" src="assets/images/hero-ionizer.webp" alt="Zubrex Ionizer Machine" decoding="async" />
-          <div class="hero-content">
-            <div class="section-badge mx-auto">Advanced Technology</div>
-            <h2 class="text-3xl md:text-5xl font-display mb-3">Home Ionizer <span class="text-teal">Custom pH</span></h2>
-            <p class="mb-4 text-lg">Explore countertop ionizers and find the right setup for your home, with guidance from our team.</p>
-            <a href="products.html" class="btn-primary">Discover Now</a>
-          </div>
-        </div>
+    <section class="editorial-hero" aria-labelledby="hero-title">
+      <div class="editorial-hero-copy">
+        <p class="eyebrow"><span aria-hidden="true"></span> The Holy Elixir collection</p>
+        <h1 id="hero-title">Refreshment,<br /><em>beautifully</em><br />considered.</h1>
+        <p class="hero-intro">A fresh perspective on your everyday. Discover Zubrex alkaline water, the distinctive Black Drink, and ionizers for the place you call home.</p>
+        <div class="hero-actions"><a class="btn-primary" href="products.html">Explore the collection <span aria-hidden="true">↗</span></a><a class="editorial-link" href="benefits.html">Find your everyday choice <span aria-hidden="true">→</span></a></div>
+        <div class="hero-footnote"><span class="fine-rule" aria-hidden="true"></span><span>Everyday rituals. Distinctive choices.</span></div>
       </div>
-      <div class="slider-controls">
-        <button class="prev" aria-label="Previous slide">&#10094;</button>
-        <button class="next" aria-label="Next slide">&#10095;</button>
-      </div>
+      <figure class="editorial-hero-art">
+        <span class="art-caption">ZUBREX / THE COLLECTION</span>
+        <img src="assets/images/collection-updated.webp" alt="Zubrex alkaline water and Black Drink cans with a splash of water" width="1536" height="1024" fetchpriority="high" />
+        <figcaption><span>Two distinct expressions.<br />One considered collection.</span><span class="art-index" aria-hidden="true">01—03</span></figcaption>
+      </figure>
     </section>
 
     <section class="collection-strip" aria-label="Explore our range">
@@ -89,8 +71,8 @@
     <!-- Wow Factor Section -->
     <section class="wow-section py-16 px-4">
       <div class="container mx-auto max-w-7xl text-center mb-12">
-        <div class="section-badge mx-auto">Experience the Difference</div>
-        <h2 class="section-title text-3xl md:text-4xl">Elevate Your Hydration</h2>
+        <div class="section-badge mx-auto">A little more considered</div>
+        <h2 class="section-title text-3xl md:text-4xl">A choice for every kind of day.</h2>
         <p class="section-subtitle">From your daily water to something a little different, find your own way to refresh.</p>
       </div>
       <div class="container mx-auto max-w-7xl grid md:grid-cols-4 gap-8 text-center">
@@ -142,7 +124,7 @@
       <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="section-badge">About Us</div>
-          <h2 class="section-title text-3xl md:text-4xl mb-4">Why Choose Holy&nbsp;Elixir?</h2>
+          <h2 class="section-title text-3xl md:text-4xl mb-4">Small rituals.<br /><em>A fresh perspective.</em></h2>
           <p class="section-subtitle mb-6">Holy Elixir brings together Zubrex alkaline water, Black Drink and countertop ionizers in one thoughtful collection. Explore the range and choose what suits your taste, routine and space.</p>
           <div class="space-y-4">
             <div class="flex items-start gap-4">
@@ -187,7 +169,7 @@
           </div>
         </div>
         <div>
-          <img src="assets/images/collection-updated.webp" alt="Zubrex alkaline water and Holy Elixir Black Drink" class="rounded-xl shadow-lg" decoding="async" loading="eager" />
+          <img src="assets/images/water-lifestyle.webp" alt="A moment of refreshment with Zubrex alkaline water" class="rounded-xl shadow-lg" decoding="async" loading="eager" />
         </div>
       </div>
     </section>
@@ -196,7 +178,7 @@
     <section class="py-16 px-4">
       <div class="container mx-auto max-w-7xl text-center mb-12">
         <div class="section-badge mx-auto">Our Products</div>
-        <h2 class="section-title text-3xl md:text-4xl">Premium Collection</h2>
+        <h2 class="section-title text-3xl md:text-4xl">Meet your everyday favourites.</h2>
         <p class="section-subtitle">Discover our range of alkaline water, Black Drink and home ionizers.</p>
       </div>
       <div class="container mx-auto max-w-7xl grid md:grid-cols-3 gap-8">
@@ -234,7 +216,7 @@
     <!-- CTA Section -->
     <section class="py-16 bg-navy text-white text-center px-4">
       <div class="container mx-auto max-w-3xl">
-        <h2 class="font-display text-3xl md:text-4xl mb-4">Make Room for Refreshment</h2>
+        <h2 class="font-display text-3xl md:text-4xl mb-4">Your next ritual<br /><em>starts here.</em></h2>
         <p class="mb-6 text-white/80">Find your next everyday favourite. Talk to our team about products, pricing and availability.</p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="contact.html" class="btn-primary">Get Started Today</a>
@@ -248,10 +230,10 @@
     <!-- Footer -->
     <footer class="py-12 bg-gray-100 border-t border-gray-200">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-4 gap-8 text-gray-600 text-sm">
-        <!-- Brand and social icons -->
+        <!-- Brand -->
         <div>
           <!-- Use remote logo here as well and double its height for a premium feel -->
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-12 sm:h-14 w-auto" decoding="async" />
+          <a href="index.html" class="footer-brand">Holy Elixir<span aria-hidden="true">·</span></a>
           <p class="mb-4">A considered collection of alkaline water, Black Drink and home ionizers. Refreshment, with a little more character.</p>
         </div>
         <!-- Primary navigation links -->

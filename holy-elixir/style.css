@@ -122,3 +122,83 @@ section.bg-navy .btn-secondary:hover{color:var(--navy);background:#c5e9df}
 /* Fill the logo box while trimming only the source artwork's empty margins. */
 nav img{object-fit:cover}
 footer img{height:80px!important;object-fit:cover}
+
+/* Persistent update notice, above the sticky navigation on every page. */
+:root { --notice-height: 44px; }
+body { padding-top: var(--notice-height); }
+html { scroll-padding-top: calc(var(--notice-height) + 110px); }
+nav { top: var(--notice-height); }
+.site-notice {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+  padding: 8px 24px;
+  color: #fff;
+  background: #1a2b4a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.site-notice-label {
+  flex-shrink: 0;
+  color: #b8e5d9;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.site-notice-window { flex: 1; min-width: 0; overflow: hidden; }
+.site-notice-track > span + span { display: none; }
+.notice-readable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.site-notice.is-scrolling .site-notice-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: notice-scroll 42s linear infinite;
+}
+.site-notice.is-scrolling .site-notice-track > span {
+  display: block;
+  flex-shrink: 0;
+  padding-right: 64px;
+}
+.site-notice-pause {
+  flex-shrink: 0;
+  min-width: 62px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid #718199;
+  border-radius: 6px;
+  color: #fff;
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+}
+.site-notice-pause[hidden] { display: none; }
+.site-notice-pause:hover { background: #2d4263; }
+.site-notice.is-paused .site-notice-track,
+.site-notice:hover .site-notice-track,
+.site-notice:focus-within .site-notice-track { animation-play-state: paused; }
+.skip-link { z-index: 100; }
+@keyframes notice-scroll { to { transform: translateX(-50%); } }
+@media (max-width: 767px) {
+  .site-notice { gap: 10px; padding: 6px 12px; font-size: 12px; }
+  .site-notice-label { font-size: 10px; }
+  html { scroll-padding-top: calc(var(--notice-height) + 85px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-notice { align-items: flex-start; }
+  .site-notice-track { white-space: normal !important; animation: none !important; }
+  .site-notice-track > span { padding-right: 0 !important; }
+  .site-notice-track > span + span { display: none !important; }
+}

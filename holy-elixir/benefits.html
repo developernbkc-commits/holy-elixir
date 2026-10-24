@@ -12,16 +12,24 @@
     <link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Custom styles -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="elegance.css" />
   </head>
   <body>
+    <aside class="site-notice" aria-label="Website update notice">
+      <span class="site-notice-label">Site update</span>
+      <div class="site-notice-window">
+        <p class="notice-readable">We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</p>
+        <div class="site-notice-track" aria-hidden="true">
+          <span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span><span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span>
+        </div>
+      </div>
+      <button class="site-notice-pause" type="button" aria-label="Pause update notice" aria-pressed="false" hidden>Pause</button>
+    </aside>
     <!-- Navigation -->
     <a class="skip-link" href="#main-content">Skip to content</a>
     <nav aria-label="Main navigation">
       <div class="container mx-auto max-w-7xl flex justify-between items-center">
-        <a href="index.html" class="flex items-center py-2">
-          <!-- Updated logo: using the new teal Zubrex logo for a fresh, modern look -->
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-16 sm:h-20 lg:h-24 w-auto mr-3" decoding="async" />
-        </a>
+        <a href="index.html" class="brand-lockup" aria-label="Holy Elixir home"><span class="brand-name">Holy Elixir<span class="brand-mark" aria-hidden="true">·</span></span><span class="brand-caption">Refresh your everyday</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button>
         <ul id="site-menu" class="flex flex-wrap gap-4 items-center">
           <li><a href="index.html">Home</a></li>
@@ -30,7 +38,7 @@
           <li><a href="science.html">Science</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="partners.html">Partners</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="nav-enquire">Enquire</a></li>
         </ul>
       </div>
     </nav>
@@ -76,9 +84,9 @@
     <!-- Footer -->
     <footer class="py-12 bg-gray-100 border-t border-gray-200">
       <div class="container mx-auto max-w-7xl grid md:grid-cols-4 gap-8 text-gray-600 text-sm">
-        <!-- Brand and social icons -->
+        <!-- Brand -->
         <div>
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-12 sm:h-14 w-auto" decoding="async" />
+          <a href="index.html" class="footer-brand">Holy Elixir<span aria-hidden="true">·</span></a>
           <p class="mb-4">A considered collection of alkaline water, Black Drink and home ionizers. Refreshment, with a little more character.</p>
         </div>
         <!-- Primary navigation links -->

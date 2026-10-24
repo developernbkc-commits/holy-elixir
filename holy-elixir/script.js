@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var notice = document.querySelector('.site-notice');
+  if (notice) {
+    var noticePause = notice.querySelector('.site-notice-pause');
+    var noticeMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function measureNotice() {
+      document.documentElement.style.setProperty('--notice-height', notice.offsetHeight + 'px');
+    }
+    function setNoticeMotion() {
+      notice.classList.toggle('is-scrolling', !noticeMotion.matches);
+      noticePause.hidden = noticeMotion.matches;
+      measureNotice();
+    }
+    noticePause.addEventListener('click', function () {
+      var paused = notice.classList.toggle('is-paused');
+      noticePause.setAttribute('aria-pressed', String(paused));
+      noticePause.setAttribute('aria-label', paused ? 'Resume update notice' : 'Pause update notice');
+      noticePause.textContent = paused ? 'Resume' : 'Pause';
+    });
+    noticeMotion.addEventListener('change', setNoticeMotion);
+    if (window.ResizeObserver) new ResizeObserver(measureNotice).observe(notice);
+    window.addEventListener('resize', measureNotice);
+    setNoticeMotion();
+  }
+
   var menuButton = document.querySelector('.menu-toggle');
   var menu = document.getElementById('site-menu');
   if (menuButton && menu) {
