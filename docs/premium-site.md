@@ -42,3 +42,7 @@ The second design pass adds wide image-led desktop menus, individual product int
 The finish stylesheet refines buttons, card states, typography, editorial details and footer readability while retaining the existing palette, logo and fixed notice. Additional images are existing local assets. No new external dependency, product claim or automatic animation was introduced. The new content transition follows reduced-motion preferences.
 
 Refinement validation includes all 19 pages at 320px and 1440px (38 page checks), a 768px menu check and a short 844×390 landscape menu check. No horizontal page overflow or broken loaded images were detected. Manual checks covered keyboard occasion selection, pack viewer open/close and focus restoration, mobile product navigation, section anchors, fixed notice placement and local search. The landscape menu remains scrollable when its contents exceed the screen height.
+
+## Production release
+
+The user authorized the production release on 28 October 2026. The final branding includes the existing Samvida Labs logo beside the footer credit and the existing Zubrex gold Z as the favicon, with SVG, PNG, ICO and Apple touch variants. See `brand-assets.md` for provenance. The branch named `staging` remains the production branch; subsequent production releases still require user approval.
