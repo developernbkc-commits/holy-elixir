@@ -51,6 +51,43 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   mobile.addEventListener('change', () => closeNavigation(false));
 
+  document.querySelectorAll('.moment-section').forEach(function (section) {
+    const controls = section.querySelector('.moment-controls');
+    controls.hidden = false;
+    const buttons = Array.from(section.querySelectorAll('[data-moment]'));
+    function selectMoment(button) {
+      buttons.forEach(function (other) {
+        const selected = other === button;
+        other.setAttribute('aria-pressed', String(selected));
+        document.getElementById(other.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    buttons.forEach(function (button, i) {
+      button.addEventListener('click', () => selectMoment(button));
+      button.addEventListener('keydown', function (event) {
+        let next;
+        if (event.key === 'ArrowRight') next = (i + 1) % buttons.length;
+        if (event.key === 'ArrowLeft') next = (i - 1 + buttons.length) % buttons.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = buttons.length - 1;
+        if (next !== undefined) { event.preventDefault(); buttons[next].focus(); selectMoment(buttons[next]); }
+      });
+    });
+  });
+
+  const packViewer = document.getElementById('pack-viewer');
+  const packZoom = document.querySelector('[data-pack-zoom]');
+  if (packViewer && packZoom && typeof packViewer.showModal === 'function') {
+    packZoom.hidden = false;
+    packZoom.addEventListener('click', () => packViewer.showModal());
+    packViewer.addEventListener('click', function (event) {
+      if (event.target === packViewer) {
+        const r = packViewer.getBoundingClientRect();
+        if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) packViewer.close();
+      }
+    });
+  }
+
   const reveals = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && !reduced.matches) {
     const observer = new IntersectionObserver(function (entries) {

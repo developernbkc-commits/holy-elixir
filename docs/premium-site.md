@@ -31,6 +31,14 @@ Native disclosure menus and FAQ answers work without JavaScript. A skip link, vi
 
 ## Maintenance
 
-Edit content and shared HTML in `scripts/build-pages.py`, run `python scripts/build-pages.py`, and commit the generated HTML, local search index and sitemap. Edit `holy-elixir/premium.css` and `holy-elixir/script.js` directly. No template engine, framework, CDN or runtime package is required. `scripts/install-campaign-images.mjs` can regenerate optimized images when the extracted source files are supplied under the ignored `qa/ppt-reference/` directory; the sources and original deck are not needed to host the site.
+Edit content and shared HTML in `scripts/build-pages.py`, run `python scripts/build-pages.py`, and commit the generated HTML, local search index and sitemap. Edit `holy-elixir/premium.css`, `holy-elixir/refinements.css` and `holy-elixir/script.js` directly. No template engine, framework, CDN or runtime package is required. `scripts/install-campaign-images.mjs` can regenerate optimized images when the extracted source files are supplied under the ignored `qa/ppt-reference/` directory; the sources and original deck are not needed to host the site.
 
 Validation: `python scripts/check-site.py`, `node --check holy-elixir/script.js`, browser checks of every page at 320px, 768px and 1440px, plus interaction checks for menus, search, FAQ, motion, fixed notice and contextual enquiry selection. Preview deployment stays on `elegant-preview` and PR #10. The branch named `staging` is production-connected and must not receive this preview without separate release authorization.
+
+## Premium refinement
+
+The second design pass adds wide image-led desktop menus, individual product introductions with section links, framed collection photography, a manually controlled occasion selector, a staggered journal layout and a native modal viewer for the supplied Black Drink photograph. The selector supports arrow keys, Home and End; its controls stay hidden when JavaScript is unavailable, leaving the initial product story readable. The pack viewer restores focus to its trigger when closed. The ionizer uses contained images where cropping could hide the appliance.
+
+The finish stylesheet refines buttons, card states, typography, editorial details and footer readability while retaining the existing palette, logo and fixed notice. Additional images are existing local assets. No new external dependency, product claim or automatic animation was introduced. The new content transition follows reduced-motion preferences.
+
+Refinement validation includes all 19 pages at 320px and 1440px (38 page checks), a 768px menu check and a short 844×390 landscape menu check. No horizontal page overflow or broken loaded images were detected. Manual checks covered keyboard occasion selection, pack viewer open/close and focus restoration, mobile product navigation, section anchors, fixed notice placement and local search. The landscape menu remains scrollable when its contents exceed the screen height.

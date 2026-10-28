@@ -9,6 +9,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="refinements.css">
 <link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:title" content="Zubrex by Holy Elixir | A pause, well placed.">
 <meta property="og:description" content="Discover Zubrex alkaline water, Black Drink and home water ionizers. Explore the collection, serving ideas and product guides.">
@@ -43,6 +44,8 @@
 <summary >Collection<span aria-hidden="true">⌄</span>
 </summary>
 <div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Collection</p>
 <a href="products.html" >Explore the collection<span aria-hidden="true">↗</span>
 </a>
 <a href="alkaline-water.html" >Alkaline Water<span aria-hidden="true">↗</span>
@@ -52,6 +55,15 @@
 <a href="ionizers.html" >Water Ionizers<span aria-hidden="true">↗</span>
 </a>
 </div>
+<a class="nav-feature" href="products.html">
+<img src="assets/images/campaign/collection-640.webp" alt="Zubrex collection campaign concept" width="640" height="360" loading="lazy">
+<span>
+<small>Discover the collection</small>
+<strong>Three ways to make it yours.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
 </details>
 </li>
 <li>
@@ -59,11 +71,22 @@
 <summary >Our world<span aria-hidden="true">⌄</span>
 </summary>
 <div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Our world</p>
 <a href="about.html" >Our perspective<span aria-hidden="true">↗</span>
 </a>
 <a href="rituals.html" >Everyday journal<span aria-hidden="true">↗</span>
 </a>
 <a href="serving-guide.html" >The serving notes<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="rituals.html">
+<img src="assets/images/campaign/water-terrace-640.webp" alt="Zubrex alkaline water in a sunlit setting" width="640" height="640" loading="lazy">
+<span>
+<small>The everyday journal</small>
+<strong>Make a moment of it.</strong>
+<span aria-hidden="true">↗</span>
+</span>
 </a>
 </div>
 </details>
@@ -73,6 +96,8 @@
 <summary >Guides<span aria-hidden="true">⌄</span>
 </summary>
 <div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Guides</p>
 <a href="benefits.html" >Find your choice<span aria-hidden="true">↗</span>
 </a>
 <a href="reading-labels.html" >Read your label<span aria-hidden="true">↗</span>
@@ -82,6 +107,15 @@
 <a href="faq.html" >Frequently asked<span aria-hidden="true">↗</span>
 </a>
 </div>
+<a class="nav-feature" href="benefits.html">
+<img src="assets/images/campaign/ionizer-kitchen-640.webp" alt="Zubrex ionizer concept in a light kitchen" width="640" height="427" loading="lazy">
+<span>
+<small>A little product clarity</small>
+<strong>Find your everyday choice.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
 </details>
 </li>
 <li>
@@ -89,9 +123,20 @@
 <summary >For business<span aria-hidden="true">⌄</span>
 </summary>
 <div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">For business</p>
 <a href="hospitality.html" >Hospitality & events<span aria-hidden="true">↗</span>
 </a>
 <a href="partners.html" >Trade & partnerships<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="hospitality.html">
+<img src="assets/images/campaign/black-occasion-640.webp" alt="Black Drink campaign concept in an evening setting" width="640" height="640" loading="lazy">
+<span>
+<small>For hospitality & events</small>
+<strong>A place at your table.</strong>
+<span aria-hidden="true">↗</span>
+</span>
 </a>
 </div>
 </details>
@@ -220,19 +265,71 @@
 </div>
 </div>
 </section>
-<section class="section ">
-<div class="wrap split ">
-<div class="split-art" data-reveal>
-<img class="" src="assets/images/lifestyle-v2/joyful-dining-1440.webp" srcset="assets/images/lifestyle-v2/joyful-dining-640.webp 640w, assets/images/lifestyle-v2/joyful-dining-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="Friends sharing Black Drink at a bright dining table" width="1440" height="960" loading="lazy" decoding="async" >
-</div>
-<div class="split-copy" data-reveal>
-<p class="eyebrow">The art of the everyday</p>
-<h2>Good company.<br>A little more <em>character.</em>
+<section class="section moment-section">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">A collection for your kind of day</p>
+<h2>Find your <em>moment.</em>
 </h2>
-<p>The best moments rarely need much. A table in the sunlight. A conversation that runs a little longer. A refreshing pause in a busy day.</p>
-<p>Our collection brings water, Black Drink and home ionizers together, with clear guidance to help you choose.</p>
-<a class="button button--line" href="rituals.html">Explore the moments<span aria-hidden="true">↗</span>
+<p>Every setting has its own rhythm. Where will yours take you?</p>
+</div>
+<div class="moment-controls" hidden role="group" aria-label="Choose your moment">
+<button type="button" id="moment-daylight" data-moment="daylight" aria-controls="moment-panel-daylight" aria-pressed="true">
+<span>01</span>In daylight<span aria-hidden="true">↗</span>
+</button>
+<button type="button" id="moment-table" data-moment="table" aria-controls="moment-panel-table" aria-pressed="false">
+<span>02</span>At the table<span aria-hidden="true">↗</span>
+</button>
+<button type="button" id="moment-home" data-moment="home" aria-controls="moment-panel-home" aria-pressed="false">
+<span>03</span>At home<span aria-hidden="true">↗</span>
+</button>
+</div>
+<div class="moment-panels">
+<div class="moment-panel" id="moment-panel-daylight" role="region" aria-labelledby="moment-daylight" >
+<div class="moment-image">
+<img class="" src="assets/images/campaign/water-terrace-1440.webp" srcset="assets/images/campaign/water-terrace-640.webp 640w, assets/images/campaign/water-terrace-1440.webp 1254w" sizes="(max-width: 760px) 100vw, 50vw" alt="Zubrex alkaline water on a sunlit terrace" width="1254" height="1254" loading="lazy" decoding="async" >
+</div>
+<div class="moment-copy">
+<p class="eyebrow">01 / The everyday edit</p>
+<h3>Make a little room<br>for <em>yourself.</em>
+</h3>
+<p>A pause between meetings. A quiet corner in the sunshine. Discover alkaline water for the moments that make up your day.</p>
+<a class="button button--line" href="alkaline-water.html">Discover alkaline water<span aria-hidden="true">↗</span>
 </a>
+<a class="quiet-link" href="rituals.html">Explore everyday moments <span aria-hidden="true">→</span>
+</a>
+</div>
+</div>
+<div class="moment-panel" id="moment-panel-table" role="region" aria-labelledby="moment-table" hidden>
+<div class="moment-image">
+<img class="" src="assets/images/lifestyle-v2/joyful-dining-1440.webp" srcset="assets/images/lifestyle-v2/joyful-dining-640.webp 640w, assets/images/lifestyle-v2/joyful-dining-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="Friends sharing Black Drink in a light-filled dining room" width="1440" height="960" loading="lazy" decoding="async" >
+</div>
+<div class="moment-copy">
+<p class="eyebrow">02 / The distinctive edit</p>
+<h3>Good company.<br>A little more <em>character.</em>
+</h3>
+<p>Clear glassware, a thoughtfully set table and a conversation worth staying for. Explore Black Drink for the occasions you make your own.</p>
+<a class="button button--line" href="black-drink.html">Discover Black Drink<span aria-hidden="true">↗</span>
+</a>
+<a class="quiet-link" href="rituals.html">Explore everyday moments <span aria-hidden="true">→</span>
+</a>
+</div>
+</div>
+<div class="moment-panel" id="moment-panel-home" role="region" aria-labelledby="moment-home" hidden>
+<div class="moment-image">
+<img class="" src="assets/images/campaign/ionizer-kitchen-1440.webp" srcset="assets/images/campaign/ionizer-kitchen-640.webp 640w, assets/images/campaign/ionizer-kitchen-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="A Zubrex ionizer concept in an elegant light kitchen" width="1440" height="960" loading="lazy" decoding="async" >
+</div>
+<div class="moment-copy">
+<p class="eyebrow">03 / The home edit</p>
+<h3>Your space.<br>Your <em>everyday ritual.</em>
+</h3>
+<p>Explore a water ionizer for your kitchen. Begin with your incoming water, your space and the questions that help you choose.</p>
+<a class="button button--line" href="ionizers.html">Explore home ionizers<span aria-hidden="true">↗</span>
+</a>
+<a class="quiet-link" href="rituals.html">Explore everyday moments <span aria-hidden="true">→</span>
+</a>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -251,34 +348,51 @@
 </a>
 </div>
 </section>
-<section class="section ">
+<section class="section journal-section">
 <div class="wrap">
-<div class="section-head" data-reveal>
-<p class="eyebrow">A little clarity</p>
-<h2>Curiosity looks good on you.</h2>
-<p>Explore the details behind the drink and the decisions that matter.</p>
+<div class="journal-heading">
+<div>
+<p class="eyebrow">The Zubrex journal</p>
+<h2>A more considered<br>
+<em>everyday.</em>
+</h2>
 </div>
-<div class="cards ">
-<article class="text-card" data-reveal>
-<span class="card-number">01</span>
-<h3>Find your everyday choice</h3>
-<p>Compare the collection by occasion, format and the questions to ask.</p>
-<a class=arrow-link href=benefits.html>Explore the guide <span aria-hidden=true>→</span>
+<a class="arrow-link" href="rituals.html">Explore the journal <span aria-hidden="true">↗</span>
 </a>
+</div>
+<div class="journal-grid">
+<article class="journal-card" data-reveal>
+<a href="serving-guide.html" class="journal-image" aria-label="The art of a simple serve.">
+<img class="" src="assets/images/lifestyle-v2/black-pour-1440.webp" srcset="assets/images/lifestyle-v2/black-pour-640.webp 640w, assets/images/lifestyle-v2/black-pour-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="Black Drink and a clear glass on a white studio table" width="1440" height="960" loading="lazy" decoding="async" >
+<span class="image-arrow" aria-hidden="true">↗</span>
+</a>
+<p class="eyebrow">01 / The serving notes</p>
+<h3>
+<a href="serving-guide.html">The art of a<br>simple serve.</a>
+</h3>
+<p>Glassware, thoughtful details and a table that feels like you.</p>
 </article>
-<article class="text-card" data-reveal>
-<span class="card-number">02</span>
-<h3>Know what’s on the label</h3>
-<p>A practical reading guide for ingredients, pack information and storage.</p>
-<a class=arrow-link href=reading-labels.html>Read the notes <span aria-hidden=true>→</span>
+<article class="journal-card" data-reveal>
+<a href="rituals.html" class="journal-image" aria-label="A change of scene.">
+<img class="" src="assets/images/lifestyle-v2/friends-picnic-1440.webp" srcset="assets/images/lifestyle-v2/friends-picnic-640.webp 640w, assets/images/lifestyle-v2/friends-picnic-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="Friends relaxing with drinks on an outdoor coastal terrace" width="1440" height="960" loading="lazy" decoding="async" >
+<span class="image-arrow" aria-hidden="true">↗</span>
 </a>
+<p class="eyebrow">02 / The everyday journal</p>
+<h3>
+<a href="rituals.html">A change<br>of scene.</a>
+</h3>
+<p>Make a little more of the pauses in your day.</p>
 </article>
-<article class="text-card" data-reveal>
-<span class="card-number">03</span>
-<h3>Welcome to your table</h3>
-<p>Explore drinks for restaurants, guest experiences and memorable events.</p>
-<a class=arrow-link href=hospitality.html>For hospitality <span aria-hidden=true>→</span>
+<article class="journal-card" data-reveal>
+<a href="reading-labels.html" class="journal-image" aria-label="A little clarity goes a long way.">
+<img class="" src="assets/images/lifestyle-v2/work-break-1440.webp" srcset="assets/images/lifestyle-v2/work-break-640.webp 640w, assets/images/lifestyle-v2/work-break-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="An adult taking a drink break at a bright studio desk" width="1440" height="960" loading="lazy" decoding="async" >
+<span class="image-arrow" aria-hidden="true">↗</span>
 </a>
+<p class="eyebrow">03 / The product notes</p>
+<h3>
+<a href="reading-labels.html">A little clarity<br>goes a long way.</a>
+</h3>
+<p>Know where to look for the product details that matter.</p>
 </article>
 </div>
 </div>
