@@ -1,134 +1,403 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us | Holy Elixir</title>
-    <meta name="description" content="Contact Holy Elixir for products, pricing, ionizer demonstrations and distribution enquiries." />
-    <meta name="theme-color" content="#087f75" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/fonts.css" />
-    <link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <nav aria-label="Main navigation">
-      <div class="container mx-auto max-w-7xl flex justify-between items-center">
-        <a href="index.html" class="flex items-center py-2">
-          <!-- Updated logo: using the new teal Zubrex logo for a fresh, modern look -->
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-16 sm:h-20 lg:h-24 w-auto mr-3" decoding="async" />
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button>
-        <ul id="site-menu" class="flex flex-wrap gap-4 items-center">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="benefits.html">Product Guide</a></li>
-          <li><a href="science.html">Science</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="partners.html">Partners</a></li>
-          <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <main id="main-content" tabindex="-1">
-
-    <!-- Header -->
-    <header class="py-16 bg-light text-center px-4">
-      <div class="container mx-auto max-w-4xl">
-        <div class="section-badge mx-auto">Get in Touch</div>
-        <h1 class="section-title text-4xl md:text-5xl mb-4">Let's Connect</h1>
-        <p class="section-subtitle">Whether you have questions, want to try Holy&nbsp;Elixir or are ready to join our dealer network, our team is here to help.</p>
-      </div>
-    </header>
-
-    <!-- Contact Form -->
-    <section class="py-16 px-4">
-      <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-4">Send Us a Message</h2>
-          <p class="text-gray-700 mb-6">Tell us which product or partnership you’re interested in. Prepare an email below, then send it through your preferred email app.</p>
-          <form class="contact-form" action="mailto:Info@holy-elixir.com" method="get">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required />
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="200" required />
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" maxlength="30" />
-            <label for="interest">Interested In</label>
-            <select id="interest" name="interest" class="w-full p-3 border border-gray-lighter rounded-md mb-4">
-              <option value="">-- Select --</option>
-              <option value="consumer">Consumer Purchase</option>
-              <option value="dealer">Dealer / Distribution</option>
-              <option value="corporate">Corporate Partnership</option>
-              <option value="other">Other</option>
-            </select>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Tell us how we can help you..." maxlength="2000" required></textarea>
-            <button type="submit" class="btn-primary mt-4">Prepare Email</button>
-          <p class="form-note">This opens your email app with a draft. Your enquiry is sent only when you send that email. You can also write directly to <a href="mailto:Info@holy-elixir.com">Info@holy-elixir.com</a>.</p><p id="form-status" role="status" class="form-note"></p>
-          </form>
-        </div>
-        <div class="space-y-6">
-          <h2 class="font-display text-2xl md:text-3xl text-navy mb-4">Contact Information</h2>
-          <p class="text-gray-700">For immediate assistance, feel free to reach out via phone or email. Our knowledgeable support team will be delighted to assist you.</p>
-          <p><strong>Email:</strong> <a href="mailto:Info@holy-elixir.com" class="text-teal">Info@holy-elixir.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+919784649100" class="text-teal">+91&nbsp;97846&nbsp;49100</a> / <a href="tel:+919829230735" class="text-teal">9829230735</a></p>
-          <p><strong>Corp. Office:</strong> 414, ARG North Avenue, Road No. 9A, VKIA, Sikar Road, Jaipur-302013</p>
-          <h3 class="font-display text-xl text-navy mt-8 mb-2">Business Hours</h3>
-          <p class="text-gray-700">Monday – Friday: 9:00 AM – 6:00 PM<br />Saturday: 10:00 AM – 2:00 PM<br />Sunday: Closed</p>
-        </div>
-      </div>
-    </section>
-
-    </main>
-    <!-- Footer -->
-    <footer class="py-12 bg-gray-100 border-t border-gray-200">
-      <div class="container mx-auto max-w-7xl grid md:grid-cols-4 gap-8 text-gray-600 text-sm">
-        <!-- Brand and social icons -->
-        <div>
-          <img src="assets/images/logo.webp" alt="Zubrex logo" class="h-12 sm:h-14 w-auto" decoding="async" />
-          <p class="mb-4">A considered collection of alkaline water, Black Drink and home ionizers. Refreshment, with a little more character.</p>
-        </div>
-        <!-- Primary navigation links -->
-        <div>
-          <h5 class="font-semibold text-navy mb-3">Quick Links</h5>
-          <ul class="space-y-1">
-            <li><a href="index.html" class="hover:text-teal">Home</a></li>
-            <li><a href="products.html" class="hover:text-teal">Products</a></li>
-            <li><a href="benefits.html" class="hover:text-teal">Product Guide</a></li>
-            <li><a href="science.html" class="hover:text-teal">Science</a></li>
-            <li><a href="faq.html" class="hover:text-teal">FAQ</a></li>
-            <li><a href="partners.html" class="hover:text-teal">Partners</a></li>
-            <li><a href="contact.html" class="hover:text-teal">Contact</a></li>
-          </ul>
-        </div>
-        <!-- Additional resources -->
-        <div>
-          <h5 class="font-semibold text-navy mb-3">Resources</h5>
-          <ul class="space-y-1">
-            <li><a href="benefits.html" class="hover:text-teal">Product Guide</a></li>
-            <li><a href="science.html" class="hover:text-teal">Science &amp; Research</a></li>
-            <li><a href="faq.html" class="hover:text-teal">FAQs</a></li>
-            <li><a href="partners.html" class="hover:text-teal">Become a Partner</a></li>
-          </ul>
-        </div>
-        <!-- Contact details -->
-        <div>
-          <h5 class="font-semibold text-navy mb-3">Contact Us</h5>
-          <p>Email: <a href="mailto:Info@holy-elixir.com" class="hover:text-teal">Info@holy-elixir.com</a></p>
-          <p>Phone: <a href="tel:+919784649100" class="hover:text-teal">+91&nbsp;97846&nbsp;49100</a> / <a href="tel:+919829230735" class="hover:text-teal">9829230735</a></p>
-          <p>Corp. Office: 414, ARG North Avenue, Road No. 9A, VKIA, Sikar Road, Jaipur-302013</p>
-        </div>
-      </div>
-      <div class="text-center text-gray-500 text-xs mt-8">&copy; <span id="year"></span> Holy Elixir. All rights reserved.</div>
-    </footer>
-    <script src="script.js"></script>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact &amp; Enquiries | Zubrex by Holy Elixir</title>
+<meta name="description" content="Contact Holy Elixir for product information, availability, ionizer consultations and business enquiries.">
+<meta name="theme-color" content="#07182e">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="refinements.css">
+<link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:title" content="Contact &amp; Enquiries | Zubrex by Holy Elixir">
+<meta property="og:description" content="Contact Holy Elixir for product information, availability, ionizer consultations and business enquiries.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://holy-elixir.com/assets/images/campaign/collection-1440.webp">
+</head>
+<body id="top">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<aside class="site-notice" aria-label="Website update notice">
+<span class="notice-label">Site update</span>
+<div class="notice-window">
+<p class="sr-only">We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</p>
+<div class="notice-track" aria-hidden="true">
+<span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span>
+<span>We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.</span>
+</div>
+</div>
+<button class="notice-pause" type="button" aria-label="Pause update notice" aria-pressed="false" hidden>Pause</button>
+</aside>
+<header class="site-header">
+<div class="wrap header-inner">
+<a class="brand" href="index.html" aria-label="Zubrex by Holy Elixir home">
+<span class="brand-symbol">
+<img src="assets/images/logo.webp" alt="Zubrex" width="440" height="293">
+</span>
+<span class="brand-sub">BY HOLY ELIXIR</span>
+</a>
+<nav class="main-nav" aria-label="Main navigation">
+<ul id="site-menu">
+<li>
+<details class="nav-dropdown">
+<summary >Collection<span aria-hidden="true">⌄</span>
+</summary>
+<div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Collection</p>
+<a href="products.html" >Explore the collection<span aria-hidden="true">↗</span>
+</a>
+<a href="alkaline-water.html" >Alkaline Water<span aria-hidden="true">↗</span>
+</a>
+<a href="black-drink.html" >Black Drink<span aria-hidden="true">↗</span>
+</a>
+<a href="ionizers.html" >Water Ionizers<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="products.html">
+<img src="assets/images/campaign/collection-640.webp" alt="Zubrex collection campaign concept" width="640" height="360" loading="lazy">
+<span>
+<small>Discover the collection</small>
+<strong>Three ways to make it yours.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="nav-dropdown">
+<summary >Our world<span aria-hidden="true">⌄</span>
+</summary>
+<div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Our world</p>
+<a href="about.html" >Our perspective<span aria-hidden="true">↗</span>
+</a>
+<a href="rituals.html" >Everyday journal<span aria-hidden="true">↗</span>
+</a>
+<a href="serving-guide.html" >The serving notes<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="rituals.html">
+<img src="assets/images/campaign/water-terrace-640.webp" alt="Zubrex alkaline water in a sunlit setting" width="640" height="640" loading="lazy">
+<span>
+<small>The everyday journal</small>
+<strong>Make a moment of it.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="nav-dropdown">
+<summary >Guides<span aria-hidden="true">⌄</span>
+</summary>
+<div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">Guides</p>
+<a href="benefits.html" >Find your choice<span aria-hidden="true">↗</span>
+</a>
+<a href="reading-labels.html" >Read your label<span aria-hidden="true">↗</span>
+</a>
+<a href="science.html" >pH & product clarity<span aria-hidden="true">↗</span>
+</a>
+<a href="faq.html" >Frequently asked<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="benefits.html">
+<img src="assets/images/campaign/ionizer-kitchen-640.webp" alt="Zubrex ionizer concept in a light kitchen" width="640" height="427" loading="lazy">
+<span>
+<small>A little product clarity</small>
+<strong>Find your everyday choice.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="nav-dropdown">
+<summary >For business<span aria-hidden="true">⌄</span>
+</summary>
+<div class="nav-panel">
+<div class="nav-panel-links">
+<p class="eyebrow">For business</p>
+<a href="hospitality.html" >Hospitality & events<span aria-hidden="true">↗</span>
+</a>
+<a href="partners.html" >Trade & partnerships<span aria-hidden="true">↗</span>
+</a>
+</div>
+<a class="nav-feature" href="hospitality.html">
+<img src="assets/images/campaign/black-occasion-640.webp" alt="Black Drink campaign concept in an evening setting" width="640" height="640" loading="lazy">
+<span>
+<small>For hospitality & events</small>
+<strong>A place at your table.</strong>
+<span aria-hidden="true">↗</span>
+</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<a class="mobile-contact" href="contact.html" aria-current=page>Contact & enquiries</a>
+</li>
+</ul>
+</nav>
+<div class="header-actions">
+<button class="search-toggle" type="button" hidden aria-label="Search the website">
+<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+<circle cx="10.5" cy="10.5" r="6.5"/>
+<path d="m16 16 4 4"/>
+</svg>
+</button>
+<a class="header-cta" href="contact.html">Enquire <span aria-hidden="true">↗</span>
+</a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span>
+</button>
+</div>
+</div>
+</header>
+<main id="main-content" tabindex="-1">
+<nav class="breadcrumbs wrap" aria-label="Breadcrumb">
+<a href="index.html">Home</a>
+<span aria-hidden="true">/</span>
+<span aria-current="page">Contact &amp; Enquiries</span>
+</nav>
+<header class="page-intro wrap">
+<p class="eyebrow">Let’s connect</p>
+<h1>Every good choice<br>starts with <em>a conversation.</em>
+</h1>
+<p class="lede">Ask about a product, discuss a home ionizer, or tell us about your business. We’ll help you find the current information you need.</p>
+</header>
+<section class="section contact-section">
+<div class="wrap contact-grid">
+<div>
+<p class="eyebrow">Your enquiry</p>
+<h2>Tell us what<br>you have in mind.</h2>
+<p>Prepare an email below, then review and send it in your email app.</p>
+<form class="contact-form" action="mailto:Info@holy-elixir.com" method="get">
+<div class="form-row">
+<div>
+<label for="name">Your name</label>
+<input id="name" name="name" autocomplete="name" maxlength="100" required>
+</div>
+<div>
+<label for="email">Email address</label>
+<input type="email" id="email" name="email" autocomplete="email" maxlength="200" required>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label for="phone">Phone <span>(optional)</span>
+</label>
+<input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30">
+</div>
+<div>
+<label for="city">City / postcode</label>
+<input id="city" name="city" autocomplete="address-level2" maxlength="100" required>
+</div>
+</div>
+<label for="interest">What are you interested in?</label>
+<select id="interest" name="interest" required>
+<option value="">Choose an interest</option>
+<option value="alkaline-water">Alkaline water</option>
+<option value="black-drink">Black Drink</option>
+<option value="ionizer">Home ionizers</option>
+<option value="hospitality">Hospitality / events</option>
+<option value="trade">Retail / distribution</option>
+<option value="business">Business supply</option>
+<option value="other">Something else</option>
+</select>
+<label for="message">Your message</label>
+<textarea id="message" name="message" rows="5" maxlength="2000" placeholder="Product, expected quantity, preferred date, or the details you’d like to know…" required>
+</textarea>
+<p class="form-note">This form creates an email draft. Your details are sent only when you send that email. Read our <a href="privacy.html">privacy notice</a>.</p>
+<button class="button" type="submit">Prepare my email <span aria-hidden="true">↗</span>
+</button>
+<p id="form-status" role="status">
+</p>
+<noscript>
+<p>JavaScript is off. Please email the details above directly to <a href="mailto:Info@holy-elixir.com">Info@holy-elixir.com</a>.</p>
+</noscript>
+</form>
+</div>
+<aside class="contact-card">
+<p class="eyebrow">A direct connection</p>
+<h2>We’re here<br>to help.</h2>
+<dl>
+<dt>Email us</dt>
+<dd>
+<a href="mailto:Info@holy-elixir.com">Info@holy-elixir.com</a>
+</dd>
+<dt>Call us</dt>
+<dd>
+<a href="tel:+919784649100">+91 97846 49100</a>
+<br>
+<a href="tel:+919829230735">+91 98292 30735</a>
+</dd>
+<dt>Corporate office</dt>
+<dd>414, ARG North Avenue,<br>Road No. 9A, VKIA,<br>Sikar Road, Jaipur 302013</dd>
+</dl>
+<div class="contact-tip">
+<span aria-hidden="true">✦</span>
+<p>For product support, include the product name and batch information where available.</p>
+</div>
+</aside>
+</div>
+</section>
+<section class="section ">
+<div class="wrap">
+<div class="section-head" data-reveal>
+<p class="eyebrow">Keep exploring</p>
+<h2>There’s more to discover.</h2>
+</div>
+<div class="cards ">
+<article class="text-card" data-reveal>
+<span class="card-number">01</span>
+<h3>A quick answer</h3>
+<p>Browse the questions we hear most often.</p>
+<a class=arrow-link href=faq.html>Open the FAQ <span aria-hidden=true>→</span>
+</a>
+</article>
+<article class="text-card" data-reveal>
+<span class="card-number">02</span>
+<h3>Before choosing</h3>
+<p>Find the right product family for your enquiry.</p>
+<a class=arrow-link href=benefits.html>The collection guide <span aria-hidden=true>→</span>
+</a>
+</article>
+<article class="text-card" data-reveal>
+<span class="card-number">03</span>
+<h3>Planning for guests</h3>
+<p>Prepare a useful venue or event enquiry.</p>
+<a class=arrow-link href=hospitality.html>For hospitality <span aria-hidden=true>→</span>
+</a>
+</article>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-top">
+<a class="brand" href="index.html">
+<span class="brand-symbol">
+<img src="assets/images/logo.webp" alt="Zubrex" width="440" height="293">
+</span>
+<span class="brand-sub">BY HOLY ELIXIR</span>
+</a>
+<p>A pause, well placed.<br>A world of refreshment to explore.</p>
+<a class="footer-email" href="mailto:Info@holy-elixir.com">Info@holy-elixir.com <span aria-hidden="true">↗</span>
+</a>
+</div>
+<div class="footer-grid">
+<div>
+<h2>The collection</h2>
+<ul>
+<li>
+<a href="products.html">All products</a>
+</li>
+<li>
+<a href="alkaline-water.html">Alkaline Water</a>
+</li>
+<li>
+<a href="black-drink.html">Black Drink</a>
+</li>
+<li>
+<a href="ionizers.html">Water Ionizers</a>
+</li>
+</ul>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li>
+<a href="about.html">Our perspective</a>
+</li>
+<li>
+<a href="rituals.html">Everyday journal</a>
+</li>
+<li>
+<a href="serving-guide.html">Serving notes</a>
+</li>
+<li>
+<a href="benefits.html">Collection guide</a>
+</li>
+</ul>
+</div>
+<div>
+<h2>Here to help</h2>
+<ul>
+<li>
+<a href="reading-labels.html">Reading your label</a>
+</li>
+<li>
+<a href="science.html">pH & product clarity</a>
+</li>
+<li>
+<a href="faq.html">FAQs</a>
+</li>
+<li>
+<a href="contact.html">Contact us</a>
+</li>
+</ul>
+</div>
+<div>
+<h2>For business</h2>
+<ul>
+<li>
+<a href="hospitality.html">Hospitality & events</a>
+</li>
+<li>
+<a href="partners.html">Trade & partnerships</a>
+</li>
+</ul>
+</div>
+<div>
+<h2>Find us</h2>
+<p>414, ARG North Avenue,<br>Road No. 9A, VKIA,<br>Sikar Road, Jaipur 302013</p>
+<a href="tel:+919784649100">+91 97846 49100</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="year">2026</span> Holy Elixir. All rights reserved.</span>
+<div>
+<a href="privacy.html">Privacy notice</a>
+<a href="terms.html">Website notes</a>
+<a href="#top">Back to top ↑</a>
+</div>
+</div>
+<p class="footer-credit">
+<span>Powered by</span>
+<a href="https://samvidalabs.com/" aria-label="Samvida Labs website">
+<img src="assets/images/samvida-labs-symbol.png" alt="Samvida Labs logo" width="28" height="28">
+<strong>Samvida Labs</strong>
+</a>
+</p>
+</div>
+</footer>
+<dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+<form method="dialog">
+<button class="dialog-close" aria-label="Close search">Close ×</button>
+</form>
+<p class="eyebrow">Explore Zubrex</p>
+<h2 id="search-title">What are you looking for?</h2>
+<label class="sr-only" for="site-query">Search pages</label>
+<input type="search" id="site-query" placeholder="Try Black Drink, serving or trade…" autocomplete="off">
+<p class="search-count" role="status">
+</p>
+<div class="search-results">
+</div>
+</dialog>
+<script src="assets/page-index.js" defer>
+</script>
+<script src="script.js" defer>
+</script>
+</body>
 </html>
