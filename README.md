@@ -19,3 +19,5 @@ The current website follows the supplied Zubrex presentation. It has 17 public p
 Edit page content and shared HTML in `scripts/build-pages.py`, then run `python scripts/build-pages.py` to regenerate the HTML, local search index and sitemap. The current design uses `holy-elixir/premium.css`, `refinements.css`, `assets/fonts.css` and `script.js`; the legacy utility styles are retained as history and are not loaded by current pages. Search and cinematic still-image motion are implemented locally without extra runtime dependencies.
 
 The development preview branch is `elegant-preview`. The branch named `staging` is connected to production at https://holy-elixir.com/. Production releases require explicit user approval. The release PR includes the premium redesign, Samvida Labs footer logo and Zubrex Z favicon family. See `docs/brand-assets.md` for brand asset provenance and rebuilding instructions.
+
+For the local seasonal build and poster replacement, see `docs/diwali-preview.md`.

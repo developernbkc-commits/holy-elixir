@@ -1,0 +1,175 @@
+/* Seasonal styling. The supplied hero and optional poster preview share the palette. */
+.theme-diwali {
+  --cream: #fcf7ee;
+  --gold: #f3cc80;
+  --gold-dark: #805619;
+  --line: #e6d7bf;
+}
+.theme-diwali .site-header {
+  background: linear-gradient(100deg, #07182e 25%, #24162d);
+  border-bottom: 1px solid #c897465c;
+}
+.theme-diwali .site-footer { border-top-color: #c8974690; }
+.theme-diwali .brand-ribbon { background: #fffaf1; }
+.theme-diwali .cta-band { background: #f1e4cc; }
+
+.zubrex-diwali {
+  --plum: #260817;
+  --festival-gold: #f4cd8b;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--plum);
+  color: #fff1dc;
+  border-bottom: 2px solid #a77745;
+}
+.zubrex-diwali__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+  padding: clamp(1.65rem, 3vw, 4.5rem) clamp(1.5rem, 4vw, 5rem)
+    clamp(1.65rem, 3vw, 4.5rem) clamp(2rem, 6vw, 8rem);
+  background: radial-gradient(ellipse at 5% 86%, #490e30, var(--plum) 70%);
+}
+.zubrex-diwali__ornament {
+  position: absolute;
+  z-index: -1;
+  left: -11rem;
+  bottom: -11.8rem;
+  width: 26rem;
+  height: 26rem;
+  opacity: .19;
+  pointer-events: none;
+}
+.zubrex-diwali__brand {
+  display: inline-flex;
+  align-items: center;
+  padding: .43rem .9rem;
+  border: 1px solid #e6c28b;
+  border-radius: .65rem;
+  background: #fff6e3;
+}
+.zubrex-diwali__brand img { display: block; width: clamp(7rem, 8.8vw, 11.75rem); height: auto; }
+.zubrex-diwali h1 {
+  margin: .21em 0 .2em;
+  color: var(--festival-gold);
+  font: 400 clamp(3.6rem, 7.64vw, 9.25rem)/.91 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.06em;
+}
+.zubrex-diwali h1 em { display: block; color: #ffe8b9; padding-right: .09em; }
+.zubrex-diwali__wish {
+  max-width: 25ch;
+  margin: 0;
+  color: #fff2e1;
+  font: 400 clamp(1.1rem, 1.58vw, 1.9rem)/1.43 Georgia, 'Times New Roman', serif;
+}
+.zubrex-diwali__signature {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: clamp(1.15rem, 2.1vw, 2.5rem) 0 0;
+  color: var(--festival-gold);
+  font: italic 400 clamp(.98rem, 1.3vw, 1.5rem)/1.3 Georgia, 'Times New Roman', serif;
+}
+.zubrex-diwali__signature svg { width: 1.55em; height: 1.55em; flex: none; }
+.zubrex-diwali__art { position: relative; display: grid; align-items: center; min-width: 0; margin: 0; }
+.zubrex-diwali__art img { display: block; width: 100%; height: auto; }
+.zubrex-diwali__art::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(90deg, var(--plum), transparent 9%);
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .zubrex-diwali { grid-template-columns: minmax(0, 1fr); }
+  .zubrex-diwali__copy { align-items: center; text-align: center; padding: 1.65rem 1.1rem 1.45rem; }
+  .zubrex-diwali__ornament { left: -9rem; bottom: -10rem; width: 20rem; height: 20rem; }
+  .zubrex-diwali h1 { font-size: clamp(2.8rem, 11.7vw, 5.5rem); margin: .3em 0 .24em; }
+  .zubrex-diwali h1 em { display: inline; padding: 0; }
+  .zubrex-diwali__wish { max-width: 33ch; }
+  .zubrex-diwali__signature { margin-top: .9rem; }
+  .zubrex-diwali__art::after { background: linear-gradient(180deg, var(--plum), transparent 7%); }
+}
+
+.diwali-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff8ea;
+  background:
+    radial-gradient(ellipse at 85% 37%, #9a572d63, transparent 57%),
+    radial-gradient(ellipse at 5% 100%, #6e304453, transparent 47%),
+    linear-gradient(125deg, #11182c, #28172e 57%, #3b202a);
+  border-bottom: 1px solid #d0a15f;
+}
+.diwali-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 410px;
+  aspect-ratio: 1;
+  top: -285px;
+  left: -160px;
+  border-radius: 50%;
+  border: 1px solid #efc37c33;
+  box-shadow: 0 0 0 22px #efc37c10, 0 0 0 46px #efc37c0c, 0 0 0 74px #efc37c08;
+}
+.diwali-stage {
+  display: grid;
+  grid-template-columns: minmax(0, .91fr) minmax(0, 1.09fr);
+  align-items: center;
+  gap: clamp(30px, 6vw, 90px);
+  padding-block: clamp(40px, 5.2vw, 82px);
+}
+.diwali-diya { display: block; color: #f4cc83; margin-bottom: 25px; }
+.diwali-copy .eyebrow { margin: 0 0 14px; color: #f4cc83; }
+.diwali-copy h1 { color: inherit; font-size: clamp(3.4rem, 6.8vw, 6.8rem); line-height: 1.04; }
+.diwali-copy h1 em { color: #f4cc83; }
+.diwali-copy > p:not(.eyebrow) { max-width: 370px; margin: 23px 0 25px; color: #f2e0d2; font-size: 1rem; }
+.diwali-copy .actions { gap: 12px; }
+.diwali-copy .button { color: #261525; background: #f3cc80; border-color: #f3cc80; }
+.diwali-copy .button:hover { background: #ffe1a1; }
+.diwali-copy .button--line { color: #fff8ea; background: transparent; border-color: #dfbc8777; }
+.diwali-copy .button--line:hover { background: #fff8ea16; }
+.diwali-art { min-width: 0; margin: 0; }
+.diwali-frame {
+  padding: clamp(6px, .85vw, 12px);
+  border: 1px solid #f4cc8366;
+  border-radius: 9px;
+  background: #110e19b3;
+  box-shadow: 0 22px 52px #07050b50;
+}
+.diwali-frame img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 540px;
+  object-fit: contain;
+  margin-inline: auto;
+  border-radius: 3px;
+}
+.diwali-art figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #e8cdb5;
+  font-size: 11px;
+  letter-spacing: .05em;
+}
+@media (max-width: 760px) {
+  .diwali-stage { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 34px 30px; }
+  .diwali-diya { width: 48px; height: 38px; margin-bottom: 18px; }
+  .diwali-copy h1 { font-size: clamp(2.85rem, 11vw, 4.4rem); }
+  .diwali-copy > p:not(.eyebrow) { margin: 16px 0 19px; font-size: .92rem; }
+  .diwali-copy .button { min-height: 44px; }
+  .diwali-frame img { max-height: 460px; }
+}
