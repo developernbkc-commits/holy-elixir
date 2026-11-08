@@ -1,0 +1,289 @@
+/* Shared finish and homepage for the Zubrex collection. */
+.signature-site {
+  --navy: #111e2d;
+  --navy-soft: #1d2d3f;
+  --ink: #172331;
+  --cream: #f8f5ee;
+  --paper: #efe8db;
+  --gold: #e5c88e;
+  --gold-dark: #735420;
+  --brass: #a57b38;
+  --muted: #515b64;
+  --line: #ddd5c8;
+  --signature-ivory: #fcfaf5;
+  --signature-dark-line: #e6d3ad3d;
+}
+
+.signature-site .site-header { border-bottom-color: var(--signature-dark-line); }
+.signature-site .nav-dropdown summary { color: #ece7dd; }
+.signature-site .nav-dropdown summary:hover,
+.signature-site .nav-dropdown summary.nav-current { color: var(--gold); }
+.signature-site .header-cta { border-color: #e5c88e90; }
+.signature-site .site-footer { background: var(--navy); border-top-color: var(--signature-dark-line); }
+.signature-site .footer-top p { color: #f3e9d8; }
+.signature-site .footer-grid a, .signature-site .footer-grid p { color: #d4d8de; }
+.signature-site .page-intro::before, .signature-site .page-intro::after { display: none; }
+.signature-site .product-hero h1, .signature-site .page-intro h1 { text-wrap: balance; }
+.signature-site .product-hero-art,
+.signature-site .product-hero--appliance .product-hero-art {
+  aspect-ratio: 3 / 2;
+  border-radius: 0;
+  border-color: var(--line);
+  background: #ece7dd;
+  padding: clamp(6px, 1vw, 14px);
+}
+.signature-site .product-hero-art img { border-radius: 0; }
+.signature-site .product-image,
+.signature-site .product-card:nth-child(3) .product-image,
+.signature-site .split-art { border-radius: 0; box-shadow: none; }
+.signature-site .text-card { background: var(--signature-ivory); }
+.signature-site .text-card:has(a):hover { transform: none; box-shadow: none; }
+.signature-site .cta-band { background: var(--paper); }
+.signature-site .contact-card { background: var(--navy); }
+
+.signature-kicker {
+  color: var(--gold-dark);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .17em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.signature-action,
+.signature-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .95rem;
+  min-height: 44px;
+  max-width: 100%;
+  font-size: .83rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.signature-action {
+  min-height: 51px;
+  padding: .75rem 1.15rem;
+  color: var(--navy);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.signature-action:hover { background: #f1dcae; border-color: #f1dcae; }
+.signature-link {
+  border-bottom: 1px solid currentColor;
+  min-height: 40px;
+  padding-block: .35rem;
+  width: fit-content;
+}
+.signature-action span, .signature-link span { flex: none; font-size: 1rem; }
+.signature-link:hover { color: var(--gold-dark); }
+.signature-action:focus-visible, .signature-link:focus-visible { outline-offset: 5px; }
+
+.signature-hero {
+  display: grid;
+  grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  min-height: clamp(31rem, 45vw, 43rem);
+  color: var(--signature-ivory);
+  background: var(--navy);
+  border-bottom: 1px solid var(--line);
+}
+.signature-hero__copy {
+  align-self: center;
+  min-width: 0;
+  padding: clamp(2.4rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem);
+  padding-inline-start: max(clamp(2rem, 4.5vw, 4rem), calc((100vw - 1280px) / 2));
+}
+.signature-hero__copy .signature-kicker { color: var(--gold); }
+.signature-hero h1 {
+  color: var(--signature-ivory);
+  margin: 1.25rem 0 1.55rem;
+  font-size: clamp(4.45rem, 8.5vw, 9rem);
+  line-height: .94;
+  letter-spacing: -.056em;
+}
+.signature-hero h1 em { display: block; color: var(--gold); }
+.signature-hero__lede { max-width: 35ch; color: #dfddd9; font-size: clamp(1rem, 1.25vw, 1.13rem); line-height: 1.7; }
+.signature-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem 1.3rem; margin-top: 1.65rem; }
+.signature-hero .signature-link { color: #f2e8d4; border-color: #e5c88e72; }
+.signature-hero .signature-link:hover { color: var(--gold); }
+.signature-hero__art {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1rem, 2.4vw, 2.4rem);
+  color: var(--ink);
+  background: radial-gradient(ellipse at 55% 42%, #fffdf7, #e9decb 95%);
+  isolation: isolate;
+}
+.signature-hero__plate {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: clamp(.6rem, 1.5vw, 1.5rem);
+  border: 1px solid #8c745234;
+}
+.signature-hero__plate img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(20rem, 32.5vw, 34rem);
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.signature-hero__art figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .8rem .15rem 0;
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.signature-jumps { background: var(--signature-ivory); border-bottom: 1px solid var(--line); }
+.signature-jumps ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; margin-block: 0; list-style: none; }
+.signature-jumps li + li { border-left: 1px solid var(--line); }
+.signature-jumps a {
+  display: flex;
+  align-items: center;
+  gap: clamp(.5rem, 1.5vw, 1.3rem);
+  min-height: 65px;
+  padding: .75rem clamp(.75rem, 2vw, 2rem);
+  color: var(--ink);
+  font-size: .87rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.signature-jumps a:hover { color: var(--gold-dark); }
+.signature-index { color: var(--gold-dark); font-size: .66rem; letter-spacing: .09em; }
+.signature-jumps__arrow { margin-left: auto; color: var(--gold-dark); flex: none; }
+
+.signature-section { padding-block: clamp(3.5rem, 7.5vw, 7rem); }
+.signature-section h2, .signature-contact h2 {
+  color: var(--ink);
+  font-size: clamp(2.7rem, 5vw, 5.1rem);
+  line-height: 1.04;
+  letter-spacing: -.047em;
+}
+.signature-section__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.4rem 3rem;
+  margin-bottom: clamp(1.7rem, 4vw, 3.2rem);
+}
+.signature-section__head h2, .signature-serving h2, .signature-hospitality h2 { margin-top: .8rem; }
+.signature-section__head > p { color: var(--muted); max-width: 34ch; font-size: 1rem; line-height: 1.75; }
+.signature-collection__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.35rem, 3vw, 2.75rem); }
+.signature-product { min-width: 0; border: 1px solid var(--line); background: var(--signature-ivory); }
+.signature-product > a { display: flex; flex-direction: column; height: 100%; }
+.signature-product__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: #ebe8e2;
+  border-bottom: 1px solid var(--line);
+}
+.signature-product__image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.signature-product__image--ionizer img { object-fit: contain; }
+.signature-product > a:hover img { transform: scale(1.025); }
+.signature-image-note {
+  position: absolute;
+  bottom: .65rem;
+  left: .65rem;
+  padding: .32rem .55rem;
+  background: var(--signature-ivory);
+  color: var(--ink);
+  font-size: .65rem;
+  line-height: 1.3;
+}
+.signature-product__copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .8rem 1rem; align-items: end; padding: clamp(1.2rem, 3.2vw, 2.4rem); }
+.signature-product__copy h3 { font-size: clamp(1.8rem, 3.7vw, 3.15rem); line-height: 1.12; margin: .45rem 0 .65rem; }
+.signature-product__copy p:not(.signature-kicker) { color: var(--muted); max-width: 39ch; line-height: 1.65; font-size: .94rem; }
+.signature-round-arrow {
+  display: grid;
+  place-items: center;
+  width: clamp(2.3rem, 4vw, 3.1rem);
+  aspect-ratio: 1;
+  color: var(--gold-dark);
+  border: 1px solid #bfa980;
+  border-radius: 50%;
+  transition: background-color .2s ease, color .2s ease;
+}
+.signature-product > a:hover .signature-round-arrow { background: var(--navy); border-color: var(--navy); color: var(--signature-ivory); }
+
+.signature-serving { background: var(--paper); border-block: 1px solid var(--line); }
+.signature-serving__grid, .signature-hospitality__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+.signature-serving__image, .signature-hospitality__image { margin: 0; min-width: 0; }
+.signature-serving__image img, .signature-hospitality__image img { display: block; width: 100%; height: auto; }
+.signature-serving__copy > p:not(.signature-kicker),
+.signature-hospitality__copy > p:not(.signature-kicker) { max-width: 42ch; color: var(--muted); font-size: 1rem; line-height: 1.75; margin-top: 1.15rem; }
+.signature-reading-list { margin: 1.45rem 0 0; padding: 0; list-style: none; border-top: 1px solid #cbbfae; }
+.signature-reading-list li { border-bottom: 1px solid #cbbfae; }
+.signature-reading-list a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .85rem; color: var(--ink); }
+.signature-reading-list a:hover { color: var(--gold-dark); }
+.signature-reading-list strong { display: block; font-size: .94rem; line-height: 1.35; }
+.signature-reading-list small { display: block; color: var(--muted); font-size: .77rem; line-height: 1.45; margin-top: .25rem; }
+.signature-reading-list a > span:last-child { color: var(--gold-dark); flex: none; }
+.signature-hospitality { background: var(--signature-ivory); }
+.signature-hospitality__grid { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); }
+.signature-hospitality .signature-link { margin-top: 1.1rem; }
+
+.signature-contact {
+  padding-block: clamp(2.6rem, 6vw, 5.2rem);
+  background: var(--navy-soft);
+  color: var(--signature-ivory);
+  border-block: 1px solid var(--signature-dark-line);
+}
+.signature-contact__inner { display: flex; justify-content: space-between; align-items: center; gap: 1.7rem 3.4rem; }
+.signature-contact h2 { color: var(--signature-ivory); margin-block: .65rem .9rem; }
+.signature-contact p:not(.signature-kicker) { color: #dedbd4; max-width: 54ch; line-height: 1.65; }
+.signature-contact .signature-kicker { color: var(--gold); }
+.signature-contact__actions { display: flex; align-items: flex-start; flex-direction: column; gap: .6rem; flex: none; }
+.signature-contact .signature-link { color: var(--signature-ivory); border-color: #e5c88e72; }
+.signature-contact .signature-link:hover { color: var(--gold); }
+
+@media (max-width: 820px) {
+  .signature-hero__copy { padding-inline: 2rem; }
+  .signature-hero__actions { gap: .6rem 1rem; }
+  .signature-section__head { align-items: start; }
+  .signature-serving__grid, .signature-hospitality__grid { gap: 2rem; }
+}
+@media (max-width: 720px) {
+  .signature-hero, .signature-collection__grid,
+  .signature-serving__grid, .signature-hospitality__grid { grid-template-columns: minmax(0, 1fr); }
+  .signature-hero__copy { padding: clamp(2rem, 8vw, 3.25rem) 1.25rem; }
+  .signature-hero h1 { font-size: clamp(3.05rem, 11.5vw, 5.25rem); margin-block: .85rem 1rem; }
+  .signature-hero h1 em { display: inline; }
+  .signature-hero__lede { font-size: .96rem; line-height: 1.65; }
+  .signature-hero__actions { margin-top: 1.1rem; }
+  .signature-hero__art { padding: .85rem 1.25rem 1rem; }
+  .signature-hero__plate img { height: clamp(15rem, 64vw, 24rem); }
+  .signature-hero__art figcaption { font-size: .61rem; padding-top: .7rem; }
+  .signature-jumps a { font-size: .77rem; min-height: 61px; }
+  .signature-jumps .signature-index { display: none; }
+  .signature-section__head, .signature-contact__inner { flex-direction: column; align-items: flex-start; }
+  .signature-section__head > p { max-width: 42ch; }
+  .signature-serving__image { order: 2; }
+  .signature-contact__actions { flex-wrap: wrap; flex-direction: row; align-items: center; gap: .65rem 1.1rem; }
+}
+@media (max-width: 380px) {
+  .signature-hero__copy, .signature-hero__art { padding-inline: 1rem; }
+  .signature-action { padding-inline: .75rem; font-size: .77rem; }
+  .signature-link { font-size: .77rem; }
+  .signature-jumps a { padding-inline: .4rem; gap: .3rem; }
+  .signature-jumps__arrow { font-size: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-action, .signature-round-arrow, .signature-product__image img { transition: none; }
+  .signature-product > a:hover img { transform: none; }
+}

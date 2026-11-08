@@ -3,6 +3,17 @@
   publish = "."
   command = ""
 
+# Keep bookmarked product URLs useful while the blue-pack line is off the site.
+[[redirects]]
+  from = "/alkaline-water"
+  to = "/products.html"
+  status = 302
+
+[[redirects]]
+  from = "/alkaline-water.html"
+  to = "/products.html"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]

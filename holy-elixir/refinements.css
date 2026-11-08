@@ -25,9 +25,9 @@
 
 /* A wide menu pairs useful links with one visual invitation. */
 @media (min-width: 761px) {
-  .nav-panel, .main-nav li:nth-last-child(2) .nav-panel { position: fixed; top: calc(var(--notice-height) + var(--header-height)); left: 50%; right: auto; transform: translateX(-50%); width: min(870px, calc(100vw - 72px)); padding: 28px; display: grid; grid-template-columns: 1fr 1.12fr; gap: 34px; border-top: 1px solid var(--gold); box-shadow: 0 26px 50px #03102129; background: #faf8f3; }
+  .nav-panel, .main-nav li:nth-last-child(2) .nav-panel { position: fixed; top: var(--header-height); left: 50%; right: auto; transform: translateX(-50%); width: min(870px, calc(100vw - 72px)); padding: 28px; display: grid; grid-template-columns: 1fr 1.12fr; gap: 34px; border-top: 1px solid var(--gold); box-shadow: 0 26px 50px #03102129; background: #faf8f3; }
   .nav-panel-links { padding: 6px 9px; }
-  .nav-panel { max-height: calc(100svh - var(--notice-height) - var(--header-height) - 20px); overflow-y: auto; }
+  .nav-panel { max-height: calc(100svh - var(--header-height) - 20px); overflow-y: auto; }
   .nav-panel-links .eyebrow { margin: 0 0 12px 10px; font-size: 9px; }
   .nav-panel .nav-panel-links a { font-family: var(--display); font-size: 21px; padding-block: 13px; border-bottom: 1px solid #d9d8d0; }
   .nav-panel a span { color: var(--gold-dark); font-size: 17px; }
