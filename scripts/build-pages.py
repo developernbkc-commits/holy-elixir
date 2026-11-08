@@ -8,7 +8,7 @@ import shutil
 
 PROJECT = Path(__file__).resolve().parent.parent
 SOURCE = PROJECT / 'holy-elixir'
-DIWALI_LIVE = False
+DIWALI_LIVE = True
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--diwali-preview', action='store_true', help='Build a separate Diwali preview in qa/diwali-preview.')
 parser.add_argument('--poster', type=Path, help='Optional JPG, PNG or WebP poster for the Diwali preview.')
@@ -237,7 +237,7 @@ for file,page in PAGES.items():
     pack_dialog='<dialog class="pack-dialog" id="pack-viewer" aria-labelledby="pack-title"><form method="dialog"><button class="dialog-close" aria-label="Close product photograph">Close ×</button></form><h2 id="pack-title">The actual Black Drink pack.</h2><p>500 ml pack photograph. Refer to the current product label for its declarations.</p><img src="assets/images/lifestyle-v2/black-drink-actual.webp" alt="Full photograph of the actual supplied Zubrex Black Drink 500 ml packaging" width="621" height="1100" loading="lazy"></dialog>' if file=='black-drink.html' else ''
     breadcrumb='' if file=='index.html' else f'<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span>'+ (f'<a href="products.html">Collection</a><span aria-hidden="true">/</span>' if page['group']=='Collection' and file!='products.html' else '')+f'<span aria-current="page">{escape(page["title"].split(" | ")[0])}</span></nav>'
     robots = '<meta name="robots" content="noindex,nofollow">' if page['noindex'] or args.diwali_preview else ''
-    seasonal_styles = '<link rel="stylesheet" href="diwali.css">' if seasonal else ''
+    seasonal_styles = '<link rel="stylesheet" href="diwali.css"><link rel="stylesheet" href="festival-surfaces.css">' if seasonal else ''
     body_class = 'signature-site theme-diwali' if seasonal else 'signature-site'
     social_image = {'black-drink.html':'lifestyle-v2/black-pour-1440.webp', 'ionizers.html':'campaign/ionizer-kitchen-1440.webp', 'hospitality.html':'lifestyle-v2/hospitality-1440.webp'}.get(file, 'lifestyle-v2/joyful-dining-1440.webp')
     if file == 'index.html' and seasonal and not poster_url:
