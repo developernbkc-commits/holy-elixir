@@ -1,24 +1,6 @@
 'use strict';
 document.documentElement.classList.add('js');
 document.addEventListener('DOMContentLoaded', function () {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const notice = document.querySelector('.site-notice');
-  const noticeButton = document.querySelector('.notice-pause');
-  function measureNotice() {
-    document.documentElement.style.setProperty('--notice-height', notice.offsetHeight + 'px');
-  }
-  function updateNotice() { noticeButton.hidden = reduced.matches; measureNotice(); }
-  noticeButton.addEventListener('click', function () {
-    const paused = notice.classList.toggle('is-paused');
-    noticeButton.setAttribute('aria-pressed', String(paused));
-    noticeButton.setAttribute('aria-label', (paused ? 'Resume' : 'Pause') + ' update notice');
-    noticeButton.textContent = paused ? 'Resume' : 'Pause';
-  });
-  if ('ResizeObserver' in window) new ResizeObserver(measureNotice).observe(notice);
-  window.addEventListener('resize', measureNotice);
-  reduced.addEventListener('change', updateNotice);
-  updateNotice();
-
   const menuButton = document.querySelector('.menu-toggle');
   const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
   const mobile = window.matchMedia('(max-width:760px)');
@@ -51,30 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   mobile.addEventListener('change', () => closeNavigation(false));
 
-  document.querySelectorAll('.moment-section').forEach(function (section) {
-    const controls = section.querySelector('.moment-controls');
-    controls.hidden = false;
-    const buttons = Array.from(section.querySelectorAll('[data-moment]'));
-    function selectMoment(button) {
-      buttons.forEach(function (other) {
-        const selected = other === button;
-        other.setAttribute('aria-pressed', String(selected));
-        document.getElementById(other.getAttribute('aria-controls')).hidden = !selected;
-      });
-    }
-    buttons.forEach(function (button, i) {
-      button.addEventListener('click', () => selectMoment(button));
-      button.addEventListener('keydown', function (event) {
-        let next;
-        if (event.key === 'ArrowRight') next = (i + 1) % buttons.length;
-        if (event.key === 'ArrowLeft') next = (i - 1 + buttons.length) % buttons.length;
-        if (event.key === 'Home') next = 0;
-        if (event.key === 'End') next = buttons.length - 1;
-        if (next !== undefined) { event.preventDefault(); buttons[next].focus(); selectMoment(buttons[next]); }
-      });
-    });
-  });
-
   const packViewer = document.getElementById('pack-viewer');
   const packZoom = document.querySelector('[data-pack-zoom]');
   if (packViewer && packZoom && typeof packViewer.showModal === 'function') {
@@ -86,47 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) packViewer.close();
       }
     });
-  }
-
-  const reveals = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && !reduced.matches) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => observer.observe(el));
-    reduced.addEventListener('change', function () { if (reduced.matches) { reveals.forEach(el => el.classList.add('is-visible')); observer.disconnect(); } });
-  } else reveals.forEach(el => el.classList.add('is-visible'));
-
-  const cinema = document.querySelector('.cinema');
-  if (cinema) {
-    const frames = Array.from(cinema.querySelectorAll('.cinema-frame'));
-    const choices = Array.from(cinema.querySelectorAll('[data-scene-select]'));
-    const pauseButton = cinema.querySelector('.motion-toggle');
-    let current = 0;
-    let userPaused = false;
-    let timer;
-    function show(index) {
-      current = index;
-      frames.forEach((frame, i) => frame.classList.toggle('is-active', i === index));
-      choices.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-    }
-    function schedule() {
-      clearInterval(timer);
-      const paused = userPaused || reduced.matches;
-      cinema.classList.toggle('is-paused', paused || document.hidden);
-      pauseButton.setAttribute('aria-pressed', String(paused));
-      pauseButton.textContent = paused ? 'Play motion' : 'Pause motion';
-      pauseButton.disabled = reduced.matches;
-      pauseButton.hidden = reduced.matches;
-      if (!paused && !document.hidden && !cinema.contains(document.activeElement)) timer = setInterval(() => show((current + 1) % frames.length), 9000);
-    }
-    choices.forEach((button, i) => button.addEventListener('click', () => { show(i); schedule(); }));
-    pauseButton.addEventListener('click', () => { userPaused = !userPaused; schedule(); });
-    cinema.addEventListener('focusin', () => clearInterval(timer));
-    cinema.addEventListener('focusout', () => setTimeout(schedule, 0));
-    document.addEventListener('visibilitychange', schedule);
-    reduced.addEventListener('change', schedule);
-    schedule();
   }
 
   const searchButton = document.querySelector('.search-toggle');
