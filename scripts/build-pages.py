@@ -1,10 +1,36 @@
 """Generate the prebuilt static site. No template engine or runtime dependency required."""
 from pathlib import Path
 from html import escape
+import argparse
 import json
 import re
+import shutil
 
-ROOT = Path(__file__).resolve().parent.parent / 'holy-elixir'
+PROJECT = Path(__file__).resolve().parent.parent
+SOURCE = PROJECT / 'holy-elixir'
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--diwali-preview', action='store_true', help='Build a separate Diwali preview in qa/diwali-preview.')
+parser.add_argument('--poster', type=Path, help='Optional JPG, PNG or WebP poster for the Diwali preview.')
+parser.add_argument('--poster-alt', help='Text alternative for the supplied poster.')
+args = parser.parse_args()
+if (args.poster or args.poster_alt) and not args.diwali_preview:
+    parser.error('Poster options require --diwali-preview.')
+if args.poster and (not args.poster.is_file() or args.poster.suffix.lower() not in {'.jpg', '.jpeg', '.png', '.webp'} or not (args.poster_alt or '').strip()):
+    parser.error('Supply an existing JPG, PNG or WebP poster and a nonempty --poster-alt.')
+if args.poster_alt and not args.poster:
+    parser.error('--poster-alt requires --poster.')
+
+ROOT = PROJECT / 'qa' / 'diwali-preview' if args.diwali_preview else SOURCE
+poster_url = None
+if args.diwali_preview:
+    shutil.copytree(SOURCE, ROOT, dirs_exist_ok=True, ignore=shutil.ignore_patterns('*.html', 'sitemap.xml'))
+    shutil.copyfile(PROJECT / 'styles' / 'diwali.css', ROOT / 'diwali.css')
+    (ROOT / 'robots.txt').write_text('User-agent: *\nDisallow: /\n', encoding='utf-8')
+    if args.poster:
+        poster_url = f'assets/images/campaign/diwali-poster{args.poster.suffix.lower()}'
+        if args.poster.resolve() != (ROOT / poster_url).resolve():
+            shutil.copyfile(args.poster, ROOT / poster_url)
+
 PAGES = {}
 NOTICE = 'We’re updating our website. Some content may reflect earlier information. We are working closely with the relevant authorities to keep our information accurate and improve your experience. Thank you for your patience.'
 
@@ -72,13 +98,22 @@ hero=f'''<section class="cinema" aria-labelledby="home-title">
 <div class="wrap cinema-bottom"><div class="scene-picker" role="group" aria-label="Choose a campaign scene"><button type="button" data-scene-select="0" aria-pressed="true"><span>01</span> The collection</button><button type="button" data-scene-select="1" aria-pressed="false"><span>02</span> After hours</button><button type="button" data-scene-select="2" aria-pressed="false"><span>03</span> In daylight</button></div><button class="motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button></div>
 </section>'''
 hero=hero.replace('</section>','<p class="campaign-note wrap">Campaign concepts · <a href="products.html">Explore current product information</a></p></section>')
+if args.diwali_preview:
+    art = (f'<img src="{poster_url}" alt="{escape(args.poster_alt)}" fetchpriority="high" decoding="async">' if poster_url
+           else image('black-occasion','Black Drink campaign concept with glowing diyas on a marble table',eager=True))
+    caption = '' if poster_url else '<figcaption>Preview artwork <span aria-hidden="true">·</span> Final poster to follow</figcaption>'
+    hero = f'''<section class="diwali-hero" aria-labelledby="home-title"><div class="wrap diwali-stage">
+<div class="diwali-copy"><svg class="diwali-diya" viewBox="0 0 80 62" width="64" height="50" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39 6c3 7 10 11 10 19a9 9 0 0 1-18 0c0-6 6-13 8-19Z"/><path d="M39 23c-4 5-4 8 1 11M11 38h58c-4 11-14 17-29 17S15 49 11 38ZM24 59h32M8 26l5 3m59-3-5 3M20 15l4 4m36-4-4 4"/></svg>
+<p class="eyebrow">Zubrex · Festival of lights</p><h1 id="home-title">Happy <em>Diwali.</em></h1><p>Wishing you warm evenings, good company and more moments worth sharing.</p><div class="actions">{link('products.html','Explore the collection')}{link('serving-guide.html','Serving notes',True)}</div></div>
+<figure class="diwali-art"><div class="diwali-frame">{art}</div>{caption}</figure>
+</div></section>'''
 home=hero+'''<div class="brand-ribbon"><div class="wrap"><span>Everyday, elevated.</span><span>Alkaline water <i>✦</i> Black Drink <i>✦</i> Water ionizers</span><a href="benefits.html">Find your choice <span aria-hidden="true">→</span></a></div></div>'''
 home+=section('The collection','Three ways to make it yours.','A distinctive drink for an occasion, water for your day, and an ionizer to explore for home.',product_cards())
 home+=moment_explorer()
 home+=f'''<section class="occasion-story"><div class="occasion-visual" data-reveal>{image('black-occasion','Black Drink campaign concept with warm light and a marble table',full=True)}</div><div class="occasion-copy wrap"><p class="eyebrow">The evening edit</p><h2>A place at<br>your <em>celebration.</em></h2><p>Bring a distinctive Black Drink to the table. Set out the glasses, make room for good conversation, and savour the occasion.</p>{link('black-drink.html','Meet Black Drink')}{link('serving-guide.html','The serving notes',True)}</div></section>'''
 home+=journal_cards()
 home+=cta()
-add('index.html','Zubrex by Holy Elixir | A pause, well placed.','Discover Zubrex alkaline water, Black Drink and home water ionizers. Explore the collection, serving ideas and product guides.',home,'Home')
+add('index.html','Diwali at Zubrex | Holy Elixir' if args.diwali_preview else 'Zubrex by Holy Elixir | A pause, well placed.','Discover Zubrex alkaline water, Black Drink and home water ionizers. Explore the collection, serving ideas and product guides.',home,'Home')
 
 products=intro('The Zubrex collection','Refreshment, with <em>character.</em>','Discover three distinct product families. Explore the details, compare your options, and ask us about availability in your area.','<div class="pill-nav"><a href="#alkaline-water">Alkaline water</a><a href="#black-drink">Black Drink</a><a href="#ionizers">Ionizers</a><a href="#compare-products">Compare the range</a></div>')
 for id_,k,title,body,img,alt,href in [
@@ -227,9 +262,12 @@ for file,page in PAGES.items():
         page['body']=page['body'].replace('</div><div class="split-copy" data-reveal><p class="eyebrow">A closer look at the pack', '<button class="pack-zoom quiet-link" data-pack-zoom type="button" hidden>View the pack photograph <span aria-hidden="true">↗</span></button></div><div class="split-copy" data-reveal><p class="eyebrow">A closer look at the pack')
     pack_dialog='<dialog class="pack-dialog" id="pack-viewer" aria-labelledby="pack-title"><form method="dialog"><button class="dialog-close" aria-label="Close product photograph">Close ×</button></form><h2 id="pack-title">The actual Black Drink pack.</h2><p>500 ml pack photograph. Refer to the current product label for its declarations.</p><img src="assets/images/lifestyle-v2/black-drink-actual.webp" alt="Full photograph of the actual supplied Zubrex Black Drink 500 ml packaging" width="621" height="1100" loading="lazy"></dialog>' if file=='black-drink.html' else ''
     breadcrumb='' if file=='index.html' else f'<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span>'+ (f'<a href="products.html">Collection</a><span aria-hidden="true">/</span>' if page['group']=='Collection' and file!='products.html' else '')+f'<span aria-current="page">{escape(page["title"].split(" | ")[0])}</span></nav>'
+    robots = '<meta name="robots" content="noindex,nofollow">' if page['noindex'] or args.diwali_preview else ''
+    seasonal_styles = '<link rel="stylesheet" href="diwali.css">' if args.diwali_preview else ''
+    seasonal_class = ' class="theme-diwali"' if args.diwali_preview else ''
     html=f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'])}"><meta name="theme-color" content="#07182e">{'<meta name="robots" content="noindex,nofollow">' if page['noindex'] else ''}<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32"><link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="refinements.css"><link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><meta property="og:title" content="{escape(page['title'])}"><meta property="og:description" content="{escape(page['description'])}"><meta property="og:type" content="website"><meta property="og:image" content="https://holy-elixir.com/assets/images/campaign/collection-1440.webp"></head>
-<body id="top"><a class="skip-link" href="#main-content">Skip to content</a><aside class="site-notice" aria-label="Website update notice"><span class="notice-label">Site update</span><div class="notice-window"><p class="sr-only">{NOTICE}</p><div class="notice-track" aria-hidden="true"><span>{NOTICE}</span><span>{NOTICE}</span></div></div><button class="notice-pause" type="button" aria-label="Pause update notice" aria-pressed="false" hidden>Pause</button></aside>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'])}"><meta name="theme-color" content="#07182e">{robots}<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32"><link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="refinements.css">{seasonal_styles}<link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><meta property="og:title" content="{escape(page['title'])}"><meta property="og:description" content="{escape(page['description'])}"><meta property="og:type" content="website"><meta property="og:image" content="https://holy-elixir.com/assets/images/campaign/collection-1440.webp"></head>
+<body id="top"{seasonal_class}><a class="skip-link" href="#main-content">Skip to content</a><aside class="site-notice" aria-label="Website update notice"><span class="notice-label">Site update</span><div class="notice-window"><p class="sr-only">{NOTICE}</p><div class="notice-track" aria-hidden="true"><span>{NOTICE}</span><span>{NOTICE}</span></div></div><button class="notice-pause" type="button" aria-label="Pause update notice" aria-pressed="false" hidden>Pause</button></aside>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html" aria-label="Zubrex by Holy Elixir home"><span class="brand-symbol"><img src="assets/images/logo.webp" alt="Zubrex" width="440" height="293"></span><span class="brand-sub">BY HOLY ELIXIR</span></a><nav class="main-nav" aria-label="Main navigation">{nav(file)}</nav><div class="header-actions"><button class="search-toggle" type="button" hidden aria-label="Search the website"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg></button><a class="header-cta" href="contact.html">Enquire <span aria-hidden="true">↗</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button></div></div></header>
 <main id="main-content" tabindex="-1">{breadcrumb}{page['body']}</main>{footer()}{pack_dialog}
 <dialog class="search-dialog" id="site-search" aria-labelledby="search-title"><form method="dialog"><button class="dialog-close" aria-label="Close search">Close ×</button></form><p class="eyebrow">Explore Zubrex</p><h2 id="search-title">What are you looking for?</h2><label class="sr-only" for="site-query">Search pages</label><input type="search" id="site-query" placeholder="Try Black Drink, serving or trade…" autocomplete="off"><p class="search-count" role="status"></p><div class="search-results"></div></dialog><script src="assets/page-index.js" defer></script><script src="script.js" defer></script></body></html>'''
@@ -239,4 +277,4 @@ for file,page in PAGES.items():
 index=[{'url':file,'title':page['title'].split(' | ')[0],'description':page['description'],'group':page['group']} for file,page in PAGES.items() if not page['noindex']]
 (ROOT/'assets/page-index.js').write_text('window.sitePages = '+json.dumps(index,ensure_ascii=False)+';\n',encoding='utf-8')
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://holy-elixir.com/{file if file!="index.html" else ""}</loc></url>' for file,p in PAGES.items() if not p['noindex'])+'</urlset>\n',encoding='utf-8')
-print(f'Built {len(PAGES)} complete static pages, local search index and sitemap.')
+print(f'Built {len(PAGES)} complete static pages, local search index and sitemap in {ROOT}.')

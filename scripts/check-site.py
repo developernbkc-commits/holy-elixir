@@ -2,8 +2,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, unquote
 import re
+import sys
 
-ROOT = Path('holy-elixir').resolve()
+ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else 'holy-elixir').resolve()
 errors = []
 pages = {}
 
@@ -33,6 +34,9 @@ for path in ROOT.glob('*.html'):
     for src in page.resources:
         if urlparse(src).scheme or src.startswith('//'): errors.append(f'{path.name}: external loading dependency {src}')
         elif not (ROOT / unquote(urlparse(src).path)).is_file(): errors.append(f'{path.name}: missing asset {src}')
+
+if not pages:
+    raise SystemExit(f'No HTML pages found in {ROOT}.')
 
 for page in pages.values():
     for ref in page.refs:
