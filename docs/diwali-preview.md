@@ -1,6 +1,6 @@
-# Diwali preview
+# Diwali hero
 
-The seasonal preview starts from the live Zubrex design. It keeps the navigation, update notice, product names and Samvida Labs footer, and adds a gold-and-plum palette and a Diwali homepage hero. The existing festive campaign concept is only a stand-in for the supplied poster.
+The seasonal build keeps the navigation, update notice, product names and Samvida Labs footer. Its homepage uses the supplied `Zubrex_Diwali_Website_Hero.html` design: the greeting, family scene, Zubrex logo and ornaments. The reviewed fragment is in `templates/diwali-hero.html`, with scoped CSS in `styles/diwali.css`. The two embedded images were extracted as local files; smaller WebP variants keep the same artwork and aspect ratio for narrower screens.
 
 ```sh
 python scripts/build-pages.py --diwali-preview
@@ -8,12 +8,12 @@ python scripts/check-site.py qa/diwali-preview
 python -m http.server 5186 --bind 127.0.0.1 --directory qa/diwali-preview
 ```
 
-Open `http://127.0.0.1:5186/`. The preview writes only to the ignored `qa/diwali-preview/` folder and is marked noindex. The regular build still writes the same production site.
+Open `http://127.0.0.1:5186/`. The preview writes only to the ignored `qa/diwali-preview/` folder and is marked noindex. The regular build writes the release pages into `holy-elixir/` for Netlify. `DIWALI_LIVE` in `scripts/build-pages.py` controls the seasonal release: set it to `False` and rerun `python scripts/build-pages.py` to prepare the evergreen layout for a future release.
 
-Once the poster arrives, rebuild with the original JPG, PNG or WebP and an accurate text alternative:
+To preview an alternate standalone poster, use a JPG, PNG or WebP and an accurate text alternative:
 
 ```sh
 python scripts/build-pages.py --diwali-preview --poster "path/to/poster.png" --poster-alt "Describe the poster and its essential text here."
 ```
 
-The frame keeps the full artwork visible without placing site copy over it. Check text legibility on desktop and mobile, confirm the product name and any campaign copy printed on the poster, and optimize the image for the final release. Production publication is a separate step after review of the finished poster.
+The alternate poster stays in the local preview. The published hero shows the complete family scene without cropping and stacks the greeting above the artwork at widths up to 900px.
