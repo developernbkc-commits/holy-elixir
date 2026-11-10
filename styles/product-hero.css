@@ -116,6 +116,29 @@
   border-radius: calc(var(--frame-radius) - var(--frame-padding) - 1px);
   background: #f6f0e5;
 }
+.zubrex-product__slide-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .75rem;
+}
+.zubrex-product__slide-controls button {
+  min-height: 44px;
+  padding: .4rem .75rem;
+  border: 1px solid #a7b3a6;
+  border-radius: 999px;
+  color: var(--product-green);
+  background: #fffefa;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.zubrex-product__slide-controls button:hover { border-color: var(--product-green); }
+.zubrex-product__slide-controls button[aria-pressed="true"] {
+  border-color: var(--product-green);
+  background: #e5eee3;
+}
+.zubrex-product__slide-controls button:focus-visible { outline: 2px solid #446758; outline-offset: 3px; }
 .zubrex-product__caption {
   display: flex;
   flex-wrap: wrap;
@@ -141,7 +164,7 @@
 }
 .zubrex-product__caption a:hover { text-decoration: underline; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .zubrex-product__art[data-hero-depth] .zubrex-product__frame {
+  .zubrex-product__art [data-hero-depth] .zubrex-product__frame {
     transform: perspective(1200px) rotateX(var(--hero-tilt-x, 0deg)) rotateY(var(--hero-tilt-y, 0deg));
     transition: transform 240ms ease-out;
   }

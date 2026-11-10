@@ -64,6 +64,22 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('blur', resetTilt);
   }
 
+  const heroGallery = document.querySelector('[data-hero-gallery]');
+  if (heroGallery) {
+    const controls = heroGallery.querySelector('.zubrex-product__slide-controls');
+    const slideButtons = Array.from(controls.querySelectorAll('button'));
+    slideButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        slideButtons.forEach(choice => {
+          const selected = choice === button;
+          choice.setAttribute('aria-pressed', String(selected));
+          document.getElementById(choice.getAttribute('aria-controls')).hidden = !selected;
+        });
+      });
+    });
+    controls.hidden = false;
+  }
+
   const packViewer = document.getElementById('pack-viewer');
   const packZoom = document.querySelector('[data-pack-zoom]');
   if (packViewer && packZoom && typeof packViewer.showModal === 'function') {
@@ -115,9 +131,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!form.reportValidity()) return;
       const fields = new FormData(form);
       const subject = 'Holy Elixir enquiry: ' + interest.options[interest.selectedIndex].text;
-      const body = 'Name: ' + fields.get('name') + '\nEmail: ' + fields.get('email') + '\nPhone: ' + (fields.get('phone') || 'Not provided') + '\nCity / postcode: ' + fields.get('city') + '\n\n' + fields.get('message');
+      const details = ['Name: ' + fields.get('name'), 'Email: ' + fields.get('email')];
+      const phone = fields.get('phone').trim();
+      const city = fields.get('city').trim();
+      if (phone) details.push('Phone: ' + phone);
+      if (city) details.push('City / postcode: ' + city);
+      const body = details.join('\n') + '\n\n' + fields.get('message');
       window.location.href = 'mailto:Info@holy-elixir.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      document.getElementById('form-status').textContent = 'Your email draft is ready to open. Review and send it in your email app. If no app opens, email Info@holy-elixir.com directly.';
+      document.getElementById('form-status').textContent = 'Review and send the draft in your email app. If it did not open, email Info@holy-elixir.com directly.';
     });
   }
   document.getElementById('year').textContent = new Date().getFullYear();
