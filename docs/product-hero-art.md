@@ -1,8 +1,33 @@
 # Black Drink homepage artwork
 
-## Current kitchen hero
+## Current campaign artwork
 
-ImageGen created an original Czech campaign model and matched the white halter dress to the supplied wardrobe reference. The modern kitchen composition and actual Zubrex pack photograph served as separate references. The homepage uses the `black-drink-white-halter` WebP files in `holy-elixir/assets/images/campaign/`.
+The white studio illustration shows the current Black Drink pack with a dark beverage splash. ImageGen used the supplied studio image for lighting and motion and the actual pack photograph for product design. The published sizes are `black-drink-white-splash-640.webp` and `black-drink-white-splash-1440.webp`.
+
+### Studio image prompt
+
+Create one photorealistic 3:2 premium white-studio Zubrex BLACK DRINK campaign photograph. Image 1 is ONLY a reference for high-key studio lighting, freeze-frame splash, and reflection. Image 2 is the exact packaging design reference for the single actual Black Drink product, and takes priority over everything in Image 1. Center one tall upright Zubrex Black Drink 500 ml pack, entire pack visible with breathing room for mobile crop. Use the actual new pack's very tall glossy black PET body, contoured molded black feet, narrowed shoulder, broad silver pull-tab lid, white stylized Z with gold UBREX, vertically set white BLACK DRINK, and accurate white Net Qty 500 ml marking. Do not use the old straight-sided metal can, golden wave artwork, Blue product, or any other package. For this campaign illustration keep the number and claims area matte black with no 8+ pH or nutrition or health claims and no decorative text. Keep any tiny side label text indistinct. This is a realistic illustration with the current product shape and design.
+Freeze a restrained, beautifully lit splash of the near-black beverage behind and on either side of the pack, dark brown-black with translucent amber edges. The pack is standing and grounded with a real, subtle reflection on a polished wet white surface. Preserve an airy pure-white background, crisp photographic rim light, natural condensation and individually lit droplets. Keep the main label unobstructed, and avoid messy dark pools, excessive spray, blue tones, clear water splashes, ice or bubbles. High-end beverage studio photograph, photorealistic materials, no overlay copy, no logo floating on background, no claims. Output one complete landscape image.
+
+### Campaign retouch prompts
+
+The kitchen image uses the `black-drink-kitchen-editorial` basename. The five retouched serving scenes use `-editorial` variants in `assets/images/lifestyle-v2/`. The original supplied pack photograph remains the label reference.
+
+**Kitchen image**
+
+Make a tightly constrained retouch of this approved synthetic Zubrex lifestyle photograph. Preserve the woman's exact face, hair, outfit, posture, glass, plant, architecture, crop, and lighting as in the input. Preserve the black pack's position, size, exact silhouette, silver lid, prominent gold and white ZUBREX wordmark and vertical white BLACK DRINK lettering. Make a tiny retouch only on the pack's printed label: remove the small gold “8+ pH” marking and replace that spot with uninterrupted matching black material. The pH marking should be entirely absent. Preserve the pack's realistic texture and lighting. Other small print can be naturally indistinct. Do not add any new text, numbers, nutrition or health claims, logos or symbols. It is a serving illustration. Return a single landscape 3:2 image.
+
+**White serving image**
+
+Make an exact, very localized retouch of this 3:2 synthetic Zubrex serving photo. Preserve the existing composition, white background, dark drink in the clear glass, hand, light, shadows, pack silhouette, silver lid, condensation, ZUBREX and vertical BLACK DRINK type. Remove the gold “8+ pH” mark from the pack and fill that spot with the matching matte black label surface. Soften only the miniature printing on the sides so it is too indistinct to read as ingredients, marks or claims. Preserve the overall look of the label and the legible product identity. Add no new text, badges, ingredients, regulatory marks, nutrition claims or numbers. Output one landscape 3:2 photograph.
+
+**Four other serving scenes**
+
+Edit this existing illustrative Zubrex Black Drink lifestyle image with one very small local change. Remove the gold '8+ pH' text from the black beverage package and fill that small spot with matching black label texture. The pack must show no pH number or claim. Preserve the exact scene, all people and their expressions, limbs and clothing, framing, light, props, pack placement and silhouette, physical shadows, the ZUBREX wordmark, the BLACK DRINK lettering and other graphic design. Do not recompose or add anything. No new text, logo, marks, or claims. Return a single landscape 3:2 image.
+
+## White halter dress variation
+
+ImageGen created an original Czech campaign model and matched the white halter dress to the supplied wardrobe reference. The modern kitchen composition and actual Zubrex pack photograph served as separate references. The original exports use the `black-drink-white-halter` basename in `archive/campaign/`.
 
 ### Image generation prompt
 

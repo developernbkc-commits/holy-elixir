@@ -4,15 +4,15 @@
   "actualHero": "Brand-supplied WhatsApp product photograph, used directly without generating a new product.",
   "selectedOutputs": [
     "holy-elixir/assets/images/lifestyle-v2/hero-terrace-1440.webp",
-    "holy-elixir/assets/images/lifestyle-v2/black-pour-1440.webp",
+    "archive/campaign/black-pour-1440.webp",
     "holy-elixir/assets/images/lifestyle-v2/black-active-1440.webp",
-    "holy-elixir/assets/images/lifestyle-v2/hospitality-1440.webp",
+    "archive/campaign/hospitality-1440.webp",
     "holy-elixir/assets/images/lifestyle-v2/work-break-1440.webp",
-    "holy-elixir/assets/images/lifestyle-v2/friends-picnic-1440.webp",
+    "archive/campaign/friends-picnic-1440.webp",
     "holy-elixir/assets/images/lifestyle-v2/water-morning-1440.webp",
     "holy-elixir/assets/images/lifestyle-v2/ionizer-home-1440.webp",
-    "holy-elixir/assets/images/lifestyle-v2/joyful-dining-1440.webp",
-    "holy-elixir/assets/images/lifestyle-v2/movement-break-1440.webp"
+    "archive/campaign/joyful-dining-1440.webp",
+    "archive/campaign/movement-break-1440.webp"
   ],
   "prompts": [
     {
