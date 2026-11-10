@@ -2,7 +2,17 @@
 
 ## Current kitchen hero
 
-ImageGen updated the approved model’s kitchen and dress using the preceding campaign image and the supplied Zubrex pack photograph as references. The homepage uses the `black-drink-modern-kitchen` WebP files in `holy-elixir/assets/images/campaign/`.
+ImageGen created an original Czech campaign model and matched the white halter dress to the supplied wardrobe reference. The modern kitchen composition and actual Zubrex pack photograph served as separate references. The homepage uses the `black-drink-white-halter` WebP files in `holy-elixir/assets/images/campaign/`.
+
+### Image generation prompt
+
+Create one photorealistic 3:2 landscape campaign image by editing Image 1, the approved Zubrex lifestyle photograph. Image 2 is the exact clothing design reference. Image 3 is the actual Zubrex package reference. Change the adult model and the dress only. Cast an original adult Czech woman in her late twenties or thirties with a slightly longer oval face, a softly tapered jaw and less rounded cheeks. Keep the facial proportions individual and natural. Give her long, dark chestnut hair with soft waves, understated makeup, a gently relaxed smile, and the same easy post-sip pose and gaze toward the window. She is an invented campaign model with her own face. Use Image 2 solely to match the garment, not to copy the photographed woman's identity. No hat.
+Reproduce the visible white halter dress from Image 2 as closely as possible. It is sleeveless with broad draped white halter panels rising diagonally from the front bodice to wrap behind the neck, a deep V between the panels, bare shoulders, softly gathered cloth where the panels meet the fitted high waist, and a skirt flowing from that waist. The panels are opaque, sit securely, and cover the bust. Follow the reference's halter construction and V shape closely; no spaghetti straps, straight shoulder straps, jewelry, patterns or cutouts. Keep the warm-white fabric in the existing scene's daylight.
+Preserve Image 1's modern white handleless kitchen, quartz island, large window, plant in its ceramic pot, warm shelf lighting, overall framing, the glass of still near-black beverage, and the upright Zubrex Black Drink 500 ml pack on the island in the same positions. Preserve the entire black pack with sculpted feet, silver pull-tab lid, original gold-and-white ZUBREX wordmark, vertical BLACK DRINK and green symbol from Image 3, with consistent perspective, reflections and grounded shadows. Keep the campaign bright, contemporary and candid. No outdoor setting, text overlay, or health claims. Output one polished 1536 by 1024 lifestyle photo.
+
+## Modern kitchen variation
+
+ImageGen updated the previous model’s kitchen and dress using the preceding campaign image and the supplied Zubrex pack photograph as references. The exports use the `black-drink-modern-kitchen` basename.
 
 ### Image generation prompt
 

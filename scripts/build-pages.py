@@ -247,7 +247,7 @@ for file,page in PAGES.items():
     if file == 'index.html' and seasonal and not poster_url:
         social_image = 'campaign/diwali-family-1536.webp'
     elif file == 'index.html' and not seasonal:
-        social_image = 'campaign/black-drink-modern-kitchen-1536.webp'
+        social_image = 'campaign/black-drink-white-halter-1536.webp'
     html=f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'])}"><meta name="theme-color" content="{theme_color}">{robots}<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32"><link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="refinements.css"><link rel="stylesheet" href="signature.css">{theme_styles}<link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><meta property="og:title" content="{escape(page['title'])}"><meta property="og:description" content="{escape(page['description'])}"><meta property="og:type" content="website"><meta property="og:image" content="https://holy-elixir.com/assets/images/{social_image}"></head>
 <body id="top" class="{body_class}"><a class="skip-link" href="#main-content">Skip to content</a>
