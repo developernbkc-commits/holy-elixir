@@ -2,7 +2,15 @@
 
 ## Current campaign artwork
 
-The white studio illustration shows the current Black Drink pack with a dark beverage splash. ImageGen used the supplied studio image for lighting and motion and the actual pack photograph for product design. The published sizes are `black-drink-white-splash-640.webp` and `black-drink-white-splash-1440.webp`.
+The white studio image shows Black Drink with a dark beverage splash. ImageGen used the supplied studio image for lighting and motion and the actual pack photograph for product design.
+
+### Revised studio pack
+
+ImageGen used the supplied pack photograph to restore the front-label details in the white studio scene. The website uses `black-drink-studio-pack-640.webp` and `black-drink-studio-pack-1440.webp`. The studio image omits the unverified pH marking. The actual pack photograph remains available separately.
+
+Precision product photograph edit, output one landscape 3:2 image. Image 1 is the supplied photograph of the actual Zubrex Black Drink 500 ml package. Image 2 is only the white studio splash composition. In Image 2 replace the simplified package with the pack in Image 1. Closely retain Image 1's exact silver pull-tab lid, tapered black shoulders, sculpted black PET base, actual label proportions and the full original front-label design. Do not redesign, rearrange or simplify the label. Reproduce the exact white stylized Z with gold UBREX at the top, small italic white “Beyond Ordinary” underneath, green vegetarian square, large vertical white serif “BLACK DRINK” in the existing position, small vertical gold “Non Carbonated Water Based Beverage” directly beside it, small diagonal handwritten gold Zubrex signature to the left, very fine segmented accent lines, and bottom “Net Qty: 500 ml” aligned as in Image 1. Preserve the rounded shoulder, black wrap and front angle. The only intentional omission from the supplied label is the small gold “8+ pH” marking; leave matching black ink in that spot. Side-panel fine print should remain indistinct in natural perspective. Do not add any new claims, badges, or readable side-panel declarations.
+Center the faithful pack within Image 2's clean white background and dark amber-black beverage splash. The entire pack from pull tab to black feet is visible, with the original dark splash curving behind it and a subtle matching reflection on the white wet surface. Do not cover label details with splash. Shared white studio light, natural condensation, believable contact shadow and perspective so the product does not look cut out or pasted. No second pack, no blue product, no pH text, no extra copy or logos. Keep the existing dark beverage color and white studio palette.
+
 
 ### Studio image prompt
 
