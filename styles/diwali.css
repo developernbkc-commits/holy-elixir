@@ -188,8 +188,8 @@
   border-radius: calc(var(--frame-radius) - var(--frame-padding) - 1px);
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .zubrex-diwali__art[data-festival-depth] .zubrex-diwali__frame {
-    transform: perspective(1200px) rotateX(var(--festival-tilt-x, 0deg)) rotateY(var(--festival-tilt-y, 0deg));
+  .zubrex-diwali__art[data-hero-depth] .zubrex-diwali__frame {
+    transform: perspective(1200px) rotateX(var(--hero-tilt-x, 0deg)) rotateY(var(--hero-tilt-y, 0deg));
     transition: transform 240ms ease-out;
   }
 }

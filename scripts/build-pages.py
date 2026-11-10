@@ -8,7 +8,7 @@ import shutil
 
 PROJECT = Path(__file__).resolve().parent.parent
 SOURCE = PROJECT / 'holy-elixir'
-DIWALI_LIVE = True
+DIWALI_LIVE = False
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--diwali-preview', action='store_true', help='Build a separate Diwali preview in qa/diwali-preview.')
 parser.add_argument('--poster', type=Path, help='Optional JPG, PNG or WebP poster for the Diwali preview.')
@@ -33,6 +33,8 @@ if args.diwali_preview:
             shutil.copyfile(args.poster, ROOT / poster_url)
 if seasonal:
     shutil.copyfile(PROJECT / 'styles' / 'diwali.css', ROOT / 'diwali.css')
+else:
+    shutil.copyfile(PROJECT / 'styles' / 'product-hero.css', ROOT / 'product-hero.css')
 
 # Keep prior builds from leaving the retired product page in the publish directory.
 (ROOT / 'alkaline-water.html').unlink(missing_ok=True)
@@ -83,22 +85,21 @@ def add(file,title,description,body,group='Explore',noindex=False):
         body=re.sub(r'<section ',lambda m:f'<section id="{next(anchors)}" ',body,count=3)
     PAGES[file]={'title':title,'description':description,'body':body,'group':group,'noindex':noindex}
 
-home = (PROJECT / 'templates' / 'signature-home.html').read_text(encoding='utf-8').strip()
-if seasonal:
-    _, divider, signature_content = home.partition('<!-- signature-home-content -->')
-    if not divider:
-        raise ValueError('The signature homepage is missing its seasonal content divider.')
-    if not poster_url:
-        hero = (PROJECT / 'templates' / 'diwali-hero.html').read_text(encoding='utf-8').strip()
-    else:
-        art = f'<img src="{poster_url}" alt="{escape(args.poster_alt)}" fetchpriority="high" decoding="async">'
-        hero = f'''<section class="diwali-hero" aria-labelledby="home-title"><div class="wrap diwali-stage">
+hero_name = 'diwali-hero.html' if seasonal else 'product-hero.html'
+if poster_url:
+    art = f'<img src="{poster_url}" alt="{escape(args.poster_alt)}" fetchpriority="high" decoding="async">'
+    hero = f'''<section class="diwali-hero" aria-labelledby="home-title"><div class="wrap diwali-stage">
     <div class="diwali-copy"><svg class="diwali-diya" viewBox="0 0 80 62" width="64" height="50" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39 6c3 7 10 11 10 19a9 9 0 0 1-18 0c0-6 6-13 8-19Z"/><path d="M39 23c-4 5-4 8 1 11M11 38h58c-4 11-14 17-29 17S15 49 11 38ZM24 59h32M8 26l5 3m59-3-5 3M20 15l4 4m36-4-4 4"/></svg>
     <p class="eyebrow">Zubrex · Festival of lights</p><h1 id="home-title">Happy <em>Diwali.</em></h1><p>Wishing you warm evenings, good company and more moments worth sharing.</p><div class="actions">{link('products.html','Explore the collection')}{link('serving-guide.html','Serving notes',True)}</div></div>
     <figure class="diwali-art"><div class="diwali-frame">{art}</div></figure>
     </div></section>'''
-    home = hero + signature_content
-add('index.html','Happy Diwali from Zubrex | Holy Elixir' if seasonal else 'Zubrex by Holy Elixir | Black Drink & Home Water Ionizers','Explore Zubrex Black Drink, home water ionizers, serving notes and hospitality enquiries from Holy Elixir.',home,'Home')
+else:
+    hero = (PROJECT / 'templates' / hero_name).read_text(encoding='utf-8').strip()
+home = hero + '\n' + (PROJECT / 'templates' / 'signature-home.html').read_text(encoding='utf-8').strip()
+home_title = 'Happy Diwali from Zubrex | Holy Elixir' if seasonal else 'Zubrex Black Drink | Holy Elixir'
+home_description = ('Explore Zubrex Black Drink, home water ionizers, serving notes and hospitality enquiries from Holy Elixir.' if seasonal else
+                    'Meet Zubrex Black Drink, a non-carbonated water-based beverage in a 500 ml pack. Explore serving ideas and the Holy Elixir collection.')
+add('index.html',home_title,home_description,home,'Home')
 
 products=intro('The Zubrex collection','For the table. <br><em>For the home.</em>','Discover Black Drink for serving and hosting, and home water ionizers for a planned kitchen setup. Explore the details before you enquire.','<div class="pill-nav"><a href="#black-drink">Black Drink</a><a href="#ionizers">Home ionizers</a><a href="#compare-products">Before you enquire</a></div>')
 products+='<div id="black-drink" class="anchor-target">'+split('01 / Black Drink','Black Drink,<br>served simply.','<p>Zubrex Black Drink is a non-carbonated water based beverage. Discover the supplied 500 ml pack and ideas for serving it at home or in a hospitality setting.</p>','black-pour','Zubrex Black Drink and clear glassware on a white table',campaign=False,extra=link('black-drink.html','Explore Black Drink',True))+'</div>'
@@ -237,13 +238,18 @@ for file,page in PAGES.items():
     pack_dialog='<dialog class="pack-dialog" id="pack-viewer" aria-labelledby="pack-title"><form method="dialog"><button class="dialog-close" aria-label="Close product photograph">Close ×</button></form><h2 id="pack-title">The actual Black Drink pack.</h2><p>500 ml pack photograph. Refer to the current product label for its declarations.</p><img src="assets/images/lifestyle-v2/black-drink-actual.webp" alt="Full photograph of the actual supplied Zubrex Black Drink 500 ml packaging" width="621" height="1100" loading="lazy"></dialog>' if file=='black-drink.html' else ''
     breadcrumb='' if file=='index.html' else f'<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span>'+ (f'<a href="products.html">Collection</a><span aria-hidden="true">/</span>' if page['group']=='Collection' and file!='products.html' else '')+f'<span aria-current="page">{escape(page["title"].split(" | ")[0])}</span></nav>'
     robots = '<meta name="robots" content="noindex,nofollow">' if page['noindex'] or args.diwali_preview else ''
-    seasonal_styles = '<link rel="stylesheet" href="diwali.css"><link rel="stylesheet" href="festival-surfaces.css">' if seasonal else ''
-    body_class = 'signature-site theme-diwali' if seasonal else 'signature-site'
+    theme_styles = '<link rel="stylesheet" href="diwali.css"><link rel="stylesheet" href="festival-surfaces.css">' if seasonal else '<link rel="stylesheet" href="product-surfaces.css">'
+    if not seasonal and file == 'index.html':
+        theme_styles += '<link rel="stylesheet" href="product-hero.css">'
+    body_class = 'signature-site theme-diwali' if seasonal else 'signature-site theme-product'
+    theme_color = '#291323' if seasonal else '#fffefa'
     social_image = {'black-drink.html':'lifestyle-v2/black-pour-1440.webp', 'ionizers.html':'campaign/ionizer-kitchen-1440.webp', 'hospitality.html':'lifestyle-v2/hospitality-1440.webp'}.get(file, 'lifestyle-v2/joyful-dining-1440.webp')
     if file == 'index.html' and seasonal and not poster_url:
         social_image = 'campaign/diwali-family-1536.webp'
+    elif file == 'index.html' and not seasonal:
+        social_image = 'campaign/product-refreshment-1536.webp'
     html=f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'])}"><meta name="theme-color" content="#07182e">{robots}<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32"><link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="refinements.css"><link rel="stylesheet" href="signature.css">{seasonal_styles}<link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><meta property="og:title" content="{escape(page['title'])}"><meta property="og:description" content="{escape(page['description'])}"><meta property="og:type" content="website"><meta property="og:image" content="https://holy-elixir.com/assets/images/{social_image}"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'])}"><meta name="theme-color" content="{theme_color}">{robots}<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-zubrex-32.png" type="image/png" sizes="32x32"><link rel="icon" href="assets/favicon-zubrex.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="refinements.css"><link rel="stylesheet" href="signature.css">{theme_styles}<link rel="preload" href="assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><meta property="og:title" content="{escape(page['title'])}"><meta property="og:description" content="{escape(page['description'])}"><meta property="og:type" content="website"><meta property="og:image" content="https://holy-elixir.com/assets/images/{social_image}"></head>
 <body id="top" class="{body_class}"><a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html" aria-label="Zubrex by Holy Elixir home"><span class="brand-symbol"><img src="assets/images/logo.webp" alt="Zubrex" width="440" height="293"></span><span class="brand-sub">BY HOLY ELIXIR</span></a><nav class="main-nav" aria-label="Main navigation">{nav(file)}</nav><div class="header-actions"><button class="search-toggle" type="button" hidden aria-label="Search the website"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg></button><a class="header-cta" href="contact.html">Enquire <span aria-hidden="true">↗</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu <span aria-hidden="true">☰</span></button></div></div></header>
 <main id="main-content" tabindex="-1">{breadcrumb}{page['body']}</main>{footer()}{pack_dialog}

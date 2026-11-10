@@ -49,7 +49,7 @@ for page in pages.values():
 
 for css in ROOT.rglob('*.css'):
     for resource in re.findall(r'url\([\s\'"]*([^\)\'\"]+)', css.read_text(encoding='utf-8')):
-        if resource.startswith('data:'): continue
+        if resource.startswith(('data:', '#')): continue
         if urlparse(resource).scheme: errors.append(f'{css.name}: external CSS dependency {resource}')
         elif not (css.parent / resource).is_file(): errors.append(f'{css.name}: missing CSS asset {resource}')
 
