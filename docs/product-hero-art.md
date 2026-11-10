@@ -2,7 +2,17 @@
 
 ## Current kitchen hero
 
-ImageGen refined the kitchen scene below using the supplied Zubrex pack photograph as the packaging reference. The homepage uses the 640, 1024 and 1536 pixel `black-drink-kitchen-moment` WebP files in `holy-elixir/assets/images/campaign/`.
+ImageGen created an original model using the supplied image as a style reference for the dress and facial features. The kitchen scene and actual Zubrex pack photograph served as separate references. The homepage uses the 640, 1024 and 1536 pixel `black-drink-ivory-dress` WebP files in `holy-elixir/assets/images/campaign/`.
+
+### Image generation prompt
+
+Use case: photo edit for the Zubrex Black Drink homepage. Output one photorealistic 1536 by 1024 landscape image. Image 1 is the kitchen campaign scene to edit. Image 2 is a STYLE reference for the dress and facial aesthetic only. Image 3 is the actual pack reference. The uploaded woman is inspiration; create an original adult East Asian campaign model with her own distinct identity, using the broad aesthetic of Image 2: long softly waved dark hair, a softly oval face, expressive almond-shaped eyes, naturally defined brows and understated makeup. A calm, warm expression and realistic skin texture. No hat, no headwear, and no replication of the reference woman's exact facial likeness.
+Give her an actual elegant ivory summer dress, inspired by the simple white silhouette in Image 2, with a gentle high V neckline at the upper chest, wide shoulder straps, a softly fitted waist, and simple opaque matte linen fabric. The bodice fully covers the chest and sides. Sleeveless, simple and relaxed. No plunging neckline, cutouts, sheer fabric, ornate details, or statement accessories. Make the dress visibly read as a dress through its continuous bodice and subtle waist seam, not a tee or blouse. Long dark hair falls naturally behind one shoulder and over the other without hiding the neckline, glass, or product.
+Keep Image 1's bright white home kitchen, sunlit leafy plant in sculptural planter, white stone island and relaxed pose with her forearm on the counter, holding the glass just below her chin after a sip. Keep the framing and product placement. Preserve the actual 500 ml Zubrex Black Drink package faithfully: silver pull tab, black contoured feet, gold ZUBREX, vertical white BLACK DRINK, green vegetarian mark, and original gold and white label layout. Do not restyle or obscure it. The glass holds the same still near-black beverage. Match the existing soft sunlight, grounded shadows, perspective and restrained warm whites. Make it look like one candid premium lifestyle photograph. No outdoor scene, hat, graphic overlays, extra logos, beauty-filter effect, or health claims.
+
+## Ivory cotton top variation
+
+ImageGen refined the kitchen scene below using the supplied Zubrex pack photograph as the packaging reference. The exports use the `black-drink-kitchen-moment` basename.
 
 ### Image generation prompt
 
