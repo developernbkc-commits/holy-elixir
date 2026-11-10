@@ -64,6 +64,22 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('blur', resetTilt);
   }
 
+  const heroGallery = document.querySelector('[data-hero-gallery]');
+  if (heroGallery) {
+    const controls = heroGallery.querySelector('.zubrex-product__slide-controls');
+    const slideButtons = Array.from(controls.querySelectorAll('button'));
+    slideButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        slideButtons.forEach(choice => {
+          const selected = choice === button;
+          choice.setAttribute('aria-pressed', String(selected));
+          document.getElementById(choice.getAttribute('aria-controls')).hidden = !selected;
+        });
+      });
+    });
+    controls.hidden = false;
+  }
+
   const packViewer = document.getElementById('pack-viewer');
   const packZoom = document.querySelector('[data-pack-zoom]');
   if (packViewer && packZoom && typeof packViewer.showModal === 'function') {
