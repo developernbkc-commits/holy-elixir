@@ -8,7 +8,7 @@ python scripts/check-site.py qa/diwali-preview
 python -m http.server 5186 --bind 127.0.0.1 --directory qa/diwali-preview
 ```
 
-Open `http://127.0.0.1:5186/`. The local preview writes only to the ignored `qa/diwali-preview/` folder and is marked noindex. The regular build writes the current seasonal candidate into `holy-elixir/` for Netlify. Set `DIWALI_LIVE` in `scripts/build-pages.py` to `False` and rebuild to return to the evergreen layout. Neither build deploys the site.
+Open `http://127.0.0.1:5186/`. The local preview writes only to the ignored `qa/diwali-preview/` folder and is marked noindex. The regular build writes the evergreen site into `holy-elixir/` for Netlify. To prepare a future seasonal release, set `DIWALI_LIVE` in `scripts/build-pages.py` to `True` and rebuild. Neither build deploys the site.
 
 To preview an alternate standalone poster, use a JPG, PNG or WebP and an accurate text alternative:
 

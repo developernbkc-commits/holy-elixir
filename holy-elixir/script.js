@@ -33,33 +33,33 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   mobile.addEventListener('change', () => closeNavigation(false));
 
-  const festivalStage = document.querySelector('[data-festival-depth]');
-  if (festivalStage) {
+  const heroStage = document.querySelector('[data-hero-depth]');
+  if (heroStage) {
     const canTilt = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
     let pendingFrame = 0;
 
     function resetTilt() {
       cancelAnimationFrame(pendingFrame);
       pendingFrame = 0;
-      festivalStage.style.removeProperty('--festival-tilt-x');
-      festivalStage.style.removeProperty('--festival-tilt-y');
+      heroStage.style.removeProperty('--hero-tilt-x');
+      heroStage.style.removeProperty('--hero-tilt-y');
     }
 
-    festivalStage.addEventListener('pointermove', function (event) {
+    heroStage.addEventListener('pointermove', function (event) {
       if (!canTilt.matches || event.pointerType === 'touch') return;
       cancelAnimationFrame(pendingFrame);
       const { clientX, clientY } = event;
       pendingFrame = requestAnimationFrame(function () {
         pendingFrame = 0;
-        const box = festivalStage.getBoundingClientRect();
+        const box = heroStage.getBoundingClientRect();
         const x = Math.min(1, Math.max(0, (clientX - box.left) / Math.max(1, box.width)));
         const y = Math.min(1, Math.max(0, (clientY - box.top) / Math.max(1, box.height)));
-        festivalStage.style.setProperty('--festival-tilt-x', `${((.5 - y) * 6).toFixed(2)}deg`);
-        festivalStage.style.setProperty('--festival-tilt-y', `${((x - .5) * 6).toFixed(2)}deg`);
+        heroStage.style.setProperty('--hero-tilt-x', `${((.5 - y) * 6).toFixed(2)}deg`);
+        heroStage.style.setProperty('--hero-tilt-y', `${((x - .5) * 6).toFixed(2)}deg`);
       });
     }, { passive: true });
-    festivalStage.addEventListener('pointerleave', resetTilt);
-    festivalStage.addEventListener('pointercancel', resetTilt);
+    heroStage.addEventListener('pointerleave', resetTilt);
+    heroStage.addEventListener('pointercancel', resetTilt);
     canTilt.addEventListener('change', resetTilt);
     window.addEventListener('blur', resetTilt);
   }
