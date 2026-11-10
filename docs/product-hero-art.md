@@ -1,8 +1,17 @@
 # Black Drink homepage artwork
 
-## White kitchen hero
+## Current kitchen hero
 
-ImageGen used the supplied Zubrex pack photograph as the packaging reference and the daylight scene below as a lighting reference. The homepage uses the 640, 1024 and 1536 pixel `black-drink-white-kitchen` WebP files in `holy-elixir/assets/images/campaign/`.
+ImageGen refined the kitchen scene below using the supplied Zubrex pack photograph as the packaging reference. The homepage uses the 640, 1024 and 1536 pixel `black-drink-kitchen-moment` WebP files in `holy-elixir/assets/images/campaign/`.
+
+### Image generation prompt
+
+Use case: identity and wardrobe refinement for a photorealistic Zubrex campaign. Image 1 is the current white-kitchen hero and the image to edit. Image 2 is the supplied package reference. Preserve Image 1's bright white home kitchen, green plant in the sculptural planter, stone island, framing, near-black drink in the small clear glass, daylight, and integrated Zubrex Black Drink 500 ml can standing on the counter. Maintain the entire tall can with its silver pull tab, black sculpted feet, front label, typography and design, at the same scale and location. Use Image 2 as the exact check for package fidelity. Preserve the same 3:2 landscape crop and the natural shadows and reflections.
+Change the model to an elegant adult East Asian woman with natural, balanced facial features, realistic skin texture, softly tied-back black hair, and a relaxed, small smile as she enjoys the drink. Dress her in a single plain, relaxed-fit ivory cotton jersey short-sleeve top, with a simple crew neckline, soft drape, no buttons, no collar, no pattern and no jewelry. Natural everyday style and quietly refined. Preserve the unposed moment and relaxed posture, with her forearm resting on the island and the glass held comfortably near her chin just after a sip, without hiding her face. Keep the glass rim and her natural hand grip clear. Maintain bright neutral daylight and believable geometry, gentle contrast, white cabinetry, uncluttered decor, and one restrained pop of plant green. No added graphics, copy, claims, beauty-filter effect or fashion styling. Edit the woman and her outfit while keeping the product, glass, kitchen, light, and plant faithful to Image 1.
+
+## Initial kitchen composition
+
+ImageGen used the supplied Zubrex pack photograph as the packaging reference and the daylight scene below as a lighting reference.
 
 ### Image generation prompt
 
