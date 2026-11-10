@@ -2,7 +2,18 @@
 
 ## Current kitchen hero
 
-ImageGen created an original model using the supplied image as a style reference for the dress and facial features. The kitchen scene and actual Zubrex pack photograph served as separate references. The homepage uses the 640, 1024 and 1536 pixel `black-drink-ivory-dress` WebP files in `holy-elixir/assets/images/campaign/`.
+ImageGen updated the approved model’s kitchen and dress using the preceding campaign image and the supplied Zubrex pack photograph as references. The homepage uses the `black-drink-modern-kitchen` WebP files in `holy-elixir/assets/images/campaign/`.
+
+### Image generation prompt
+
+Use case: precision photo edit for Zubrex. Image 1 is the approved lifestyle scene to edit, and Image 2 is the actual package reference. Generate one seamless photorealistic 1536 by 1024 landscape. Keep the same original adult East Asian model from Image 1, her exact facial identity, long softly waved black hair, relaxed smile and gaze, gentle post-sip pose with the glass held just below her face, and her other arm resting on the counter. Preserve the proportions, placement and warm daylight of the model, nearly black beverage, and fully visible Zubrex pack.
+Update the home kitchen to clearly modern, warm white architecture. Replace traditional framed cabinet fronts, knobs and loose utensils with flat slab handleless matte-white cabinetry, a quiet white backsplash and clean uninterrupted horizontal lines. Use a sleek white quartz waterfall island with fine, restrained veining, in the same position and perspective as the original surface. If visible, one slim pale oak shelf or a recessed niche can warm the modern background. Retain bright daylight through a wide minimally framed window and retain the attractive leafy plant on the left in a sculptural off-white ceramic planter. Keep the background clearly readable as a home kitchen, white and bright with softly integrated modern details.
+Make the existing ivory sleeveless linen dress a little more open in style: lower the V neckline slightly compared with Image 1 and use subtly narrower shoulder straps. Keep the soft waist seam, fitted summer-dress silhouette and textured opaque ivory fabric. A moderate V and open shoulders, with natural folds and a simple elegant look. No hat, jewelry, cutouts, or sheer fabric.
+Keep the upright actual 500 ml Black Drink pack from Image 2 as close as possible to its approved rendering: tall black body and contoured feet, broad silver pull tab, original gold ZUBREX, vertical white BLACK DRINK, existing green symbol and gold and white label layout. Do not obscure or relocate it. Match consistent contact shadows, reflections, proportions, and natural skin texture so everything reads as one real premium lifestyle photograph. No added copy, visual claims, logo overlays, or other products.
+
+## Ivory dress variation
+
+ImageGen created an original model using the supplied image as a style reference for the dress and facial features. The kitchen scene and actual Zubrex pack photograph served as separate references. The exports use the `black-drink-ivory-dress` basename.
 
 ### Image generation prompt
 
