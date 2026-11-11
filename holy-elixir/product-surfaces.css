@@ -3,19 +3,19 @@
   --navy: #102724;
   --navy-soft: #1b3933;
   --ink: #172521;
-  --cream: #fcfbf7;
-  --paper: #f1f5ef;
+  --cream: #ffffff;
+  --paper: #fafbf9;
   --gold: #ead195;
   --gold-dark: #775323;
   --brass: #a17a44;
   --muted: #4f5d55;
-  --line: #d9ddd2;
+  --line: #e0e5df;
   --signature-ivory: #fffefb;
   --surface-jade: #276153;
-  --surface-mint: #ebf4ed;
-  --surface-amber: #f8efdf;
+  --surface-mint: #f3f8f4;
+  --surface-amber: #fcf8f0;
   --surface-radius: clamp(1.15rem, 2.25vw, 1.85rem);
-  --surface-shadow: inset 0 1px #fff, 0 6px 0 -2px #a5b2a23d, 0 18px 40px -19px #1e463c40;
+  --surface-shadow: inset 0 1px #fff, 0 15px 42px -24px #1e463c38;
 }
 
 .signature-site.theme-product .site-header {
@@ -47,7 +47,7 @@
 .signature-site.theme-product .nav-panel {
   border: 1px solid #c1d1c0;
   border-radius: 0 0 var(--surface-radius) var(--surface-radius);
-  background: linear-gradient(140deg, #fffdf7, #eaf2e9);
+  background: #fff;
   color: var(--ink);
   box-shadow: 0 15px 35px #10272433;
 }
@@ -79,13 +79,13 @@
   height: 100%;
   border: 1px solid var(--line);
   border-radius: .75rem;
-  background: linear-gradient(140deg, #fffdf7, #edf2e9);
+  background: #fff;
   box-shadow: inset 0 1px #fff, 0 2px 4px #152f2410;
 }
 
 .signature-site.theme-product .signature-jumps a:hover { border-color: #87a393; color: var(--surface-jade); }
-.signature-site.theme-product .signature-jumps li:first-child a { background: linear-gradient(140deg, #fffdf7, #f7eddd); }
-.signature-site.theme-product .signature-collection { background: radial-gradient(ellipse at 8% 6%, var(--surface-amber), transparent 52%), var(--cream); }
+.signature-site.theme-product .signature-jumps li:first-child a { background: #fff; }
+.signature-site.theme-product .signature-collection { background: #fff; }
 
 .signature-site.theme-product .signature-product {
   --card-accent: var(--gold-dark);
@@ -95,7 +95,7 @@
   padding: clamp(.45rem, 1.15vw, .8rem);
   border-color: var(--card-line);
   border-radius: var(--surface-radius);
-  background: radial-gradient(ellipse at bottom right, var(--card-tint), transparent 66%), #fffdf7;
+  background: #fff;
   box-shadow: var(--surface-shadow);
 }
 
@@ -134,20 +134,20 @@
   box-shadow: none;
 }
 
-.signature-site.theme-product .signature-serving { background: radial-gradient(ellipse at top left, var(--surface-mint), transparent 67%), #f2f6ee; }
+.signature-site.theme-product .signature-serving { background: #fafcf9; }
 .signature-site.theme-product .signature-serving :is(.signature-kicker, .signature-reading-list a > span:last-child) { color: var(--surface-jade); }
-.signature-site.theme-product .signature-hospitality { background: radial-gradient(ellipse at bottom right, var(--surface-amber), transparent 67%), #fffaf2; }
+.signature-site.theme-product .signature-hospitality { background: #fff; }
 
 .signature-site.theme-product :is(.signature-serving__image, .signature-hospitality__image, .product-hero-art, .split-art) {
   padding: clamp(.4rem, .85vw, .65rem);
   border: 1px solid var(--line);
   border-radius: var(--surface-radius);
-  background: linear-gradient(145deg, #fffdf7, #efe9da);
+  background: #fff;
   box-shadow: var(--surface-shadow);
 }
 
-.signature-site.theme-product :is(.signature-serving__image, .product-hero--appliance .product-hero-art) {
-  background: linear-gradient(145deg, #fbfdf8, #dce9df);
+.signature-site.theme-product :is(.signature-serving__image, .product-hero-art) {
+  background: #fff;
   border-color: #bdd0c1;
   border-radius: var(--surface-radius);
 }
@@ -172,7 +172,7 @@
 .signature-site.theme-product :is(.signature-contact__inner, .contact-card) {
   border: 1px solid var(--line);
   border-radius: var(--surface-radius);
-  background: radial-gradient(ellipse at 100% 0%, var(--surface-mint), transparent 72%), #fff;
+  background: #fff;
   color: var(--ink);
   box-shadow: var(--surface-shadow);
 }
@@ -189,11 +189,11 @@
 .signature-site.theme-product .signature-contact .signature-action {
   border-color: #d8bd86;
   border-radius: .75rem;
-  background: linear-gradient(145deg, #faf0d8, #f1ddb0);
-  box-shadow: inset 0 1px #fff9e9, 0 3px 0 #c3a16b;
+  background: #244e40; color: #fff;
+  box-shadow: 0 6px 16px #17392b1a;
 }
 
-.signature-site.theme-product .signature-contact .signature-action:hover { background: #f3e3bb; }
+.signature-site.theme-product .signature-contact .signature-action:hover { background: #193d31; }
 
 /* Interior pages reuse the collection's materials. */
 .signature-site.theme-product .page-intro {
@@ -201,7 +201,7 @@
   padding-inline: clamp(1.15rem, 5vw, 3.75rem);
   border: 1px solid var(--line);
   border-radius: var(--surface-radius);
-  background: radial-gradient(ellipse at 100% 0%, #dfebe1, transparent 67%), #fffaf2;
+  background: #fff;
   box-shadow: var(--surface-shadow);
 }
 
@@ -217,7 +217,7 @@
 .signature-site.theme-product .text-card {
   --card-tint: var(--surface-amber);
   min-width: 0;
-  background: radial-gradient(ellipse at bottom right, var(--card-tint), transparent 70%), #fffdf8;
+  background: #fff;
   transition: none;
 }
 
@@ -238,12 +238,12 @@
 .signature-site.theme-product .faq-list :is(summary, .faq-answer) { padding-inline: clamp(.9rem, 3vw, 1.5rem); }
 .signature-site.theme-product .faq-list summary { border-radius: .75rem; }
 
-.signature-site.theme-product .cta-band { background: #f3f4ed; border-color: var(--line); }
+.signature-site.theme-product .cta-band { background: #fff; border-color: var(--line); }
 .signature-site.theme-product .cta-band .wrap {
   padding: clamp(1.2rem, 4vw, 2.8rem);
   border: 1px solid var(--line);
   border-radius: var(--surface-radius);
-  background: linear-gradient(135deg, #fff9ee, #e5efe5);
+  background: #fafcf9;
   box-shadow: var(--surface-shadow);
 }
 
@@ -252,7 +252,7 @@
   border-radius: .75rem;
   border-color: #285445;
   background: linear-gradient(145deg, #285445, #142f2b);
-  box-shadow: inset 0 1px #ffffff24, 0 3px 0 #102723;
+  box-shadow: inset 0 1px #ffffff24, 0 5px 14px #1027231a;
   transition: none;
 }
 
@@ -279,7 +279,7 @@
 .signature-site.theme-product .search-results a:hover { background: #e6efe5; }
 .signature-site.theme-product .site-footer {
   border-top-color: var(--line);
-  background: linear-gradient(155deg, #fff 20%, #f2f6ef);
+  background: #fafcf9;
   color: var(--ink);
 }
 
@@ -292,6 +292,38 @@
 
 .signature-site.theme-product :is(a, button, summary, input, select, textarea):focus-visible { outline-color: #306d58; }
 
+/* Quiet white surfaces give the photography and typography room to lead. */
+.signature-site.theme-product .page-intro {
+  padding-block: clamp(3.25rem, 6vw, 5.5rem);
+  box-shadow: none;
+  border-color: transparent;
+  border-bottom-color: var(--line);
+}
+.signature-site.theme-product .section-head > p { max-width: 66ch; }
+.signature-site.theme-product .text-card { box-shadow: 0 12px 32px -26px #17392b40; }
+.signature-site.theme-product .text-card::before { display: none; }
+.signature-site.theme-product .card-number { color: #8b744a; }
+.signature-site.theme-product .signature-details { border-color: var(--line); }
+.signature-site.theme-product .signature-minerals__notes { box-shadow: var(--surface-shadow); }
+.science-notes { display: grid; gap: 0; border-block: 1px solid var(--line); }
+.science-notes article {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) 0;
+}
+.science-notes article + article { border-top: 1px solid var(--line); }
+.science-notes__mark { font: 400 clamp(2.5rem, 5vw, 4rem)/1 var(--display); color: var(--surface-jade); text-align: center; }
+.science-notes h3 { margin-bottom: .65rem; }
+.science-notes p { max-width: 66ch; color: var(--muted); }
+.science-context { max-width: 70ch; font-size: .85rem; color: var(--muted); margin-top: 1.5rem; }
+
+@media (max-width: 480px) {
+  .science-notes article { grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; }
+  .science-notes p { font-size: .9rem; }
+}
+
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .signature-site.theme-product .signature-product,
   .signature-site.theme-product .text-card:has(a) { transition: transform .25s ease, box-shadow .25s ease; }
@@ -299,7 +331,7 @@
   .signature-site.theme-product .signature-product:hover,
   .signature-site.theme-product .text-card:has(a):hover {
     transform: translateY(-4px);
-    box-shadow: inset 0 1px #fff, 0 8px 0 -3px #96a89a3d, 0 25px 46px -15px #17392b4d;
+    box-shadow: inset 0 1px #fff, 0 20px 44px -23px #17392b38;
   }
 
   .signature-site.theme-product .signature-product__image img { transition: transform .4s ease; }

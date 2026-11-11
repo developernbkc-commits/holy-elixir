@@ -5,8 +5,7 @@
   padding: clamp(.875rem, 2.8vw, 2.625rem);
   color: var(--product-ink);
   background:
-    radial-gradient(ellipse at 96% 92%, #f1f5ee, transparent 55%),
-    linear-gradient(120deg, #fbf8f1, #fff 68%);
+    #fff;
 }
 .zubrex-product__stage {
   display: grid;
@@ -16,12 +15,10 @@
   max-width: 84rem;
   margin-inline: auto;
   padding: clamp(1.4rem, 4.1vw, 3.65rem);
-  border: 1px solid #dedbd0;
+  border: 1px solid #e1e5dd;
   border-radius: clamp(1.25rem, 3vw, 2.55rem);
   background:
-    radial-gradient(ellipse at 97% 78%, #f1f5ee, transparent 54%),
-    radial-gradient(ellipse at 54% 110%, #faf0de, transparent 56%),
-    #fffefa;
+    radial-gradient(ellipse at 100% 100%, #f7faf6, transparent 60%), #fff;
   box-shadow: inset 0 1px #fff, 0 1rem 2.5rem -1.55rem #37362855;
 }
 .zubrex-product__copy { min-width: 0; }

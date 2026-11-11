@@ -1,5 +1,6 @@
 holy-elixir/.DS_Store
 .DS_Store
 node_modules/
+__pycache__/
 qa/
 deployment-proof.png

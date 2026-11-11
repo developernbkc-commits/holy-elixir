@@ -14,6 +14,17 @@
   to = "/products.html"
   status = 302
 
+# Keep earlier appliance links useful while Black Drink is the sole product.
+[[redirects]]
+  from = "/ionizers"
+  to = "/black-drink.html"
+  status = 302
+
+[[redirects]]
+  from = "/ionizers.html"
+  to = "/black-drink.html"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]
