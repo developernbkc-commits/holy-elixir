@@ -102,6 +102,8 @@
 .zubrex-product__frame {
   --frame-radius: clamp(1rem, 2.5vw, 1.85rem);
   --frame-padding: clamp(.25rem, .7vw, .625rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   padding: var(--frame-padding);
   border: 1px solid #d4dcd0;
   border-radius: var(--frame-radius);
@@ -110,39 +112,46 @@
 }
 .zubrex-product__image {
   display: block;
+  grid-area: 1 / 1;
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 2;
   border-radius: calc(var(--frame-radius) - var(--frame-padding) - 1px);
   background: #f6f0e5;
 }
-.zubrex-product__slide-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
-  margin-top: .75rem;
+.zubrex-product__image--alternate { opacity: 0; }
+.zubrex-product__image--alternate[aria-hidden="false"] { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .zubrex-product__image--alternate { transition: opacity .5s ease; }
 }
-.zubrex-product__slide-controls button {
-  min-height: 44px;
-  padding: .4rem .75rem;
-  border: 1px solid #a7b3a6;
-  border-radius: 999px;
+.zubrex-product__playback { display: inline-flex; align-items: center; gap: .65rem; margin-inline-end: auto; }
+.zubrex-product__playback button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #cbd5c8;
+  border-radius: 50%;
   color: var(--product-green);
   background: #fffefa;
-  font-size: .8rem;
-  font-weight: 700;
-  line-height: 1.2;
 }
-.zubrex-product__slide-controls button:hover { border-color: var(--product-green); }
-.zubrex-product__slide-controls button[aria-pressed="true"] {
-  border-color: var(--product-green);
-  background: #e5eee3;
+.zubrex-product__playback button:hover { border-color: var(--product-green); }
+.zubrex-product__playback button:focus-visible { outline: 2px solid #446758; outline-offset: 3px; }
+.zubrex-product__playback [data-playing="true"] .play-icon,
+.zubrex-product__playback [data-playing="false"] .pause-icon { display: none; }
+.zubrex-product__dots { display: flex; gap: .35rem; }
+.zubrex-product__dots span {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #647d70;
+  border-radius: 50%;
 }
-.zubrex-product__slide-controls button:focus-visible { outline: 2px solid #446758; outline-offset: 3px; }
+.zubrex-product__dots .is-current { background: var(--product-green); }
 .zubrex-product__caption {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: .15rem .7rem;
   margin-top: .45rem;

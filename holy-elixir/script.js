@@ -66,18 +66,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const heroGallery = document.querySelector('[data-hero-gallery]');
   if (heroGallery) {
-    const controls = heroGallery.querySelector('.zubrex-product__slide-controls');
-    const slideButtons = Array.from(controls.querySelectorAll('button'));
-    slideButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        slideButtons.forEach(choice => {
-          const selected = choice === button;
-          choice.setAttribute('aria-pressed', String(selected));
-          document.getElementById(choice.getAttribute('aria-controls')).hidden = !selected;
-        });
-      });
+    const slides = Array.from(heroGallery.querySelectorAll('.zubrex-product__image'));
+    const artwork = heroGallery.querySelector('[data-hero-depth]');
+    const playback = heroGallery.querySelector('.zubrex-product__playback');
+    const button = playback.querySelector('button');
+    const dots = playback.querySelectorAll('.zubrex-product__dots span');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const canHover = window.matchMedia('(hover: hover)');
+    let current = 0;
+    let playing = false;
+    let timer;
+
+    function scheduleSlide() {
+      window.clearTimeout(timer);
+      if (!playing || document.hidden || (canHover.matches && artwork.matches(':hover'))) return;
+
+      timer = window.setTimeout(() => {
+        const next = (current + 1) % slides.length;
+        if (slides[next].complete && slides[next].naturalWidth) {
+          slides[current].setAttribute('aria-hidden', 'true');
+          dots[current].classList.remove('is-current');
+          current = next;
+          slides[current].setAttribute('aria-hidden', 'false');
+          dots[current].classList.add('is-current');
+        }
+        scheduleSlide();
+      }, 6000);
+    }
+
+    function setPlaying(enabled) {
+      playing = enabled;
+      button.dataset.playing = String(enabled);
+      button.setAttribute('aria-label', enabled ? 'Pause image slideshow' : 'Play image slideshow');
+      scheduleSlide();
+    }
+
+    button.addEventListener('click', () => setPlaying(!playing));
+    heroGallery.addEventListener('focusin', event => {
+      if (event.target.matches(':focus-visible')) setPlaying(false);
     });
-    controls.hidden = false;
+    artwork.addEventListener('pointerenter', scheduleSlide);
+    artwork.addEventListener('pointerleave', scheduleSlide);
+    document.addEventListener('visibilitychange', scheduleSlide);
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) setPlaying(false);
+    });
+    slides.forEach(slide => slide.hidden = false);
+    playback.hidden = false;
+    setPlaying(!reducedMotion.matches);
   }
 
   const packViewer = document.getElementById('pack-viewer');
